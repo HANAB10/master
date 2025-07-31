@@ -872,6 +872,9 @@ export default function EduMindAI() {
 
   const startVoiceCalibration = () => {
     setIsVoiceCalibrating(true)
+    
+    // 提示用户开始说话
+    alert("请开始说话，让AI识别您的声音特征。校准将持续10秒钟。")
 
     if (recognitionRef.current) {
       recognitionRef.current.start()
@@ -885,14 +888,14 @@ export default function EduMindAI() {
 
         // 模拟语音识别校准完成
         alert("Voice calibration complete! AI can now identify speakers.")
-      }, 5000)
+      }, 10000)
     } else {
       // 模拟语音校准
       setTimeout(() => {
         setIsVoiceCalibrating(false)
         setVoiceCalibrationComplete(true)
         alert("Voice calibration complete! AI can now identify speakers.")
-      }, 3000)
+      }, 10000)
     }
   }
 
