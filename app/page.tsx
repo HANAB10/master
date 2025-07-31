@@ -1289,55 +1289,55 @@ export default function EduMindAI() {
             </Card>
 
             {/* Resources */}
-            <Card className="bg-gradient-to-br from-green-50 to-emerald-50 border-green-200 shadow-sm">
+            <Card className="bg-gradient-to-br from-indigo-50 to-purple-50 border-indigo-200 shadow-sm">
               <CardHeader className="pb-3">
                 <CardTitle className="text-lg flex items-center gap-2">
-                  <BookOpen className="w-5 h-5 text-green-600" />
+                  <BookOpen className="w-5 h-5 text-indigo-600" />
                   Course Resources
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
                   <div>
-                    <h5 className="text-sm font-medium mb-2 text-green-700">Assigned Readings</h5>
+                    <h5 className="text-sm font-medium mb-2 text-indigo-700">Assigned Readings</h5>
                     <div className="space-y-2">
-                      <div className="bg-white p-2 rounded border border-blue-100 text-xs shadow-sm">
+                      <div className="bg-white p-2 rounded border border-indigo-100 text-xs shadow-sm">
                         <div className="flex items-center gap-2">
-                          <div className="text-blue-600">📚</div>
-                          <span className="text-blue-800">Chapter 12: Home Healthcare Quality Standards</span>
+                          <div className="text-indigo-600">📚</div>
+                          <span className="text-indigo-800">Chapter 12: Home Healthcare Quality Standards</span>
                         </div>
                       </div>
-                      <div className="bg-white p-2 rounded border border-blue-100 text-xs shadow-sm">
+                      <div className="bg-white p-2 rounded border border-indigo-100 text-xs shadow-sm">
                         <div className="flex items-center gap-2">
-                          <div className="text-blue-600">📊</div>
-                          <span className="text-blue-800">Research Article: Patient Safety in Home Care Settings</span>
+                          <div className="text-indigo-600">📊</div>
+                          <span className="text-indigo-800">Research Article: Patient Safety in Home Care Settings</span>
                         </div>
                       </div>
-                      <div className="bg-white p-2 rounded border border-blue-100 text-xs shadow-sm">
+                      <div className="bg-white p-2 rounded border border-indigo-100 text-xs shadow-sm">
                         <div className="flex items-center gap-2">
-                          <div className="text-blue-600">📖</div>
-                          <span className="text-blue-800">Case Study: Technology Integration in Home Healthcare</span>
+                          <div className="text-indigo-600">📖</div>
+                          <span className="text-indigo-800">Case Study: Technology Integration in Home Healthcare</span>
                         </div>
                       </div>
                     </div>
                   </div>
 
                   <div>
-                    <h5 className="text-sm font-medium mb-2 text-green-700">AI-Suggested Resources</h5>
+                    <h5 className="text-sm font-medium mb-2 text-indigo-700">AI-Suggested Resources</h5>
                     <ScrollArea className="h-24">
                       <div className="space-y-2 pr-2">
                         {knowledgeBase.concepts.length === 0 ? (
-                          <div className="text-xs text-gray-500 text-center py-2 bg-white rounded border border-gray-100 shadow-sm">
+                          <div className="text-xs text-gray-500 text-center py-2 bg-white rounded border border-indigo-100 shadow-sm">
                             Resources will appear during discussion
                           </div>
                         ) : (
                           knowledgeBase.concepts.slice(-5).map((concept, index) => (
-                            <div key={index} className="bg-white p-2 rounded border border-purple-100 text-xs shadow-sm">
+                            <div key={index} className="bg-white p-2 rounded border border-indigo-100 text-xs shadow-sm">
                               <div className="flex items-start gap-2">
-                                <div className="text-purple-600 mt-0.5">🤖</div>
+                                <div className="text-indigo-600 mt-0.5">🤖</div>
                                 <div>
-                                  <span className="font-medium text-purple-800">{concept.name}:</span>
-                                  <span className="text-purple-700"> {concept.definition.slice(0, 40)}...</span>
+                                  <span className="font-medium text-indigo-800">{concept.name}:</span>
+                                  <span className="text-indigo-700"> {concept.definition.slice(0, 40)}...</span>
                                 </div>
                               </div>
                             </div>
@@ -1734,10 +1734,10 @@ export default function EduMindAI() {
             </Card>
 
             {/* Add Questions Section */}
-            <Card className="bg-gradient-to-br from-purple-50 to-violet-50 border-purple-200 shadow-sm">
+            <Card className="bg-gradient-to-br from-indigo-50 to-purple-50 border-indigo-200 shadow-sm">
               <CardHeader className="pb-3">
                 <CardTitle className="text-lg flex items-center gap-2">
-                  <HelpCircle className="w-5 h-5 text-purple-600" />
+                  <HelpCircle className="w-5 h-5 text-indigo-600" />
                   Quick Questions
                 </CardTitle>
               </CardHeader>
@@ -1745,17 +1745,17 @@ export default function EduMindAI() {
                 <div className="space-y-4">
                   {/* Display Added Questions */}
                   <div>
-                    <h5 className="text-sm font-medium mb-2 text-purple-700">Your Questions</h5>
+                    <h5 className="text-sm font-medium mb-2 text-indigo-700">Your Questions</h5>
                     <div className="space-y-2 max-h-32 overflow-y-auto">
                       {userQuestions.length === 0 ? (
-                        <div className="text-xs text-gray-500 text-center py-2 bg-white rounded border border-purple-100 shadow-sm">
+                        <div className="text-xs text-gray-500 text-center py-2 bg-white rounded border border-indigo-100 shadow-sm">
                           No questions added yet
                         </div>
                       ) : (
                         userQuestions.map((question) => (
-                          <div key={question.id} className="bg-white p-2 rounded border border-purple-100 text-xs shadow-sm">
-                            <div className="text-purple-800">{question.content}</div>
-                            <div className="text-purple-600 text-xs mt-1">{question.timestamp.toLocaleTimeString()}</div>
+                          <div key={question.id} className="bg-white p-2 rounded border border-indigo-100 text-xs shadow-sm">
+                            <div className="text-indigo-800">{question.content}</div>
+                            <div className="text-indigo-600 text-xs mt-1">{question.timestamp.toLocaleTimeString()}</div>
                           </div>
                         ))
                       )}
@@ -1764,7 +1764,7 @@ export default function EduMindAI() {
 
                   {/* Add Question Input */}
                   <div className="space-y-2">
-                    <h5 className="text-sm font-medium text-purple-700">Add a Question</h5>
+                    <h5 className="text-sm font-medium text-indigo-700">Add a Question</h5>
                     <div className="space-y-2">
                       <Input
                         placeholder="Type your question or thought here..."
@@ -1782,11 +1782,11 @@ export default function EduMindAI() {
                             setCurrentQuestionInput("")
                           }
                         }}
-                        className="text-sm border-purple-200 focus:border-purple-300"
+                        className="text-sm border-indigo-200 focus:border-indigo-300"
                       />
                       <Button
                         size="sm"
-                        className="w-full bg-purple-600 hover:bg-purple-700"
+                        className="w-full bg-indigo-600 hover:bg-indigo-700"
                         onClick={() => {
                           if (currentQuestionInput.trim()) {
                             const newQuestion = {
@@ -1803,7 +1803,7 @@ export default function EduMindAI() {
                         <Plus className="w-4 h-4 mr-2" />
                         Add Question
                       </Button>
-                      <p className="text-xs text-purple-600">
+                      <p className="text-xs text-indigo-600">
                         Add questions or thoughts without interrupting the discussion
                       </p>
                     </div>
