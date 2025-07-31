@@ -1153,12 +1153,12 @@ export default function EduMindAI() {
                               const isUnbalanced = maxContributions - minContributions > 2;
                               
                               return isUnbalanced ? (
-                                <div className="bg-yellow-50 p-2 rounded border border-yellow-200">
+                                <div className="bg-gradient-to-br from-slate-50 to-gray-100 p-2 rounded border border-slate-200">
                                   <div className="flex items-start gap-2">
-                                    <div className="text-yellow-600 mt-0.5">⚖️</div>
+                                    <div className="text-slate-600 mt-0.5">⚖️</div>
                                     <div>
-                                      <p className="text-xs font-medium text-yellow-800">Participation Balance</p>
-                                      <p className="text-xs text-yellow-700">
+                                      <p className="text-xs font-medium text-slate-800">Participation Balance</p>
+                                      <p className="text-xs text-slate-700">
                                         Consider encouraging quieter members to share their perspectives.
                                       </p>
                                     </div>
@@ -1193,12 +1193,12 @@ export default function EduMindAI() {
                                 discussions.reduce((sum, d) => sum + d.quality, 0) / discussions.length : 0;
                               
                               return avgQuality < 3 && discussions.length > 2 ? (
-                                <div className="bg-orange-50 p-2 rounded border border-orange-200">
+                                <div className="bg-gradient-to-br from-rose-50 to-pink-100 p-2 rounded border border-rose-200">
                                   <div className="flex items-start gap-2">
-                                    <div className="text-orange-600 mt-0.5">🔍</div>
+                                    <div className="text-rose-600 mt-0.5">🔍</div>
                                     <div>
-                                      <p className="text-xs font-medium text-orange-800">Discussion Depth</p>
-                                      <p className="text-xs text-orange-700">
+                                      <p className="text-xs font-medium text-rose-800">Discussion Depth</p>
+                                      <p className="text-xs text-rose-700">
                                         Consider exploring the "why" and "how" behind your safety factor rankings.
                                       </p>
                                     </div>
@@ -1261,22 +1261,22 @@ export default function EduMindAI() {
                       ) : (
                         <>
                           {discussionPhase === "opening" && (
-                            <div className="text-xs bg-blue-50 text-blue-700 p-2 rounded">
+                            <div className="text-xs bg-gradient-to-r from-blue-50 to-indigo-50 text-blue-700 p-2 rounded border border-blue-100">
                               🎯 Focus on ranking your top 3 safety factors with initial reasoning
                             </div>
                           )}
                           {discussionPhase === "exploration" && (
-                            <div className="text-xs bg-green-50 text-green-700 p-2 rounded">
+                            <div className="text-xs bg-gradient-to-r from-emerald-50 to-teal-50 text-emerald-700 p-2 rounded border border-emerald-100">
                               📖 Connect arguments to specific evidence from readings
                             </div>
                           )}
                           {discussionPhase === "deepening" && (
-                            <div className="text-xs bg-orange-50 text-orange-700 p-2 rounded">
+                            <div className="text-xs bg-gradient-to-r from-rose-50 to-pink-50 text-rose-700 p-2 rounded border border-rose-100">
                               🤔 Challenge each other's rankings with counterarguments
                             </div>
                           )}
                           {discussionPhase === "synthesis" && (
-                            <div className="text-xs bg-purple-50 text-purple-700 p-2 rounded">
+                            <div className="text-xs bg-gradient-to-r from-purple-50 to-violet-50 text-purple-700 p-2 rounded border border-purple-100">
                               🔄 Work toward team consensus on final safety factor ranking
                             </div>
                           )}
@@ -1638,7 +1638,7 @@ export default function EduMindAI() {
                                     : node.type === "concept"
                                       ? "bg-green-100 border-green-300"
                                       : node.type === "insight"
-                                        ? "bg-yellow-100 border-yellow-300"
+                                        ? "bg-slate-100 border-slate-300"
                                         : node.type === "connection"
                                           ? "bg-purple-100 border-purple-300"
                                           : "bg-gray-100 border-gray-300"
@@ -1655,7 +1655,7 @@ export default function EduMindAI() {
                                     : node.type === "concept"
                                       ? "💡"
                                       : node.type === "insight"
-                                        ? "🔍"
+                                        ? "💎"
                                         : node.type === "connection"
                                           ? "🔗"
                                           : "📝"}
