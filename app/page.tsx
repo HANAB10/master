@@ -1011,7 +1011,7 @@ export default function EduMindAI() {
               <CardContent className="space-y-6">
                 {/* Real-time Summary */}
                 <div>
-                  <h4 className="font-medium text-sm mb-3 text-blue-700 border-b border-blue-200 pb-1">
+                  <h4 className="font-medium text-sm mb-3 text-indigo-700 border-b border-indigo-200 pb-1">
                     Real-time Progress
                   </h4>
                   <div className="space-y-3">
@@ -1037,7 +1037,7 @@ export default function EduMindAI() {
 
                 {/* Final Summary */}
                 <div>
-                  <h4 className="font-medium text-sm mb-3 text-purple-700 border-b border-purple-200 pb-1">
+                  <h4 className="font-medium text-sm mb-3 text-indigo-700 border-b border-indigo-200 pb-1">
                     Final Summary
                   </h4>
                   <div className="space-y-3">
@@ -1110,7 +1110,7 @@ export default function EduMindAI() {
                           ></div>
                         </div>
                       </div>
-                      
+
                       <div className="bg-white p-3 rounded border border-indigo-100">
                         <div className="flex items-center justify-between mb-1">
                           <span className="text-xs font-medium">Critical Thinking</span>
@@ -1151,7 +1151,7 @@ export default function EduMindAI() {
                               const maxContributions = Math.max(...participation.map(p => p.count));
                               const minContributions = Math.min(...participation.map(p => p.count));
                               const isUnbalanced = maxContributions - minContributions > 2;
-                              
+
                               return isUnbalanced ? (
                                 <div className="bg-gradient-to-br from-slate-50 to-gray-100 p-2 rounded border border-slate-200">
                                   <div className="flex items-start gap-2">
@@ -1171,7 +1171,7 @@ export default function EduMindAI() {
                             {(() => {
                               const evidenceRate = discussions.length > 0 ? 
                                 discussions.filter(d => d.logicalStructure.hasEvidence).length / discussions.length : 0;
-                              
+
                               return evidenceRate < 0.4 && discussions.length > 3 ? (
                                 <div className="bg-blue-50 p-2 rounded border border-blue-200">
                                   <div className="flex items-start gap-2">
@@ -1191,7 +1191,7 @@ export default function EduMindAI() {
                             {(() => {
                               const avgQuality = discussions.length > 0 ? 
                                 discussions.reduce((sum, d) => sum + d.quality, 0) / discussions.length : 0;
-                              
+
                               return avgQuality < 3 && discussions.length > 2 ? (
                                 <div className="bg-gradient-to-br from-rose-50 to-pink-100 p-2 rounded border border-rose-200">
                                   <div className="flex items-start gap-2">
@@ -1210,7 +1210,7 @@ export default function EduMindAI() {
                             {/* Synthesis Encouragement */}
                             {(() => {
                               const synthesisCount = discussions.filter(d => d.thoughtType === "synthesis").length;
-                              
+
                               return discussions.length > 5 && synthesisCount === 0 ? (
                                 <div className="bg-green-50 p-2 rounded border border-green-200">
                                   <div className="flex items-start gap-2">
@@ -1229,7 +1229,7 @@ export default function EduMindAI() {
                             {/* Positive Reinforcement */}
                             {(() => {
                               const highQualityDiscussions = discussions.filter(d => d.quality >= 4).length;
-                              
+
                               return highQualityDiscussions > 0 ? (
                                 <div className="bg-purple-50 p-2 rounded border border-purple-200">
                                   <div className="flex items-start gap-2">
@@ -1826,7 +1826,7 @@ export default function EduMindAI() {
                 To help AI identify different team members during discussion, please record the following sentence clearly:
               </DialogDescription>
             </DialogHeader>
-            
+
             <div className="space-y-6">
               {/* Sentence to record */}
               <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
@@ -1834,7 +1834,7 @@ export default function EduMindAI() {
                   "Hello, this is my voice for the team-based learning discussion on home healthcare safety."
                 </p>
               </div>
-              
+
               {/* Instructions */}
               <div className="space-y-2">
                 <h4 className="font-medium text-gray-900">Instructions:</h4>
@@ -1845,7 +1845,7 @@ export default function EduMindAI() {
                   <li>• Ensure you're in a quiet environment</li>
                 </ul>
               </div>
-              
+
               {/* Action buttons */}
               <div className="flex gap-3 justify-end">
                 <Button 
