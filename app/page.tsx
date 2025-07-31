@@ -1363,7 +1363,7 @@ export default function EduMindAI() {
                   </TabsList>
 
                   <TabsContent value="guidance" className="mt-4 flex-1">
-                    <div className="h-[calc(100vh-250px)]">
+                    <div className="h-[calc(100vh-250px)] bg-gradient-to-br from-slate-50 to-blue-50 rounded-lg border border-slate-200 p-4">
                       {/* AI Guidance Messages - No Input Box */}
                       <ScrollArea className="h-full">
                         <div className="space-y-4 pr-4">
