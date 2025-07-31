@@ -1059,6 +1059,214 @@ export default function EduMindAI() {
               </CardContent>
             </Card>
 
+            {/* AI Feedback Module */}
+            <Card className="bg-gradient-to-br from-indigo-50 to-purple-50 border-indigo-200">
+              <CardHeader className="pb-3">
+                <CardTitle className="text-lg flex items-center gap-2">
+                  <Brain className="w-5 h-5 text-indigo-600" />
+                  AI Feedback
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  {/* Real-time Performance Feedback */}
+                  <div>
+                    <h5 className="text-sm font-medium mb-2 text-indigo-700">Discussion Quality</h5>
+                    <div className="space-y-2">
+                      <div className="bg-white p-3 rounded border border-indigo-100">
+                        <div className="flex items-center justify-between mb-1">
+                          <span className="text-xs font-medium">Evidence Usage</span>
+                          <span className="text-xs text-indigo-600">
+                            {discussions.filter(d => d.logicalStructure.hasEvidence).length}/{discussions.length}
+                          </span>
+                        </div>
+                        <div className="w-full bg-gray-200 rounded-full h-2">
+                          <div 
+                            className="bg-indigo-600 h-2 rounded-full" 
+                            style={{
+                              width: `${discussions.length > 0 ? (discussions.filter(d => d.logicalStructure.hasEvidence).length / discussions.length) * 100 : 0}%`
+                            }}
+                          ></div>
+                        </div>
+                      </div>
+                      
+                      <div className="bg-white p-3 rounded border border-indigo-100">
+                        <div className="flex items-center justify-between mb-1">
+                          <span className="text-xs font-medium">Critical Thinking</span>
+                          <span className="text-xs text-purple-600">
+                            {discussions.filter(d => d.logicalStructure.hasReasoning || d.logicalStructure.hasCounterargument).length}/{discussions.length}
+                          </span>
+                        </div>
+                        <div className="w-full bg-gray-200 rounded-full h-2">
+                          <div 
+                            className="bg-purple-600 h-2 rounded-full" 
+                            style={{
+                              width: `${discussions.length > 0 ? (discussions.filter(d => d.logicalStructure.hasReasoning || d.logicalStructure.hasCounterargument).length / discussions.length) * 100 : 0}%`
+                            }}
+                          ></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* AI Insights */}
+                  <div>
+                    <h5 className="text-sm font-medium mb-2 text-indigo-700">AI Insights</h5>
+                    <ScrollArea className="h-32">
+                      <div className="space-y-2 pr-2">
+                        {discussions.length === 0 ? (
+                          <div className="text-xs text-gray-500 text-center py-4">
+                            AI feedback will appear during discussion
+                          </div>
+                        ) : (
+                          <>
+                            {/* Participation Balance Feedback */}
+                            {(() => {
+                              const speakers = new Set(discussions.map(d => d.speaker));
+                              const participation = Array.from(speakers).map(speaker => ({
+                                speaker,
+                                count: discussions.filter(d => d.speaker === speaker).length
+                              }));
+                              const maxContributions = Math.max(...participation.map(p => p.count));
+                              const minContributions = Math.min(...participation.map(p => p.count));
+                              const isUnbalanced = maxContributions - minContributions > 2;
+                              
+                              return isUnbalanced ? (
+                                <div className="bg-yellow-50 p-2 rounded border border-yellow-200">
+                                  <div className="flex items-start gap-2">
+                                    <div className="text-yellow-600 mt-0.5">⚖️</div>
+                                    <div>
+                                      <p className="text-xs font-medium text-yellow-800">Participation Balance</p>
+                                      <p className="text-xs text-yellow-700">
+                                        Consider encouraging quieter members to share their perspectives.
+                                      </p>
+                                    </div>
+                                  </div>
+                                </div>
+                              ) : null;
+                            })()}
+
+                            {/* Evidence Quality Feedback */}
+                            {(() => {
+                              const evidenceRate = discussions.length > 0 ? 
+                                discussions.filter(d => d.logicalStructure.hasEvidence).length / discussions.length : 0;
+                              
+                              return evidenceRate < 0.4 && discussions.length > 3 ? (
+                                <div className="bg-blue-50 p-2 rounded border border-blue-200">
+                                  <div className="flex items-start gap-2">
+                                    <div className="text-blue-600 mt-0.5">📚</div>
+                                    <div>
+                                      <p className="text-xs font-medium text-blue-800">Evidence Integration</p>
+                                      <p className="text-xs text-blue-700">
+                                        Try to connect more arguments to the assigned readings and case studies.
+                                      </p>
+                                    </div>
+                                  </div>
+                                </div>
+                              ) : null;
+                            })()}
+
+                            {/* Depth Analysis Feedback */}
+                            {(() => {
+                              const avgQuality = discussions.length > 0 ? 
+                                discussions.reduce((sum, d) => sum + d.quality, 0) / discussions.length : 0;
+                              
+                              return avgQuality < 3 && discussions.length > 2 ? (
+                                <div className="bg-orange-50 p-2 rounded border border-orange-200">
+                                  <div className="flex items-start gap-2">
+                                    <div className="text-orange-600 mt-0.5">🔍</div>
+                                    <div>
+                                      <p className="text-xs font-medium text-orange-800">Discussion Depth</p>
+                                      <p className="text-xs text-orange-700">
+                                        Consider exploring the "why" and "how" behind your safety factor rankings.
+                                      </p>
+                                    </div>
+                                  </div>
+                                </div>
+                              ) : null;
+                            })()}
+
+                            {/* Synthesis Encouragement */}
+                            {(() => {
+                              const synthesisCount = discussions.filter(d => d.thoughtType === "synthesis").length;
+                              
+                              return discussions.length > 5 && synthesisCount === 0 ? (
+                                <div className="bg-green-50 p-2 rounded border border-green-200">
+                                  <div className="flex items-start gap-2">
+                                    <div className="text-green-600 mt-0.5">🔄</div>
+                                    <div>
+                                      <p className="text-xs font-medium text-green-800">Synthesis Opportunity</p>
+                                      <p className="text-xs text-green-700">
+                                        Great discussions! Consider synthesizing different viewpoints into a cohesive ranking.
+                                      </p>
+                                    </div>
+                                  </div>
+                                </div>
+                              ) : null;
+                            })()}
+
+                            {/* Positive Reinforcement */}
+                            {(() => {
+                              const highQualityDiscussions = discussions.filter(d => d.quality >= 4).length;
+                              
+                              return highQualityDiscussions > 0 ? (
+                                <div className="bg-purple-50 p-2 rounded border border-purple-200">
+                                  <div className="flex items-start gap-2">
+                                    <div className="text-purple-600 mt-0.5">⭐</div>
+                                    <div>
+                                      <p className="text-xs font-medium text-purple-800">Excellent Progress</p>
+                                      <p className="text-xs text-purple-700">
+                                        {highQualityDiscussions} high-quality argument{highQualityDiscussions > 1 ? 's' : ''} identified. Keep building on these insights!
+                                      </p>
+                                    </div>
+                                  </div>
+                                </div>
+                              ) : null;
+                            })()}
+                          </>
+                        )}
+                      </div>
+                    </ScrollArea>
+                  </div>
+
+                  {/* Quick Action Suggestions */}
+                  <div>
+                    <h5 className="text-sm font-medium mb-2 text-indigo-700">Suggested Next Steps</h5>
+                    <div className="space-y-1">
+                      {discussions.length === 0 ? (
+                        <div className="text-xs text-gray-500 bg-gray-50 p-2 rounded">
+                          Start the discussion to see personalized suggestions
+                        </div>
+                      ) : (
+                        <>
+                          {discussionPhase === "opening" && (
+                            <div className="text-xs bg-blue-50 text-blue-700 p-2 rounded">
+                              🎯 Focus on ranking your top 3 safety factors with initial reasoning
+                            </div>
+                          )}
+                          {discussionPhase === "exploration" && (
+                            <div className="text-xs bg-green-50 text-green-700 p-2 rounded">
+                              📖 Connect arguments to specific evidence from readings
+                            </div>
+                          )}
+                          {discussionPhase === "deepening" && (
+                            <div className="text-xs bg-orange-50 text-orange-700 p-2 rounded">
+                              🤔 Challenge each other's rankings with counterarguments
+                            </div>
+                          )}
+                          {discussionPhase === "synthesis" && (
+                            <div className="text-xs bg-purple-50 text-purple-700 p-2 rounded">
+                              🔄 Work toward team consensus on final safety factor ranking
+                            </div>
+                          )}
+                        </>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
             {/* Resources */}
             <Card className="bg-gray-100">
               <CardHeader className="pb-3">
