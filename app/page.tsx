@@ -1677,10 +1677,10 @@ export default function EduMindAI() {
           {/* Right Sidebar - Dashboard */}
           <div className="col-span-3 space-y-6">
             {/* Dashboard */}
-            <Card className="bg-gradient-to-br from-orange-50 to-amber-50 border-orange-200 shadow-sm">
+            <Card className="bg-gradient-to-br from-indigo-50 to-purple-50 border-indigo-200 shadow-sm">
               <CardHeader className="pb-3">
                 <CardTitle className="text-lg flex items-center gap-2">
-                  <Users className="w-5 h-5 text-orange-600" />
+                  <Users className="w-5 h-5 text-indigo-600" />
                   Team Dashboard
                 </CardTitle>
               </CardHeader>
@@ -1688,19 +1688,19 @@ export default function EduMindAI() {
                 <div className="space-y-4">
                   {/* Member Participation Metrics */}
                   <div>
-                    <h5 className="text-sm font-medium mb-3 text-orange-700">Member Participation</h5>
+                    <h5 className="text-sm font-medium mb-3 text-indigo-700">Member Participation</h5>
                     <div className="space-y-3">
                       {teamMembers.map((member) => {
                         const memberDiscussions = discussions.filter((d) => d.speaker === member.name)
                         const speakingTime = memberSpeakingTimes[member.name] || 0
 
                         return (
-                          <div key={member.id} className="bg-white p-3 rounded border border-orange-100 shadow-sm">
+                          <div key={member.id} className="bg-white p-3 rounded border border-indigo-100 shadow-sm">
                             <div className="flex items-center gap-2 mb-2">
                               <Avatar className="w-6 h-6">
-                                <AvatarFallback className="text-xs bg-orange-100 text-orange-600">{member.name[0]}</AvatarFallback>
+                                <AvatarFallback className="text-xs bg-indigo-100 text-indigo-600">{member.name[0]}</AvatarFallback>
                               </Avatar>
-                              <span className="font-medium text-sm flex-1 text-orange-800">{member.name}</span>
+                              <span className="font-medium text-sm flex-1 text-indigo-800">{member.name}</span>
                               <div
                                 className={`w-2 h-2 rounded-full ${
                                   memberDiscussions.length > 0 &&
