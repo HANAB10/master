@@ -1353,7 +1353,7 @@ export default function EduMindAI() {
 
           {/* Center - AI Guidance & Resources */}
           <div className="col-span-6">
-            <Card className="h-full flex flex-col">
+            <Card className="h-full flex flex-col bg-gradient-to-br from-slate-50 to-blue-50 border-slate-200">
               <CardHeader className="pb-3 flex-shrink-0">
                 <Tabs defaultValue="guidance" className="w-full h-full flex flex-col">
                   <TabsList className="grid w-full grid-cols-3">
