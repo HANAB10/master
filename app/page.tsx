@@ -7,6 +7,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Input } from "@/components/ui/input"
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog"
 import {
   Users,
   Lightbulb,
@@ -193,6 +194,7 @@ export default function EduMindAI() {
   const recognitionRef = useRef<SpeechRecognition | null>(null)
   const [isVoiceCalibrating, setIsVoiceCalibrating] = useState(false)
   const [voiceCalibrationComplete, setVoiceCalibrationComplete] = useState(false)
+  const [showVoiceCalibrationDialog, setShowVoiceCalibrationDialog] = useState(false)
   const [memberSpeakingTimes, setMemberSpeakingTimes] = useState<Record<string, number>>({
     Alice: 0,
     Bob: 0,
@@ -871,10 +873,11 @@ export default function EduMindAI() {
   }
 
   const startVoiceCalibration = () => {
+    setShowVoiceCalibrationDialog(true)
+  }
+
+  const beginVoiceRecording = () => {
     setIsVoiceCalibrating(true)
-    
-    // 提示用户开始说话
-    alert("请开始说话，让AI识别您的声音特征。校准将持续10秒钟。")
 
     if (recognitionRef.current) {
       recognitionRef.current.start()
@@ -885,8 +888,7 @@ export default function EduMindAI() {
         }
         setIsVoiceCalibrating(false)
         setVoiceCalibrationComplete(true)
-
-        // 模拟语音识别校准完成
+        setShowVoiceCalibrationDialog(false)
         alert("Voice calibration complete! AI can now identify speakers.")
       }, 10000)
     } else {
@@ -894,6 +896,7 @@ export default function EduMindAI() {
       setTimeout(() => {
         setIsVoiceCalibrating(false)
         setVoiceCalibrationComplete(true)
+        setShowVoiceCalibrationDialog(false)
         alert("Voice calibration complete! AI can now identify speakers.")
       }, 10000)
     }
@@ -1769,6 +1772,69 @@ export default function EduMindAI() {
             </Card>
           </div>
         </div>
+
+        {/* Voice Calibration Dialog */}
+        <Dialog open={showVoiceCalibrationDialog} onOpenChange={setShowVoiceCalibrationDialog}>
+          <DialogContent className="max-w-md">
+            <DialogHeader>
+              <DialogTitle className="flex items-center gap-2">
+                <Mic className="w-5 h-5 text-blue-600" />
+                Voice Calibration Setup
+              </DialogTitle>
+              <DialogDescription className="text-left">
+                To help AI identify different team members during discussion, please record the following sentence clearly:
+              </DialogDescription>
+            </DialogHeader>
+            
+            <div className="space-y-6">
+              {/* Sentence to record */}
+              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                <p className="text-lg font-medium text-blue-900 text-center leading-relaxed">
+                  "Hello, this is my voice for the team-based learning discussion on home healthcare safety."
+                </p>
+              </div>
+              
+              {/* Instructions */}
+              <div className="space-y-2">
+                <h4 className="font-medium text-gray-900">Instructions:</h4>
+                <ul className="text-sm text-gray-600 space-y-1">
+                  <li>• Speak clearly and at normal volume</li>
+                  <li>• Recording will last for 10 seconds</li>
+                  <li>• Repeat the sentence 1-2 times during recording</li>
+                  <li>• Ensure you're in a quiet environment</li>
+                </ul>
+              </div>
+              
+              {/* Action buttons */}
+              <div className="flex gap-3 justify-end">
+                <Button 
+                  variant="outline" 
+                  onClick={() => setShowVoiceCalibrationDialog(false)}
+                  disabled={isVoiceCalibrating}
+                >
+                  Cancel
+                </Button>
+                <Button 
+                  onClick={beginVoiceRecording}
+                  disabled={isVoiceCalibrating}
+                  className="bg-blue-600 hover:bg-blue-700"
+                >
+                  {isVoiceCalibrating ? (
+                    <>
+                      <div className="w-4 h-4 mr-2 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                      Recording... ({Math.max(0, 10 - Math.floor((Date.now() % 10000) / 1000))}s)
+                    </>
+                  ) : (
+                    <>
+                      <Mic className="w-4 h-4 mr-2" />
+                      Start Recording
+                    </>
+                  )}
+                </Button>
+              </div>
+            </div>
+          </DialogContent>
+        </Dialog>
       </div>
     </div>
   )
