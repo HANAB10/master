@@ -1,6 +1,3 @@
-` tag that was causing a syntax error.
-
-<replit_final_file>
 "use client"
 
 import { useState, useEffect, useRef } from "react"
