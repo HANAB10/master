@@ -911,9 +911,7 @@ export default function EduMindAI() {
       document: <FileText className="w-4 h-4" />,
       webpage: <Globe className="w-4 h-4" />,
       research: <BookOpen className="w-4 h-4" />,
-      video: <Play className="w-4 h-4" />,
-    }
-    return icons[type as keyof typeof icons]t className="w-4 h-4" />
+      video: <Play className="w-4 h-4" />,<replit_final_file>
     }
     return icons[type as keyof typeof icons] || <FileText className="w-4 h-4" />
   }
@@ -922,9 +920,9 @@ export default function EduMindAI() {
     <div className="min-h-screen p-4 bg-transparent">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="mb-6 bg-white rounded-lg shadow-md border border-gray-200 p-6">
+        <div className="mb-6 bg-gradient-to-br from-slate-50 to-blue-50 rounded-lg shadow-md border border-slate-200 p-6">
           <div className="flex items-center justify-between mb-4">
-            <h1 className="text-2xl font-bold text-gray-900 flex items-center gap-3">
+            <h1 className="text-2xl font-bold text-slate-700 flex items-center gap-3">
               <Brain className="w-8 h-8 text-indigo-600" />
               EduMind AI - Team-Based Learning Platform
             </h1>
@@ -948,7 +946,7 @@ export default function EduMindAI() {
               {!isDiscussionActive ? (
                 <Button
                   onClick={startDiscussion}
-                  className="bg-blue-600 hover:bg-blue-700 text-white shadow-md"
+                  className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-md"
                   disabled={!voiceCalibrationComplete}
                 >
                   <Play className="w-4 h-4 mr-2" />
@@ -980,16 +978,16 @@ export default function EduMindAI() {
           </div>
 
           {/* Topic Section */}
-          <div className="bg-gray-50 rounded-lg shadow-sm border border-gray-200 p-4 mb-4">
-            <h3 className="font-medium text-gray-900 mb-2 flex items-center gap-2">
-              <BookOpen className="w-4 h-4 text-gray-600" />
+          <div className="bg-white/10 backdrop-blur-md rounded-lg shadow-lg border border-white/20 p-4 mb-4">
+            <h3 className="font-medium text-slate-700 mb-2 flex items-center gap-2">
+              <BookOpen className="w-4 h-4 text-slate-600" />
               Course Topic
             </h3>
-            <p className="text-gray-700">{currentTopic}</p>
+            <p className="text-slate-800">{currentTopic}</p>
           </div>
 
           {/* tRAT Question */}
-          <div className="bg-gray-50 rounded-lg shadow-sm border border-gray-200 p-4 border-l-4 border-blue-500 shadow-sm">
+          <div className="bg-white/10 backdrop-blur-md rounded-lg shadow-lg border border-white/20 p-4 border-l-4 border-blue-500 shadow-sm">
             <h3 className="font-medium text-blue-800 mb-2 flex items-center gap-2">
               <HelpCircle className="w-4 h-4 text-blue-600" />
               tRAT Discussion Question
@@ -1003,7 +1001,7 @@ export default function EduMindAI() {
           {/* Left Sidebar - Summary & Resources */}
           <div className="col-span-3 space-y-6">
             {/* Summary Section - Real-time and Final (Vertical Layout) */}
-            <Card className="border-gray-200 shadow-sm">
+            <Card className="bg-gradient-to-br from-blue-50 to-indigo-50 border-blue-200 shadow-sm">
               <CardHeader className="pb-3">
                 <CardTitle className="text-lg flex items-center gap-2">
                   <Archive className="w-5 h-5 text-blue-600" />
@@ -1013,20 +1011,20 @@ export default function EduMindAI() {
               <CardContent className="space-y-6">
                 {/* Real-time Summary */}
                 <div>
-                  <h4 className="font-medium text-sm mb-3 text-gray-900 border-b border-gray-200 pb-1">
+                  <h4 className="font-medium text-sm mb-3 text-indigo-700 border-b border-indigo-200 pb-1">
                     Real-time Progress
                   </h4>
                   <div className="space-y-3">
-                    <div className="bg-gray-50 rounded-lg shadow-sm border border-gray-200 p-3 rounded border border-blue-100 shadow-sm">
+                    <div className="bg-white/10 backdrop-blur-md rounded-lg shadow-lg border border-white/20 p-3 rounded border border-blue-100 shadow-sm">
                       <h5 className="text-xs font-medium mb-1 text-blue-800">Current Phase</h5>
                       <p className="text-xs text-blue-700">{getPhaseLabel(discussionPhase)}</p>
                     </div>
-                    <div className="bg-gray-50 rounded-lg shadow-sm border border-gray-200 p-3 rounded border border-green-100 shadow-sm">
+                    <div className="bg-white/10 backdrop-blur-md rounded-lg shadow-lg border border-white/20 p-3 rounded border border-green-100 shadow-sm">
                       <h5 className="text-xs font-medium mb-1 text-green-800">Discussion Progress</h5>
                       <p className="text-xs text-green-700">{discussions.length} contributions made</p>
                       <p className="text-xs text-green-700">Time: {formatTime(discussionTime)}</p>
                     </div>
-                    <div className="bg-gray-50 rounded-lg shadow-sm border border-gray-200 p-3 rounded border border-yellow-100 shadow-sm">
+                    <div className="bg-white/10 backdrop-blur-md rounded-lg shadow-lg border border-white/20 p-3 rounded border border-yellow-100 shadow-sm">
                       <h5 className="text-xs font-medium mb-1 text-yellow-800">Current Focus</h5>
                       <p className="text-xs text-yellow-700">
                         {discussionSummary.keyPoints.length > 0
@@ -1039,12 +1037,12 @@ export default function EduMindAI() {
 
                 {/* Final Summary */}
                 <div>
-                  <h4 className="font-medium text-sm mb-3 text-gray-900 border-b border-gray-200 pb-1">
+                  <h4 className="font-medium text-sm mb-3 text-indigo-700 border-b border-indigo-200 pb-1">
                     Final Summary
                   </h4>
                   <div className="space-y-3">
                     {!isDiscussionActive && discussions.length > 0 ? (
-                      <div className="bg-gray-50 rounded-lg shadow-sm border border-gray-200 p-3 rounded border border-purple-100 shadow-sm">
+                      <div className="bg-white/10 backdrop-blur-md rounded-lg shadow-lg border border-white/20 p-3 rounded border border-purple-100 shadow-sm">
                         <h5 className="text-xs font-medium mb-2 text-purple-800">tRAT Discussion Results</h5>
                         <div className="space-y-2">
                           <div>
@@ -1071,7 +1069,7 @@ export default function EduMindAI() {
                         </div>
                       </div>
                     ) : (
-                      <div className="bg-gray-50 rounded-lg shadow-sm border border-gray-200 p-3 rounded border border-gray-100 shadow-sm text-center">
+                      <div className="bg-white/10 backdrop-blur-md rounded-lg shadow-lg border border-white/20 p-3 rounded border border-gray-100 shadow-sm text-center">
                         <p className="text-xs text-gray-500">
                           Final summary will be generated when tRAT discussion ends
                         </p>
@@ -1083,7 +1081,7 @@ export default function EduMindAI() {
             </Card>
 
             {/* AI Feedback Module */}
-            <Card className="border-gray-200">
+            <Card className="bg-gradient-to-br from-indigo-50 to-purple-50 border-indigo-200">
               <CardHeader className="pb-3">
                 <CardTitle className="text-lg flex items-center gap-2">
                   <Brain className="w-5 h-5 text-indigo-600" />
@@ -1094,9 +1092,9 @@ export default function EduMindAI() {
                 <div className="space-y-4">
                   {/* Real-time Performance Feedback */}
                   <div>
-                    <h5 className="text-sm font-medium mb-2 text-gray-900">Discussion Quality</h5>
+                    <h5 className="text-sm font-medium mb-2 text-indigo-700">Discussion Quality</h5>
                     <div className="space-y-2">
-                      <div className="bg-gray-50 rounded-lg shadow-sm border border-gray-200 p-3 rounded border border-indigo-100">
+                      <div className="bg-white/10 backdrop-blur-md rounded-lg shadow-lg border border-white/20 p-3 rounded border border-indigo-100">
                         <div className="flex items-center justify-between mb-1">
                           <span className="text-xs font-medium">Evidence Usage</span>
                           <span className="text-xs text-indigo-600">
@@ -1104,8 +1102,8 @@ export default function EduMindAI() {
                           </span>
                         </div>
                         <div className="w-full bg-gray-200 rounded-full h-2">
-                          <div
-                            className="bg-indigo-600 h-2 rounded-full"
+                          <div 
+                            className="bg-indigo-600 h-2 rounded-full" 
                             style={{
                               width: `${discussions.length > 0 ? (discussions.filter(d => d.logicalStructure.hasEvidence).length / discussions.length) * 100 : 0}%`
                             }}
@@ -1113,7 +1111,7 @@ export default function EduMindAI() {
                         </div>
                       </div>
 
-                      <div className="bg-gray-50 rounded-lg shadow-sm border border-gray-200 p-3 rounded border border-indigo-100">
+                      <div className="bg-white/10 backdrop-blur-md rounded-lg shadow-lg border border-white/20 p-3 rounded border border-indigo-100">
                         <div className="flex items-center justify-between mb-1">
                           <span className="text-xs font-medium">Critical Thinking</span>
                           <span className="text-xs text-purple-600">
@@ -1121,8 +1119,8 @@ export default function EduMindAI() {
                           </span>
                         </div>
                         <div className="w-full bg-gray-200 rounded-full h-2">
-                          <div
-                            className="bg-purple-600 h-2 rounded-full"
+                          <div 
+                            className="bg-purple-600 h-2 rounded-full" 
                             style={{
                               width: `${discussions.length > 0 ? (discussions.filter(d => d.logicalStructure.hasReasoning || d.logicalStructure.hasCounterargument).length / discussions.length) * 100 : 0}%`
                             }}
@@ -1134,7 +1132,7 @@ export default function EduMindAI() {
 
                   {/* AI Insights */}
                   <div>
-                    <h5 className="text-sm font-medium mb-2 text-gray-900">AI Insights</h5>
+                    <h5 className="text-sm font-medium mb-2 text-indigo-700">AI Insights</h5>
                     <ScrollArea className="h-32">
                       <div className="space-y-2 pr-2">
                         {discussions.length === 0 ? (
@@ -1155,12 +1153,12 @@ export default function EduMindAI() {
                               const isUnbalanced = maxContributions - minContributions > 2;
 
                               return isUnbalanced ? (
-                                <div className="bg-gray-50 p-2 rounded border border-gray-200">
+                                <div className="bg-gradient-to-br from-slate-50 to-gray-100 p-2 rounded border border-slate-200">
                                   <div className="flex items-start gap-2">
-                                    <div className="text-gray-600 mt-0.5">⚖️</div>
+                                    <div className="text-slate-600 mt-0.5">⚖️</div>
                                     <div>
-                                      <p className="text-xs font-medium text-gray-900">Participation Balance</p>
-                                      <p className="text-xs text-gray-700">
+                                      <p className="text-xs font-medium text-slate-800">Participation Balance</p>
+                                      <p className="text-xs text-slate-700">
                                         Consider encouraging quieter members to share their perspectives.
                                       </p>
                                     </div>
@@ -1171,7 +1169,7 @@ export default function EduMindAI() {
 
                             {/* Evidence Quality Feedback */}
                             {(() => {
-                              const evidenceRate = discussions.length > 0 ?
+                              const evidenceRate = discussions.length > 0 ? 
                                 discussions.filter(d => d.logicalStructure.hasEvidence).length / discussions.length : 0;
 
                               return evidenceRate < 0.4 && discussions.length > 3 ? (
@@ -1191,11 +1189,11 @@ export default function EduMindAI() {
 
                             {/* Depth Analysis Feedback */}
                             {(() => {
-                              const avgQuality = discussions.length > 0 ?
+                              const avgQuality = discussions.length > 0 ? 
                                 discussions.reduce((sum, d) => sum + d.quality, 0) / discussions.length : 0;
 
                               return avgQuality < 3 && discussions.length > 2 ? (
-                                <div className="bg-rose-50 p-2 rounded border border-rose-200">
+                                <div className="bg-gradient-to-br from-rose-50 to-pink-100 p-2 rounded border border-rose-200">
                                   <div className="flex items-start gap-2">
                                     <div className="text-rose-600 mt-0.5">🔍</div>
                                     <div>
@@ -1254,7 +1252,7 @@ export default function EduMindAI() {
 
                   {/* Quick Action Suggestions */}
                   <div>
-                    <h5 className="text-sm font-medium mb-2 text-gray-900">Suggested Next Steps</h5>
+                    <h5 className="text-sm font-medium mb-2 text-indigo-700">Suggested Next Steps</h5>
                     <div className="space-y-1">
                       {discussions.length === 0 ? (
                         <div className="text-xs text-gray-500 bg-gray-50 p-2 rounded">
@@ -1263,22 +1261,22 @@ export default function EduMindAI() {
                       ) : (
                         <>
                           {discussionPhase === "opening" && (
-                            <div className="text-xs bg-blue-50 text-blue-700 p-2 rounded border border-blue-100">
+                            <div className="text-xs bg-gradient-to-r from-blue-50 to-indigo-50 text-blue-700 p-2 rounded border border-blue-100">
                               🎯 Focus on ranking your top 3 safety factors with initial reasoning
                             </div>
                           )}
                           {discussionPhase === "exploration" && (
-                            <div className="text-xs bg-green-50 text-emerald-700 p-2 rounded border border-green-100">
+                            <div className="text-xs bg-gradient-to-r from-emerald-50 to-teal-50 text-emerald-700 p-2 rounded border border-emerald-100">
                               📖 Connect arguments to specific evidence from readings
                             </div>
                           )}
                           {discussionPhase === "deepening" && (
-                            <div className="text-xs bg-rose-50 text-rose-700 p-2 rounded border border-rose-100">
+                            <div className="text-xs bg-gradient-to-r from-rose-50 to-pink-50 text-rose-700 p-2 rounded border border-rose-100">
                               🤔 Challenge each other's rankings with counterarguments
                             </div>
                           )}
                           {discussionPhase === "synthesis" && (
-                            <div className="text-xs bg-purple-50 text-purple-700 p-2 rounded border border-purple-100">
+                            <div className="text-xs bg-gradient-to-r from-purple-50 to-violet-50 text-purple-700 p-2 rounded border border-purple-100">
                               🔄 Work toward team consensus on final safety factor ranking
                             </div>
                           )}
@@ -1291,7 +1289,7 @@ export default function EduMindAI() {
             </Card>
 
             {/* Resources */}
-            <Card className="border-gray-200 shadow-sm">
+            <Card className="bg-gradient-to-br from-indigo-50 to-purple-50 border-indigo-200 shadow-sm">
               <CardHeader className="pb-3">
                 <CardTitle className="text-lg flex items-center gap-2">
                   <BookOpen className="w-5 h-5 text-indigo-600" />
@@ -1301,45 +1299,45 @@ export default function EduMindAI() {
               <CardContent>
                 <div className="space-y-4">
                   <div>
-                    <h5 className="text-sm font-medium mb-2 text-gray-900">Assigned Readings</h5>
+                    <h5 className="text-sm font-medium mb-2 text-indigo-700">Assigned Readings</h5>
                     <div className="space-y-2">
-                      <div className="bg-gray-50 rounded-lg shadow-sm border border-gray-200 p-2 rounded border border-indigo-100 text-xs shadow-sm">
+                      <div className="bg-white/10 backdrop-blur-md rounded-lg shadow-lg border border-white/20 p-2 rounded border border-indigo-100 text-xs shadow-sm">
                         <div className="flex items-center gap-2">
                           <div className="text-indigo-600">📚</div>
-                          <span className="text-gray-900">Chapter 12: Home Healthcare Quality Standards</span>
+                          <span className="text-indigo-800">Chapter 12: Home Healthcare Quality Standards</span>
                         </div>
                       </div>
-                      <div className="bg-gray-50 rounded-lg shadow-sm border border-gray-200 p-2 rounded border border-indigo-100 text-xs shadow-sm">
+                      <div className="bg-white/10 backdrop-blur-md rounded-lg shadow-lg border border-white/20 p-2 rounded border border-indigo-100 text-xs shadow-sm">
                         <div className="flex items-center gap-2">
                           <div className="text-indigo-600">📊</div>
-                          <span className="text-gray-900">Research Article: Patient Safety in Home Care Settings</span>
+                          <span className="text-indigo-800">Research Article: Patient Safety in Home Care Settings</span>
                         </div>
                       </div>
-                      <div className="bg-gray-50 rounded-lg shadow-sm border border-gray-200 p-2 rounded border border-indigo-100 text-xs shadow-sm">
+                      <div className="bg-white/10 backdrop-blur-md rounded-lg shadow-lg border border-white/20 p-2 rounded border border-indigo-100 text-xs shadow-sm">
                         <div className="flex items-center gap-2">
                           <div className="text-indigo-600">📖</div>
-                          <span className="text-gray-900">Case Study: Technology Integration in Home Healthcare</span>
+                          <span className="text-indigo-800">Case Study: Technology Integration in Home Healthcare</span>
                         </div>
                       </div>
                     </div>
                   </div>
 
                   <div>
-                    <h5 className="text-sm font-medium mb-2 text-gray-900">AI-Suggested Resources</h5>
+                    <h5 className="text-sm font-medium mb-2 text-indigo-700">AI-Suggested Resources</h5>
                     <ScrollArea className="h-24">
                       <div className="space-y-2 pr-2">
                         {knowledgeBase.concepts.length === 0 ? (
-                          <div className="text-xs text-gray-500 text-center py-2 bg-gray-50 rounded-lg shadow-sm border border-gray-200 rounded border border-indigo-100 shadow-sm">
+                          <div className="text-xs text-gray-500 text-center py-2 bg-white/10 backdrop-blur-md rounded-lg shadow-lg border border-white/20 rounded border border-indigo-100 shadow-sm">
                             Resources will appear during discussion
                           </div>
                         ) : (
                           knowledgeBase.concepts.slice(-5).map((concept, index) => (
-                            <div key={index} className="bg-gray-50 rounded-lg shadow-sm border border-gray-200 p-2 rounded border border-indigo-100 text-xs shadow-sm">
+                            <div key={index} className="bg-white/10 backdrop-blur-md rounded-lg shadow-lg border border-white/20 p-2 rounded border border-indigo-100 text-xs shadow-sm">
                               <div className="flex items-start gap-2">
                                 <div className="text-indigo-600 mt-0.5">🤖</div>
                                 <div>
-                                  <span className="font-medium text-gray-900">{concept.name}:</span>
-                                  <span className="text-gray-700"> {concept.definition.slice(0, 40)}...</span>
+                                  <span className="font-medium text-indigo-800">{concept.name}:</span>
+                                  <span className="text-indigo-700"> {concept.definition.slice(0, 40)}...</span>
                                 </div>
                               </div>
                             </div>
@@ -1355,7 +1353,7 @@ export default function EduMindAI() {
 
           {/* Center - AI Guidance & Resources */}
           <div className="col-span-6">
-            <Card className="h-full flex flex-col border-gray-200">
+            <Card className="h-full flex flex-col bg-gradient-to-br from-slate-50 to-blue-50 border-slate-200">
               <CardHeader className="pb-3 flex-shrink-0">
                 <Tabs defaultValue="guidance" className="w-full h-full flex flex-col">
                   <TabsList className="grid w-full grid-cols-3">
@@ -1365,7 +1363,7 @@ export default function EduMindAI() {
                   </TabsList>
 
                   <TabsContent value="guidance" className="mt-4 flex-1">
-                    <div className="h-[calc(100vh-250px)] bg-gray-50 rounded-lg border border-gray-200 p-4">
+                    <div className="h-[calc(100vh-250px)] bg-gradient-to-br from-slate-50 to-blue-50 rounded-lg border border-slate-200 p-4">
                       {/* AI Guidance Messages - No Input Box */}
                       <ScrollArea className="h-full">
                         <div className="space-y-4 pr-4">
@@ -1384,7 +1382,7 @@ export default function EduMindAI() {
                                     <span className="text-xs text-gray-500">Example</span>
                                     <Compass className="w-4 h-4 text-indigo-600" />
                                   </div>
-                                  <div className="bg-gray-50 rounded-lg p-3 border border-gray-200 shadow-sm">
+                                  <div className="bg-gradient-to-br from-slate-50 to-blue-50 rounded-lg p-3 border border-slate-200 shadow-sm">
                                     <div className="text-sm text-gray-800 leading-relaxed mb-3">
                                       🎯 <strong>Discussion Starter</strong>: Welcome to your tRAT discussion on home
                                       healthcare management! I'll help guide your conversation by asking probing
@@ -1395,12 +1393,12 @@ export default function EduMindAI() {
                                     <div className="space-y-2">
                                       <p className="text-xs font-medium text-gray-600">Suggested Resources:</p>
                                       <div className="flex flex-wrap gap-2">
-                                        <Button variant="outline" size="sm" className="text-xs h-8">
+                                        <Button variant="outline" size="sm" className="text-xs h-8 bg-transparent">
                                           <FileText className="w-4 h-4" />
                                           <span className="ml-1">Home Care Safety Guidelines</span>
                                           <ExternalLink className="w-3 h-3 ml-1" />
                                         </Button>
-                                        <Button variant="outline" size="sm" className="text-xs h-8">
+                                        <Button variant="outline" size="sm" className="text-xs h-8 bg-transparent">
                                           <BookOpen className="w-4 h-4" />
                                           <span className="ml-1">Patient Monitoring Technologies</span>
                                           <ExternalLink className="w-3 h-3 ml-1" />
@@ -1423,7 +1421,7 @@ export default function EduMindAI() {
                                     <span className="text-xs text-gray-500">Example</span>
                                     <HelpCircle className="w-4 h-4 text-blue-600" />
                                   </div>
-                                  <div className="bg-gray-50 rounded-lg p-3 border border-gray-200 shadow-sm">
+                                  <div className="bg-gradient-to-br from-slate-50 to-blue-50 rounded-lg p-3 border border-slate-200 shadow-sm">
                                     <div className="text-sm text-gray-800 leading-relaxed mb-3">
                                       🤔 <strong>Socratic Question</strong>: I notice you mentioned that "medication
                                       management is the top priority." Can you think of situations where this might not
@@ -1446,7 +1444,7 @@ export default function EduMindAI() {
                                     <span className="text-xs text-gray-500">Example</span>
                                     <Puzzle className="w-4 h-4 text-purple-600" />
                                   </div>
-                                  <div className="bg-gray-50 rounded-lg p-3 border border-gray-200 shadow-sm">
+                                  <div className="bg-gradient-to-br from-slate-50 to-blue-50 rounded-lg p-3 border border-slate-200 shadow-sm">
                                     <div className="text-sm text-gray-800 leading-relaxed mb-3">
                                       🔄 <strong>Knowledge Synthesis</strong>: Great discussion so far! I'm seeing
                                       connections between three key themes: medication safety, caregiver competency, and
@@ -1483,7 +1481,7 @@ export default function EduMindAI() {
                                     <span className="text-xs text-gray-500">Example</span>
                                     <BookOpen className="w-4 h-4 text-green-600" />
                                   </div>
-                                  <div className="bg-gray-50 rounded-lg p-3 border border-gray-200 shadow-sm">
+                                  <div className="bg-gradient-to-br from-slate-50 to-blue-50 rounded-lg p-3 border border-slate-200 shadow-sm">
                                     <div className="text-sm text-gray-800 leading-relaxed mb-3">
                                       📚 <strong>Resource Provision</strong>: Based on your discussion about infection
                                       control in home settings, I found some relevant research that might strengthen
@@ -1493,7 +1491,7 @@ export default function EduMindAI() {
                                     <div className="space-y-2">
                                       <p className="text-xs font-medium text-gray-600">Suggested Resources:</p>
                                       <div className="flex flex-wrap gap-2">
-                                        <Button variant="outline" size="sm" className="text-xs h-8">
+                                        <Button variant="outline" size="sm" className="text-xs h-8 bg-transparent">
                                           <Globe className="w-4 h-4" />
                                           <span className="ml-1">WHO Home Care Safety Standards</span>
                                           <ExternalLink className="w-3 h-3 ml-1" />
@@ -1528,7 +1526,7 @@ export default function EduMindAI() {
                                       </span>
                                       {getInterventionIcon(intervention.type)}
                                     </div>
-                                    <div className="bg-gray-50 rounded-lg p-3 border border-gray-200 shadow-sm">
+                                    <div className="bg-gradient-to-br from-slate-50 to-blue-50 rounded-lg p-3 border border-slate-200 shadow-sm">
                                       <div className="text-sm text-gray-800 leading-relaxed mb-3">
                                         {intervention.content.split("**").map((part, idx) =>
                                           idx % 2 === 1 ? (
@@ -1550,7 +1548,7 @@ export default function EduMindAI() {
                                                 key={resource.id}
                                                 variant="outline"
                                                 size="sm"
-                                                className="text-xs h-8"
+                                                className="text-xs h-8 bg-transparent"
                                                 onClick={() => handleResourceClick(resource)}
                                               >
                                                 {getResourceIcon(resource.type)}
@@ -1588,70 +1586,87 @@ export default function EduMindAI() {
                               ✕
                             </Button>
                           </div>
-                          <ScrollArea className="h-[calc(100%-80px)]">
-                            <div className="text-sm text-gray-700 leading-relaxed">
-                              {selectedResource.content || selectedResource.summary}
-                            </div>
-                          </ScrollArea>
+                          <div className="bg-white rounded border p-4 h-full overflow-auto">
+                            {selectedResource.url ? (
+                              <div className="space-y-3">
+                                <p className="text-sm text-gray-600">{selectedResource.summary}</p>
+                                <Button
+                                  variant="outline"
+                                  size="sm"
+                                  onClick={() => window.open(selectedResource.url, "_blank")}
+                                >
+                                  <ExternalLink className="w-4 h-4 mr-2" />
+                                  Open External Link
+                                </Button>
+                              </div>
+                            ) : (
+                              <div className="space-y-3">
+                                <p className="text-sm font-medium text-gray-800">{selectedResource.summary}</p>
+                                <div className="text-sm text-gray-700 leading-relaxed">{selectedResource.content}</div>
+                              </div>
+                            )}
+                          </div>
                         </div>
                       ) : (
-                        <div className="space-y-3">
-                          <div>
-                            <h5 className="text-sm font-medium mb-2 text-gray-900">Assigned Readings</h5>
-                            <div className="space-y-2">
-                              <div className="bg-gray-50 rounded-lg shadow-sm border border-gray-200 p-2 rounded border border-indigo-100 text-xs shadow-sm">
-                                <div className="flex items-center gap-2">
-                                  <div className="text-indigo-600">📚</div>
-                                  <span className="text-gray-900">Chapter 12: Home Healthcare Quality Standards</span>
-                                </div>
-                              </div>
-                              <div className="bg-gray-50 rounded-lg shadow-sm border border-gray-200 p-2 rounded border border-indigo-100 text-xs shadow-sm">
-                                <div className="flex items-center gap-2">
-                                  <div className="text-indigo-600">📊</div>
-                                  <span className="text-gray-900">Research Article: Patient Safety in Home Care Settings</span>
-                                </div>
-                              </div>
-                              <div className="bg-gray-50 rounded-lg shadow-sm border border-gray-200 p-2 rounded border border-indigo-100 text-xs shadow-sm">
-                                <div className="flex items-center gap-2">
-                                  <div className="text-indigo-600">📖</div>
-                                  <span className="text-gray-900">Case Study: Technology Integration in Home Healthcare</span>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-
-                          <div>
-                            <h5 className="text-sm font-medium mb-2 text-gray-900">AI-Suggested Resources</h5>
-                            <ScrollArea className="h-32">
-                              <div className="space-y-2 pr-2">
-                                {knowledgeBase.concepts.length === 0 ? (
-                                  <div className="text-xs text-gray-500 text-center py-2">
-                                    Resources will appear during discussion
-                                  </div>
-                                ) : (
-                                  knowledgeBase.concepts.slice(-5).map((concept, index) => (
-                                    <div key={index} className="bg-gray-50 rounded-lg shadow-sm border border-gray-200 p-2">
-                                      <div className="flex items-start gap-2">
-                                        <div className="text-indigo-600 mt-0.5">🤖</div>
-                                        <div>
-                                          <span className="font-medium text-gray-900">{concept.name}:</span>
-                                          <span className="text-gray-700"> {concept.definition.slice(0, 40)}...</span>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  ))
-                                )}
-                              </div>
-                            </ScrollArea>
-                          </div>
+                        <div className="text-center py-8">
+                          <BookOpen className="w-12 h-12 text-gray-400 mx-auto mb-4" />
+                          <p className="text-gray-600">Click on a resource from AI guidance to view it here</p>
                         </div>
                       )}
                     </div>
                   </TabsContent>
 
                   <TabsContent value="mindmap" className="mt-4 flex-1">
-                    <div className="h-[calc(100vh-250px)] bg-gray-50 rounded-lg p-4 flex items-center justify-center">
-                      <p className="text-gray-500">Mindmap feature coming soon!</p>
+                    <div className="h-[calc(100vh-250px)] bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg border relative overflow-hidden">
+                      {thinkingNetwork.length === 0 ? (
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <div className="text-center">
+                            <Network className="w-12 h-12 text-gray-400 mx-auto mb-4" />
+                            <p className="text-gray-600 mb-2">
+                              Argument network will be built as the discussion progresses
+                            </p>
+                          </div>
+                        </div>
+                      ) : (
+                        <div className="relative w-full h-full p-4">
+                          {thinkingNetwork.map((node) => (
+                            <div key={node.id} className="absolute">
+                              <div
+                                className={`rounded-lg shadow-md p-3 border-2 transform -translate-x-1/2 -translate-y-1/2 max-w-32 ${
+                                  node.type === "question"
+                                    ? "bg-blue-100 border-blue-300"
+                                    : node.type === "concept"
+                                      ? "bg-green-100 border-green-300"
+                                      : node.type === "insight"
+                                        ? "bg-slate-100 border-slate-300"
+                                        : node.type === "connection"
+                                          ? "bg-purple-100 border-purple-300"
+                                          : "bg-gray-100 border-gray-300"
+                                }`}
+                                style={{
+                                  left: node.position.x,
+                                  top: node.position.y,
+                                  opacity: 0.7 + node.importance * 0.3,
+                                }}
+                              >
+                                <div className="text-xs font-medium mb-1">
+                                  {node.type === "question"
+                                    ? "❓"
+                                    : node.type === "concept"
+                                      ? "💡"
+                                      : node.type === "insight"
+                                        ? "💎"
+                                        : node.type === "connection"
+                                          ? "🔗"
+                                          : "📝"}
+                                  {node.type}
+                                </div>
+                                <div className="text-xs text-gray-700">{node.content}</div>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      )}
                     </div>
                   </TabsContent>
                 </Tabs>
@@ -1659,81 +1674,209 @@ export default function EduMindAI() {
             </Card>
           </div>
 
-          {/* Right Sidebar - Team Members & Participation */}
+          {/* Right Sidebar - Dashboard */}
           <div className="col-span-3 space-y-6">
-            <Card className="border-gray-200 shadow-sm">
+            {/* Dashboard */}
+            <Card className="bg-gradient-to-br from-indigo-50 to-purple-50 border-indigo-200 shadow-sm">
               <CardHeader className="pb-3">
                 <CardTitle className="text-lg flex items-center gap-2">
-                  <Users className="w-5 h-5 text-green-600" />
-                  Team Members
+                  <Users className="w-5 h-5 text-indigo-600" />
+                  Team Dashboard
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="space-y-3">
-                  {teamMembers.map((member) => (
-                    <div key={member.id} className="flex items-center gap-3">
-                      <Avatar className="w-8 h-8">
-                        <AvatarFallback className="text-xs bg-gray-100">
-                          {member.name[0]}
-                        </AvatarFallback>
-                      </Avatar>
-                      <span className="text-sm text-gray-700">{member.name}</span>
+                <div className="space-y-4">
+                  {/* Member Participation Metrics */}
+                  <div>
+                    <h5 className="text-sm font-medium mb-3 text-indigo-700">Member Participation</h5>
+                    <div className="space-y-3">
+                      {teamMembers.map((member) => {
+                        const memberDiscussions = discussions.filter((d) => d.speaker === member.name)
+                        const speakingTime = memberSpeakingTimes[member.name] || 0
+
+                        return (
+                          <div key={member.id} className="bg-white/10 backdrop-blur-md rounded-lg shadow-lg border border-white/20 p-3 rounded border border-indigo-100 shadow-sm">
+                            <div className="flex items-center gap-2 mb-2">
+                              <Avatar className="w-6 h-6">
+                                <AvatarFallback className="text-xs bg-indigo-100 text-indigo-600">{member.name[0]}</AvatarFallback>
+                              </Avatar>
+                              <span className="font-medium text-sm flex-1 text-indigo-800">{member.name}</span>
+                              <div
+                                className={`w-2 h-2 rounded-full ${
+                                  memberDiscussions.length > 0 &&
+                                  Date.now() - memberDiscussions[memberDiscussions.length - 1]?.timestamp.getTime() <
+                                    60000
+                                    ? "bg-green-500 animate-pulse"
+                                    : "bg-gray-300"
+                                }`}
+                              ></div>
+                            </div>
+
+                            <div className="grid grid-cols-2 gap-2 text-xs">
+                              <div className="text-center p-2 bg-blue-50 rounded border border-blue-100">
+                                <div className="font-medium text-blue-600">{memberDiscussions.length}</div>
+                                <div className="text-blue-700">Speeches</div>
+                              </div>
+                              <div className="text-center p-2 bg-green-50 rounded border border-green-100">
+                                <div className="font-medium text-green-600">
+                                  {Math.floor(speakingTime / 60)}:{(speakingTime % 60).toString().padStart(2, "0")}
+                                </div>
+                                <div className="text-green-700">Speaking Time</div>
+                              </div>
+                            </div>
+                          </div>
+                        )
+                      })}
                     </div>
-                  ))}
+                  </div>
                 </div>
               </CardContent>
             </Card>
 
-            {/* Team Participation Metrics */}
-            <Card className="border-gray-200 shadow-sm">
+            {/* Add Questions Section */}
+            <Card className="bg-gradient-to-br from-indigo-50 to-purple-50 border-indigo-200 shadow-sm">
               <CardHeader className="pb-3">
                 <CardTitle className="text-lg flex items-center gap-2">
-                  <Network className="w-5 h-5 text-orange-600" />
-                  Participation Metrics
+                  <HelpCircle className="w-5 h-5 text-indigo-600" />
+                  Quick Questions
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="space-y-3">
-                  {teamMembers.map((member) => (
-                    <div key={member.id} className="space-y-1">
-                      <div className="flex items-center justify-between">
-                        <span className="text-sm font-medium text-gray-900">{member.name}</span>
-                        <span className="text-xs text-gray-500">{memberSpeakingTimes[member.name] || 0} seconds</span>
-                      </div>
-                      <div className="w-full bg-gray-200 rounded-full h-2">
-                        <div
-                          className="bg-orange-600 h-2 rounded-full"
-                          style={{ width: `${(memberSpeakingTimes[member.name] / Math.max(...Object.values(memberSpeakingTimes))) * 100 || 0}%` }}
-                        ></div>
-                      </div>
+                <div className="space-y-4">
+                  {/* Display Added Questions */}
+                  <div>
+                    <h5 className="text-sm font-medium mb-2 text-indigo-700">Your Questions</h5>
+                    <div className="space-y-2 max-h-32 overflow-y-auto">
+                      {userQuestions.length === 0 ? (
+                        <div className="text-xs text-gray-500 text-center py-2 bg-white/10 backdrop-blur-md rounded-lg shadow-lg border border-white/20 rounded border border-indigo-100 shadow-sm">
+                          No questions added yet
+                        </div>
+                      ) : (
+                        userQuestions.map((question) => (
+                          <div key={question.id} className="bg-white/10 backdrop-blur-md rounded-lg shadow-lg border border-white/20 p-2 rounded border border-indigo-100 text-xs shadow-sm">
+                            <div className="text-indigo-800">{question.content}</div>
+                            <div className="text-indigo-600 text-xs mt-1">{question.timestamp.toLocaleTimeString()}</div>
+                          </div>
+                        ))
+                      )}
                     </div>
-                  ))}
+                  </div>
+
+                  {/* Add Question Input */}
+                  <div className="space-y-2">
+                    <h5 className="text-sm font-medium text-indigo-700">Add a Question</h5>
+                    <div className="space-y-2">
+                      <Input
+                        placeholder="Type your question or thought here..."
+                        value={currentQuestionInput}
+                        onChange={(e) => setCurrentQuestionInput(e.target.value)}
+                        onKeyPress={(e) => {
+                          if (e.key === "Enter" && currentQuestionInput.trim()) {
+                            const newQuestion = {
+                              id: Date.now().toString(),
+                              content: currentQuestionInput,
+                              timestamp: new Date(),
+                              author: "You",
+                            }
+                            setUserQuestions((prev) => [...prev, newQuestion])
+                            setCurrentQuestionInput("")
+                          }
+                        }}
+                        className="text-sm border-indigo-200 focus:border-indigo-300"
+                      />
+                      <Button
+                        size="sm"
+                        className="w-full bg-indigo-600 hover:bg-indigo-700"
+                        onClick={() => {
+                          if (currentQuestionInput.trim()) {
+                            const newQuestion = {
+                              id: Date.now().toString(),
+                              content: currentQuestionInput,
+                              timestamp: new Date(),
+                              author: "You",
+                            }
+                            setUserQuestions((prev) => [...prev, newQuestion])
+                            setCurrentQuestionInput("")
+                          }
+                        }}
+                      >
+                        <Plus className="w-4 h-4 mr-2" />
+                        Add Question
+                      </Button>
+                      <p className="text-xs text-indigo-600">
+                        Add questions or thoughts without interrupting the discussion
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </CardContent>
             </Card>
           </div>
         </div>
-      </div>
 
-      {/* Voice Calibration Dialog */}
-      <Dialog open={showVoiceCalibrationDialog} onOpenChange={setShowVoiceCalibrationDialog}>
-        <DialogContent className="sm:max-w-[425px]">
-          <DialogHeader>
-            <DialogTitle>Voice Calibration</DialogTitle>
-            <DialogDescription>
-              Calibrate your microphone for optimal speaker recognition.
-            </DialogDescription>
-          </DialogHeader>
-          <div className="grid gap-4 py-4">
-            <p>
-              The AI will analyze your voice for 10 seconds to distinguish you from other team members.
-            </p>
-          </div>
-          <Button onClick={beginVoiceRecording} disabled={isVoiceCalibrating}>
-            {isVoiceCalibrating ? "Calibrating..." : "Begin Calibration"}
-          </Button>
-        </DialogContent>
-      </Dialog>
+        {/* Voice Calibration Dialog */}
+        <Dialog open={showVoiceCalibrationDialog} onOpenChange={setShowVoiceCalibrationDialog}>
+          <DialogContent className="max-w-md">
+            <DialogHeader>
+              <DialogTitle className="flex items-center gap-2">
+                <Mic className="w-5 h-5 text-blue-600" />
+                Voice Calibration Setup
+              </DialogTitle>
+              <DialogDescription className="text-left">
+                To help AI identify different team members during discussion, please record the following sentence clearly:
+              </DialogDescription>
+            </DialogHeader>
+
+            <div className="space-y-6">
+              {/* Sentence to record */}
+              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                <p className="text-lg font-medium text-blue-900 text-center leading-relaxed">
+                  "Hello, this is my voice for the team-based learning discussion on home healthcare safety."
+                </p>
+              </div>
+
+              {/* Instructions */}
+              <div className="space-y-2">
+                <h4 className="font-medium text-gray-900">Instructions:</h4>
+                <ul className="text-sm text-gray-600 space-y-1">
+                  <li>• Speak clearly and at normal volume</li>
+                  <li>• Recording will last for 10 seconds</li>
+                  <li>• Repeat the sentence 1-2 times during recording</li>
+                  <li>• Ensure you're in a quiet environment</li>
+                </ul>
+              </div>
+
+              {/* Action buttons */}
+              <div className="flex gap-3 justify-end">
+                <Button 
+                  variant="outline" 
+                  onClick={() => setShowVoiceCalibrationDialog(false)}
+                  disabled={isVoiceCalibrating}
+                >
+                  Cancel
+                </Button>
+                <Button 
+                  onClick={beginVoiceRecording}
+                  disabled={isVoiceCalibrating}
+                  className="bg-blue-600 hover:bg-blue-700"
+                >
+                  {isVoiceCalibrating ? (
+                    <>
+                      <div className="w-4 h-4 mr-2 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                      Recording... ({Math.max(0, 10 - Math.floor((Date.now() % 10000) / 1000))}s)
+                    </>
+                  ) : (
+                    <>
+                      <Mic className="w-4 h-4 mr-2" />
+                      Start Recording
+                    </>
+                  )}
+                </Button>
+              </div>
+            </div>
+          </DialogContent>
+        </Dialog>
+      </div>
     </div>
   )
 }
