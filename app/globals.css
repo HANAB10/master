@@ -5,24 +5,24 @@
 
 :root {
   --background: 0 0% 100%;
-  --foreground: 0 0% 11%;
+  --foreground: 0 0% 0%;
   --card: 0 0% 100%;
-  --card-foreground: 0 0% 11%;
+  --card-foreground: 0 0% 0%;
   --popover: 0 0% 100%;
-  --popover-foreground: 0 0% 11%;
-  --primary: 0 0% 11%;
-  --primary-foreground: 0 0% 98%;
-  --secondary: 0 0% 96%;
-  --secondary-foreground: 0 0% 11%;
-  --muted: 0 0% 96%;
-  --muted-foreground: 0 0% 45%;
-  --accent: 0 0% 96%;
-  --accent-foreground: 0 0% 11%;
+  --popover-foreground: 0 0% 0%;
+  --primary: 0 0% 0%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 0 0% 95%;
+  --secondary-foreground: 0 0% 0%;
+  --muted: 0 0% 95%;
+  --muted-foreground: 0 0% 40%;
+  --accent: 0 0% 95%;
+  --accent-foreground: 0 0% 0%;
   --destructive: 0 84% 60%;
-  --destructive-foreground: 0 0% 98%;
-  --border: 0 0% 88%;
-  --input: 0 0% 88%;
-  --ring: 0 0% 11%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 0 0% 85%;
+  --input: 0 0% 85%;
+  --ring: 0 0% 0%;
   --radius: 0.5rem;
   --chart-1: 0 0% 20%;
   --chart-2: 0 0% 30%;
@@ -33,30 +33,30 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: 0 0% 11%;
-    --foreground: 0 0% 98%;
-    --card: 0 0% 16%;
-    --card-foreground: 0 0% 98%;
-    --popover: 0 0% 16%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 0 0% 11%;
-    --secondary: 0 0% 20%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 20%;
-    --muted-foreground: 0 0% 65%;
-    --accent: 0 0% 20%;
-    --accent-foreground: 0 0% 98%;
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 0%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 0%;
+    --primary: 0 0% 0%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 95%;
+    --secondary-foreground: 0 0% 0%;
+    --muted: 0 0% 95%;
+    --muted-foreground: 0 0% 40%;
+    --accent: 0 0% 95%;
+    --accent-foreground: 0 0% 0%;
     --destructive: 0 62% 30%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 20%;
-    --input: 0 0% 20%;
-    --ring: 0 0% 83%;
-    --chart-1: 0 0% 80%;
-    --chart-2: 0 0% 70%;
-    --chart-3: 0 0% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 85%;
+    --input: 0 0% 85%;
+    --ring: 0 0% 0%;
+    --chart-1: 0 0% 20%;
+    --chart-2: 0 0% 30%;
+    --chart-3: 0 0% 40%;
     --chart-4: 0 0% 50%;
-    --chart-5: 0 0% 40%;
+    --chart-5: 0 0% 60%;
   }
 }
 
@@ -80,19 +80,19 @@ body {
 }
 
 .chat-message.user {
-  @apply bg-gray-100 dark:bg-gray-800 ml-auto;
+  @apply bg-gray-100 ml-auto;
 }
 
 .chat-message.assistant {
-  @apply bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700;
+  @apply bg-white border border-gray-200;
 }
 
 /* 简洁的按钮样式 */
 .btn-clean {
-  @apply bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg px-3 py-2 text-sm font-medium transition-colors;
+  @apply bg-white border border-gray-200 hover:bg-gray-50 rounded-lg px-3 py-2 text-sm font-medium transition-colors;
 }
 
 /* 简洁的输入框样式 */
 .input-clean {
-  @apply bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gray-500 dark:focus:ring-gray-400;
+  @apply bg-white border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gray-500;
 }
