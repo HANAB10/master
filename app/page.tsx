@@ -911,7 +911,7 @@ export default function EduMindAI() {
       document: <FileText className="w-4 h-4" />,
       webpage: <Globe className="w-4 h-4" />,
       research: <BookOpen className="w-4 h-4" />,
-      video: <Play className="w-4 h-4" />,
+      video: <Play className="wode> h-4" />,
     }
     return icons[type as keyof typeof icons] || <FileText className="w-4 h-4" />
   }
@@ -1287,7 +1287,7 @@ export default function EduMindAI() {
                     <ScrollArea className="h-24">
                       <div className="space-y-2 pr-2">
                         {knowledgeBase.concepts.length === 0 ? (
-                          <div className="text-xs text-gray-500 text-center py-2 bg-white rounded border border-indigo-100 shadow-sm">
+                          <div className="text-sm text-gray-500 bg-white border border-gray-200 p-4 rounded-lg text-center">
                             Resources will appear during discussion
                           </div>
                         ) : (
@@ -1579,8 +1579,7 @@ export default function EduMindAI() {
                   <TabsContent value="mindmap" className="mt-4 flex-1">
                     <div className="h-[calc(100vh-250px)] bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg border relative overflow-hidden">
                       {thinkingNetwork.length === 0 ? (
-                        <div className="absolute inset-0 flex items-center justify-center">
-                          <div className="text-center">
+                        <div className="absolute inset-0 flex items-center justify-center"><div className="text-center">
                             <Network className="w-12 h-12 text-gray-400 mx-auto mb-4" />
                             <p className="text-gray-600 mb-2">
                               Argument network will be built as the discussion progresses
