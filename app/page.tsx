@@ -910,7 +910,7 @@ export default function EduMindAI() {
     const icons = {
       document: <FileText className="w-4 h-4" />,
       webpage: <Globe className="w-4 h-4" />,
-      research: <BookOpen className="w-4 h-4" />,
+      research: <BookOpen classNameName="w-4 h-4" />,
       video: <Play className="w-4 h-4" />,
     }
     return icons[type as keyof typeof icons] || <FileText className="w-4 h-4" />
@@ -1323,7 +1323,7 @@ export default function EduMindAI() {
                   </TabsList>
 
                   <TabsContent value="guidance" className="mt-4 flex-1">
-                    <div className="h-[calc(100vh-200px)] bg-gradient-to-br from-slate-50 to-blue-50 rounded-lg border border-slate-200 p-4"></div>
+                    <div className="h-[calc(100vh-200px)] bg-gradient-to-br from-slate-50 to-blue-50 rounded-lg border border-slate-200 p-4">
                       {/* AI Guidance Messages - No Input Box */}
                       <ScrollArea className="h-full">
                         <div className="space-y-4 pr-4">
@@ -1531,7 +1531,7 @@ export default function EduMindAI() {
                   </TabsContent>
 
                   <TabsContent value="resources" className="mt-4 flex-1">
-                    <div className="h-[calc(100vh-200px)] bg-gray-50 rounded-lg p-4"></div>
+                    <div className="h-[calc(100vh-200px)] bg-gray-50 rounded-lg p-4">
                       {selectedResource ? (
                         <div className="h-full">
                           <div className="flex items-center gap-2 mb-4">
@@ -1577,7 +1577,7 @@ export default function EduMindAI() {
                   </TabsContent>
 
                   <TabsContent value="mindmap" className="mt-4 flex-1">
-                    <div className="h-[calc(100vh-200px)] bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg border relative overflow-hidden"></div>
+                    <div className="h-[calc(100vh-200px)] bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg border relative overflow-hidden">
                       {thinkingNetwork.length === 0 ? (
                         <div className="absolute inset-0 flex items-center justify-center"><div className="text-center">
                             ```
