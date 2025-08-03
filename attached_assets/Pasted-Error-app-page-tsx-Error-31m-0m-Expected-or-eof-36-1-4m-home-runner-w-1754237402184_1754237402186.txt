@@ -1,0 +1,478 @@
+Error: ./app/page.tsx
+Error:   [31m×[0m Expected ';', '}' or <eof>
+     ╭─[[36;1;4m/home/runner/workspace/app/page.tsx[0m:1:1]
+ [2m  1[0m │ [35;1m╭[0m[35;1m─[0m[35;1m▶[0m ` tag that was causing a syntax error.
+ [2m  2[0m │ [35;1m│[0m   
+ [2m  3[0m │ [35;1m│[0m   <replit_final_file>
+ [2m  4[0m │ [35;1m│[0m   "use client"
+ [2m  5[0m │ [35;1m│[0m   
+ [2m  6[0m │ [35;1m│[0m   import { useState, useEffect, useRef } from "react"
+ [2m  7[0m │ [35;1m│[0m   import { Button } from "@/components/ui/button"
+ [2m  8[0m │ [35;1m│[0m   import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+ [2m  9[0m │ [35;1m│[0m   import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+ [2m 10[0m │ [35;1m│[0m   import { Avatar, AvatarFallback } from "@/components/ui/avatar"
+ [2m 11[0m │ [35;1m│[0m   import { ScrollArea } from "@/components/ui/scroll-area"
+ [2m 12[0m │ [35;1m│[0m   import { Input } from "@/components/ui/input"
+ [2m 13[0m │ [35;1m│[0m   import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog"
+ [2m 14[0m │ [35;1m│[0m   import {
+ [2m 15[0m │ [35;1m│[0m     Users,
+ [2m 16[0m │ [35;1m│[0m     Lightbulb,
+ [2m 17[0m │ [35;1m│[0m     BookOpen,
+ [2m 18[0m │ [35;1m│[0m     Mic,
+ [2m 19[0m │ [35;1m│[0m     Play,
+ [2m 20[0m │ [35;1m│[0m     Pause,
+ [2m 21[0m │ [35;1m│[0m     Brain,
+ [2m 22[0m │ [35;1m│[0m     Network,
+ [2m 23[0m │ [35;1m│[0m     HelpCircle,
+ [2m 24[0m │ [35;1m│[0m     GitBranch,
+ [2m 25[0m │ [35;1m│[0m     Compass,
+ [2m 26[0m │ [35;1m│[0m     Archive,
+ [2m 27[0m │ [35;1m│[0m     Puzzle,
+ [2m 28[0m │ [35;1m│[0m     ExternalLink,
+ [2m 29[0m │ [35;1m│[0m     FileText,
+ [2m 30[0m │ [35;1m│[0m     Globe,
+ [2m 31[0m │ [35;1m│[0m     Plus,
+ [2m 32[0m │ [35;1m│[0m   } from "lucide-react"
+ [2m 33[0m │ [35;1m│[0m   
+ [2m 34[0m │ [35;1m│[0m   interface Discussion {
+ [2m 35[0m │ [35;1m│[0m     id: string
+ [2m 36[0m │ [35;1m│[0m     speaker: string
+ [2m 37[0m │ [35;1m│[0m     content: string
+ [2m 38[0m │ [35;1m│[0m     timestamp: Date
+ [2m 39[0m │ [35;1m│[0m     quality: number
+ [2m 40[0m │ [35;1m│[0m     keywords: string[]
+ [2m 41[0m │ [35;1m│[0m     concepts: string[]
+ [2m 42[0m │ [35;1m│[0m     logicalStructure: {
+ [2m 43[0m │ [35;1m│[0m       hasEvidence: boolean
+ [2m 44[0m │ [35;1m│[0m       hasClaim: boolean
+ [2m 45[0m │ [35;1m│[0m       hasReasoning: boolean
+ [2m 46[0m │ [35;1m│[0m       hasCounterargument: boolean
+ [2m 47[0m │ [35;1m│[0m     }
+ [2m 48[0m │ [35;1m│[0m     thoughtType: "question" | "answer" | "example" | "theory" | "challenge" | "synthesis"
+ [2m 49[0m │ [35;1m│[0m     connectsTo: string[]
+ [2m 50[0m │ [35;1m│[0m   }
+ [2m 51[0m │ [35;1m│[0m   
+ [2m 52[0m │ [35;1m│[0m   interface ThinkingNode {
+ [2m 53[0m │ [35;1m│[0m     id: string
+ [2m 54[0m │ [35;1m│[0m     type: "concept" | "question" | "insight" | "connection" | "conclusion"
+ [2m 55[0m │ [35;1m│[0m     content: string
+ [2m 56[0m │ [35;1m│[0m     position: { x: number; y: number }
+ [2m 57[0m │ [35;1m│[0m     connections: Array<{
+ [2m 58[0m │ [35;1m│[0m       to: string
+ [2m 59[0m │ [35;1m│[0m       type: "leads_to" | "supports" | "contradicts" | "explains" | "examples"
+ [2m 60[0m │ [35;1m│[0m       strength: number
+ [2m 61[0m │ [35;1m│[0m     }>
+ [2m 62[0m │ [35;1m│[0m     discussionIds: string[]
+ [2m 63[0m │ [35;1m│[0m     timestamp: Date
+ [2m 64[0m │ [35;1m│[0m     importance: number
+ [2m 65[0m │ [35;1m│[0m   }
+ [2m 66[0m │ [35;1m│[0m   
+ [2m 67[0m │ [35;1m│[0m   interface KnowledgeBase {
+ [2m 68[0m │ [35;1m│[0m     concepts: Array<{
+ [2m 69[0m │ [35;1m│[0m       id: string
+ [2m 70[0m │ [35;1m│[0m       name: string
+ [2m 71[0m │ [35;1m│[0m       definition: string
+ [2m 72[0m │ [35;1m│[0m       examples: string[]
+ [2m 73[0m │ [35;1m│[0m       relatedConcepts: string[]
+ [2m 74[0m │ [35;1m│[0m       sourceDiscussions: string[]
+ [2m 75[0m │ [35;1m│[0m       confidence: number
+ [2m 76[0m │ [35;1m│[0m     }>
+ [2m 77[0m │ [35;1m│[0m     relationships: Array<{
+ [2m 78[0m │ [35;1m│[0m       from: string
+ [2m 79[0m │ [35;1m│[0m       to: string
+ [2m 80[0m │ [35;1m│[0m       type: "is_a" | "part_of" | "causes" | "enables" | "conflicts_with"
+ [2m 81[0m │ [35;1m│[0m       evidence: string[]
+ [2m 82[0m │ [35;1m│[0m       strength: number
+ [2m 83[0m │ [35;1m│[0m     }>
+ [2m 84[0m │ [35;1m│[0m     insights: Array<{
+ [2m 85[0m │ [35;1m│[0m       id: string
+ [2m 86[0m │ [35;1m│[0m       content: string
+ [2m 87[0m │ [35;1m│[0m       supportingEvidence: string[]
+ [2m 88[0m │ [35;1m│[0m       confidence: number
+ [2m 89[0m │ [35;1m│[0m       timestamp: Date
+ [2m 90[0m │ [35;1m│[0m     }>
+ [2m 91[0m │ [35;1m│[0m   }
+ [2m 92[0m │ [35;1m│[0m   
+ [2m 93[0m │ [35;1m│[0m   interface AIIntervention {
+ [2m 94[0m │ [35;1m│[0m     id: string
+ [2m 95[0m │ [35;1m│[0m     type:
+ [2m 96[0m │ [35;1m│[0m       | "socratic_question"
+ [2m 97[0m │ [35;1m│[0m       | "knowledge_synthesis"
+ [2m 98[0m │ [35;1m│[0m       | "logic_clarification"
+ [2m 99[0m │ [35;1m│[0m       | "resource_provision"
+ [2m100[0m │ [35;1m│[0m       | "process_guidance"
+ [2m101[0m │ [35;1m│[0m       | "summary_generation"
+ [2m102[0m │ [35;1m│[0m     content: string
+ [2m103[0m │ [35;1m│[0m     timestamp: Date
+ [2m104[0m │ [35;1m│[0m     priority: "low" | "medium" | "high"
+ [2m105[0m │ [35;1m│[0m     relatedKeywords: string[]
+ [2m106[0m │ [35;1m│[0m     targetSpeaker?: string
+ [2m107[0m │ [35;1m│[0m     followUpQuestions?: string[]
+ [2m108[0m │ [35;1m│[0m     resources?: Array<{
+ [2m109[0m │ [35;1m│[0m       id: string
+ [2m110[0m │ [35;1m│[0m       title: string
+ [2m111[0m │ [35;1m│[0m       type: "document" | "webpage" | "research" | "video"
+ [2m112[0m │ [35;1m│[0m       url?: string
+ [2m113[0m │ [35;1m│[0m       content?: string
+ [2m114[0m │ [35;1m│[0m       summary: string
+ [2m115[0m │ [35;1m│[0m     }>
+ [2m116[0m │ [35;1m│[0m     context: {
+ [2m117[0m │ [35;1m│[0m       triggerType: "silence" | "confusion" | "depth_needed" | "synthesis_time" | "knowledge_gap" | "user_message"
+ [2m118[0m │ [35;1m│[0m       relatedNodes: string[]
+ [2m119[0m │ [35;1m│[0m     }
+ [2m120[0m │ [35;1m│[0m   }
+ [2m121[0m │ [35;1m│[0m   
+ [2m122[0m │ [35;1m│[0m   interface DiscussionSummary {
+ [2m123[0m │ [35;1m│[0m     phase: string
+ [2m124[0m │ [35;1m│[0m     keyPoints: string[]
+ [2m125[0m │ [35;1m│[0m     unresolved: string[]
+ [2m126[0m │ [35;1m│[0m     insights: string[]
+ [2m127[0m │ [35;1m│[0m     nextSteps: string[]
+ [2m128[0m │ [35;1m│[0m     knowledgeGaps: string[]
+ [2m129[0m │ [35;1m│[0m   }
+ [2m130[0m │ [35;1m│[0m   
+ [2m131[0m │ [35;1m│[0m   interface TeamMember {
+ [2m132[0m │ [35;1m│[0m     id: string
+ [2m133[0m │ [35;1m│[0m     name: string
+ [2m134[0m │ [35;1m│[0m     avatar: string
+ [2m135[0m │ [35;1m│[0m     participationLevel: number
+ [2m136[0m │ [35;1m│[0m     lastSpoke: Date | null
+ [2m137[0m │ [35;1m│[0m     speakingTime: number
+ [2m138[0m │ [35;1m│[0m     thinkingPatterns: {
+ [2m139[0m │ [35;1m│[0m       analytical: number
+ [2m140[0m │ [35;1m│[0m       creative: number
+ [2m141[0m │ [35;1m│[0m       critical: number
+ [2m142[0m │ [35;1m│[0m       practical: number
+ [2m143[0m │ [35;1m│[0m     }
+ [2m144[0m │ [35;1m│[0m     contributionTypes: {
+ [2m145[0m │ [35;1m│[0m       questions: number
+ [2m146[0m │ [35;1m│[0m       examples: number
+ [2m147[0m │ [35;1m│[0m       theories: number
+ [2m148[0m │ [35;1m│[0m       challenges: number
+ [2m149[0m │ [35;1m│[0m     }
+ [2m150[0m │ [35;1m│[0m   }
+ [2m151[0m │ [35;1m│[0m   
+ [2m152[0m │ [35;1m│[0m   interface Resource {
+ [2m153[0m │ [35;1m│[0m     id: string
+ [2m154[0m │ [35;1m│[0m     title: string
+ [2m155[0m │ [35;1m│[0m     type: "document" | "webpage" | "research" | "video"
+ [2m156[0m │ [35;1m│[0m     url?: string
+ [2m157[0m │ [35;1m│[0m     content?: string
+ [2m158[0m │ [35;1m│[0m     summary: string
+ [2m159[0m │ [35;1m│[0m   }
+ [2m160[0m │ [35;1m│[0m   
+ [2m161[0m │ [35;1m│[0m   declare global {
+ [2m162[0m │ [35;1m│[0m     interface Window {
+ [2m163[0m │ [35;1m│[0m       webkitSpeechRecognition: any
+ [2m164[0m │ [35;1m│[0m       SpeechRecognition: any
+ [2m165[0m │ [35;1m│[0m     }
+ [2m166[0m │ [35;1m│[0m   }
+ [2m167[0m │ [35;1m│[0m   
+ [2m168[0m │ [35;1m│[0m   export default function EduMindAI() {
+ [2m169[0m │ [35;1m│[0m     const [isDiscussionActive, setIsDiscussionActive] = useState(false)
+ [2m170[0m │ [35;1m│[0m     const [discussionTime, setDiscussionTime] = useState(0)
+ [2m171[0m │ [35;1m│[0m     const [currentTopic, setCurrentTopic] = useState("Home Healthcare Management: Quality and Safety")
+ [2m172[0m │ [35;1m│[0m     const [tRATQuestion, setTRATQuestion] = useState(
+ [2m173[0m │ [35;1m│[0m       "Based on the assigned readings and case studies, what are the three most critical factors for ensuring patient safety in home healthcare settings? Rank them in order of importance and justify your ranking with evidence from the literature and real-world examples.",
+ [2m174[0m │ [35;1m│[0m     )
+ [2m175[0m │ [35;1m│[0m     const [isListening, setIsListening] = useState(false)
+ [2m176[0m │ [35;1m│[0m     const [silenceTime, setSilenceTime] = useState(0)
+ [2m177[0m │ [35;1m│[0m     const [discussions, setDiscussions] = useState<Discussion[]>([])
+ [2m178[0m │ [35;1m│[0m     const [thinkingNetwork, setThinkingNetwork] = useState<ThinkingNode[]>([])
+ [2m179[0m │ [35;1m│[0m     const [knowledgeBase, setKnowledgeBase] = useState<KnowledgeBase>({
+ [2m180[0m │ [35;1m│[0m       concepts: [],
+ [2m181[0m │ [35;1m│[0m       relationships: [],
+ [2m182[0m │ [35;1m│[0m       insights: [],
+ [2m183[0m │ [35;1m│[0m     })
+ [2m184[0m │ [35;1m│[0m     const [aiInterventions, setAiInterventions] = useState<AIIntervention[]>([])
+ [2m185[0m │ [35;1m│[0m     const [discussionSummary, setDiscussionSummary] = useState<DiscussionSummary>({
+ [2m186[0m │ [35;1m│[0m       phase: "opening",
+ [2m187[0m │ [35;1m│[0m       keyPoints: [],
+ [2m188[0m │ [35;1m│[0m       unresolved: [],
+ [2m189[0m │ [35;1m│[0m       insights: [],
+ [2m190[0m │ [35;1m│[0m       nextSteps: [],
+ [2m191[0m │ [35;1m│[0m       knowledgeGaps: [],
+ [2m192[0m │ [35;1m│[0m     })
+ [2m193[0m │ [35;1m│[0m     const [discussionPhase, setDiscussionPhase] = useState<"opening" | "exploration" | "deepening" | "synthesis">(
+ [2m194[0m │ [35;1m│[0m       "opening",
+ [2m195[0m │ [35;1m│[0m     )
+ [2m196[0m │ [35;1m│[0m     const [aiActiveMode, setAiActiveMode] = useState(true)
+ [2m197[0m │ [35;1m│[0m     const recognitionRef = useRef<SpeechRecognition | null>(null)
+ [2m198[0m │ [35;1m│[0m     const [isVoiceCalibrating, setIsVoiceCalibrating] = useState(false)
+ [2m199[0m │ [35;1m│[0m     const [voiceCalibrationComplete, setVoiceCalibrationComplete] = useState(false)
+ [2m200[0m │ [35;1m│[0m     const [showVoiceCalibrationDialog, setShowVoiceCalibrationDialog] = useState(false)
+ [2m201[0m │ [35;1m│[0m     const [memberSpeakingTimes, setMemberSpeakingTimes] = useState<Record<string, number>>({
+ [2m202[0m │ [35;1m│[0m       Alice: 0,
+ [2m203[0m │ [35;1m│[0m       Bob: 0,
+ [2m204[0m │ [35;1m│[0m       Carol: 0,
+ [2m205[0m │ [35;1m│[0m       David: 0,
+ [2m206[0m │ [35;1m│[0m     })
+ [2m207[0m │ [35;1m│[0m     const [selectedResource, setSelectedResource] = useState<Resource | null>(null)
+ [2m208[0m │ [35;1m│[0m     const [userQuestions, setUserQuestions] = useState<
+ [2m209[0m │ [35;1m│[0m       Array<{
+ [2m210[0m │ [35;1m│[0m         id: string
+ [2m211[0m │ [35;1m│[0m         content: string
+ [2m212[0m │ [35;1m│[0m         timestamp: Date
+ [2m213[0m │ [35;1m│[0m         author: string
+ [2m214[0m │ [35;1m│[0m       }>
+ [2m215[0m │ [35;1m│[0m     >([])
+ [2m216[0m │ [35;1m│[0m     const [currentQuestionInput, setCurrentQuestionInput] = useState("")
+ [2m217[0m │ [35;1m│[0m   
+ [2m218[0m │ [35;1m│[0m     const teamMembers: TeamMember[] = [
+ [2m219[0m │ [35;1m│[0m       {
+ [2m220[0m │ [35;1m│[0m         id: "1",
+ [2m221[0m │ [35;1m│[0m         name: "Alice",
+ [2m222[0m │ [35;1m│[0m         avatar: "/placeholder.svg?height=40&width=40",
+ [2m223[0m │ [35;1m│[0m         participationLevel: 85,
+ [2m224[0m │ [35;1m│[0m         lastSpoke: null,
+ [2m225[0m │ [35;1m│[0m         speakingTime: 0,
+ [2m226[0m │ [35;1m│[0m         thinkingPatterns: { analytical: 0.8, creative: 0.6, critical: 0.7, practical: 0.9 },
+ [2m227[0m │ [35;1m│[0m         contributionTypes: { questions: 0, examples: 0, theories: 0, challenges: 0 },
+ [2m228[0m │ [35;1m│[0m       },
+ [2m229[0m │ [35;1m│[0m       {
+ [2m230[0m │ [35;1m│[0m         id: "2",
+ [2m231[0m │ [35;1m│[0m         name: "Bob",
+ [2m232[0m │ [35;1m│[0m         avatar: "/placeholder.svg?height=40&width=40",
+ [2m233[0m │ [35;1m│[0m         participationLevel: 72,
+ [2m234[0m │ [35;1m│[0m         lastSpoke: null,
+ [2m235[0m │ [35;1m│[0m         speakingTime: 0,
+ [2m236[0m │ [35;1m│[0m         thinkingPatterns: { analytical: 0.9, creative: 0.8, critical: 0.6, practical: 0.7 },
+ [2m237[0m │ [35;1m│[0m         contributionTypes: { questions: 0, examples: 0, theories: 0, challenges: 0 },
+ [2m238[0m │ [35;1m│[0m       },
+ [2m239[0m │ [35;1m│[0m       {
+ [2m240[0m │ [35;1m│[0m         id: "3",
+ [2m241[0m │ [35;1m│[0m         name: "Carol",
+ [2m242[0m │ [35;1m│[0m         avatar: "/placeholder.svg?height=40&width=40",
+ [2m243[0m │ [35;1m│[0m         participationLevel: 68,
+ [2m244[0m │ [35;1m│[0m         lastSpoke: null,
+ [2m245[0m │ [35;1m│[0m         speakingTime: 0,
+ [2m246[0m │ [35;1m│[0m         thinkingPatterns: { analytical: 0.7, creative: 0.9, critical: 0.8, practical: 0.6 },
+ [2m247[0m │ [35;1m│[0m         contributionTypes: { questions: 0, examples: 0, theories: 0, challenges: 0 },
+ [2m248[0m │ [35;1m│[0m       },
+ [2m249[0m │ [35;1m│[0m       {
+ [2m250[0m │ [35;1m│[0m         id: "4",
+ [2m251[0m │ [35;1m│[0m         name: "David",
+ [2m252[0m │ [35;1m│[0m         avatar: "/placeholder.svg?height=40&width=40",
+ [2m253[0m │ [35;1m│[0m         participationLevel: 91,
+ [2m254[0m │ [35;1m│[0m         lastSpoke: null,
+ [2m255[0m │ [35;1m│[0m         speakingTime: 0,
+ [2m256[0m │ [35;1m│[0m         thinkingPatterns: { analytical: 0.6, creative: 0.7, critical: 0.9, practical: 0.8 },
+ [2m257[0m │ [35;1m│[0m         contributionTypes: { questions: 0, examples: 0, theories: 0, challenges: 0 },
+ [2m258[0m │ [35;1m│[0m       },
+ [2m259[0m │ [35;1m│[0m     ]
+ [2m260[0m │ [35;1m│[0m   
+ [2m261[0m │ [35;1m│[0m     // Initialize speech recognition (React 18 compatible)
+ [2m262[0m │ [35;1m│[0m     useEffect(() => {
+ [2m263[0m │ [35;1m│[0m       if (typeof window !== "undefined" && "webkitSpeechRecognition" in window) {
+ [2m264[0m │ [35;1m│[0m         const recognition = new (window as any).webkitSpeechRecognition()
+ [2m265[0m │ [35;1m│[0m         recognition.continuous = true
+ [2m266[0m │ [35;1m│[0m         recognition.interimResults = true
+ [2m267[0m │ [35;1m│[0m         recognition.lang = "en-US"
+ [2m268[0m │ [35;1m│[0m   
+ [2m269[0m │ [35;1m│[0m         recognition.onresult = (event: any) => {
+ [2m270[0m │ [35;1m│[0m           let finalTranscript = ""
+ [2m271[0m │ [35;1m│[0m           for (let i = event.resultIndex; i < event.results.length; i++) {
+ [2m272[0m │ [35;1m│[0m             if (event.results[i].isFinal) {
+ [2m273[0m │ [35;1m│[0m               finalTranscript += event.results[i][0].transcript
+ [2m274[0m │ [35;1m│[0m             }
+ [2m275[0m │ [35;1m│[0m           }
+ [2m276[0m │ [35;1m│[0m   
+ [2m277[0m │ [35;1m│[0m           if (finalTranscript) {
+ [2m278[0m │ [35;1m│[0m             handleSpeechResult(finalTranscript)
+ [2m279[0m │ [35;1m│[0m           }
+ [2m280[0m │ [35;1m│[0m         }
+ [2m281[0m │ [35;1m│[0m   
+ [2m282[0m │ [35;1m│[0m         recognition.onerror = (event: any) => {
+ [2m283[0m │ [35;1m│[0m           console.error("Speech recognition error:", event.error)
+ [2m284[0m │ [35;1m│[0m           setIsListening(false)
+ [2m285[0m │ [35;1m│[0m         }
+ [2m286[0m │ [35;1m│[0m   
+ [2m287[0m │ [35;1m│[0m         recognitionRef.current = recognition
+ [2m288[0m │ [35;1m│[0m       }
+ [2m289[0m │ [35;1m│[0m     }, [])
+ [2m290[0m │ [35;1m│[0m   
+ [2m291[0m │ [35;1m│[0m     // AI comprehensive intelligent system
+ [2m292[0m │ [35;1m│[0m     useEffect(() => {
+ [2m293[0m │ [35;1m│[0m       if (!isDiscussionActive || !aiActiveMode) return
+ [2m294[0m │ [35;1m│[0m   
+ [2m295[0m │ [35;1m│[0m       const aiSystemInterval = setInterval(() => {
+ [2m296[0m │ [35;1m│[0m         updateKnowledgeBase()
+ [2m297[0m │ [35;1m│[0m         updateThinkingNetwork()
+ [2m298[0m │ [35;1m│[0m         generateDiscussionSummary()
+ [2m299[0m │ [35;1m│[0m         decideAIIntervention()
+ [2m300[0m │ [35;1m│[0m       }, 8000)
+ [2m301[0m │ [35;1m│[0m   
+ [2m302[0m │ [35;1m│[0m       return () => clearInterval(aiSystemInterval)
+ [2m303[0m │ [35;1m│[0m     }, [isDiscussionActive, aiActiveMode, discussions])
+ [2m304[0m │ [35;1m│[0m   
+ [2m305[0m │ [35;1m│[0m     // Discussion timer and phase management
+ [2m306[0m │ [35;1m│[0m     useEffect(() => {
+ [2m307[0m │ [35;1m│[0m       let interval: NodeJS.Timeout
+ [2m308[0m │ [35;1m│[0m       if (isDiscussionActive) {
+ [2m309[0m │ [35;1m│[0m         interval = setInterval(() => {
+ [2m310[0m │ [35;1m│[0m           setDiscussionTime((prev) => {
+ [2m311[0m │ [35;1m│[0m             const newTime = prev + 1
+ [2m312[0m │ [35;1m│[0m             if (newTime === 300) setDiscussionPhase("exploration")
+ [2m313[0m │ [35;1m│[0m             if (newTime === 600) setDiscussionPhase("deepening")
+ [2m314[0m │ [35;1m│[0m             if (newTime === 900) setDiscussionPhase("synthesis")
+ [2m315[0m │ [35;1m│[0m             return newTime
+ [2m316[0m │ [35;1m│[0m           })
+ [2m317[0m │ [35;1m│[0m         }, 1000)
+ [2m318[0m │ [35;1m│[0m       }
+ [2m319[0m │ [35;1m│[0m       return () => clearInterval(interval)
+ [2m320[0m │ [35;1m│[0m     }, [isDiscussionActive])
+ [2m321[0m │ [35;1m│[0m   
+ [2m322[0m │ [35;1m│[0m     // Intelligent silence detection
+ [2m323[0m │ [35;1m│[0m     useEffect(() => {
+ [2m324[0m │ [35;1m│[0m       let silenceInterval: NodeJS.Timeout
+ [2m325[0m │ [35;1m│[0m       if (isDiscussionActive && !isListening) {
+ [2m326[0m │ [35;1m│[0m         silenceInterval = setInterval(() => {
+ [2m327[0m │ [35;1m│[0m           setSilenceTime((prev) => {
+ [2m328[0m │ [35;1m│[0m             const newTime = prev + 1
+ [2m329[0m │ [35;1m│[0m             if (newTime >= 15 && aiActiveMode) {
+ [2m330[0m │ [35;1m│[0m               generateContextualIntervention("silence")
+ [2m331[0m │ [35;1m│[0m               return 0
+ [2m332[0m │ [35;1m│[0m             }
+ [2m333[0m │ [35;1m│[0m             return newTime
+ [2m334[0m │ [35;1m│[0m           })
+ [2m335[0m │ [35;1m│[0m         }, 1000)
+ [2m336[0m │ [35;1m│[0m       } else {
+ [2m337[0m │ [35;1m│[0m         setSilenceTime(0)
+ [2m338[0m │ [35;1m│[0m       }
+ [2m339[0m │ [35;1m│[0m       return () => clearInterval(silenceInterval)
+ [2m340[0m │ [35;1m│[0m     }, [isDiscussionActive, isListening, aiActiveMode])
+ [2m341[0m │ [35;1m│[0m   
+ [2m342[0m │ [35;1m│[0m     const analyzeLogicalStructure = (content: string) => {
+ [2m343[0m │ [35;1m│[0m       return {
+ [2m344[0m │ [35;1m│[0m         hasEvidence: /because|due to|according to|data shows|research indicates|for example|such as/.test(content),
+ [2m345[0m │ [35;1m│[0m         hasClaim: /I think|I believe|should|must|can|suggest/.test(content),
+ [2m346[0m │ [35;1m│[0m         hasReasoning: /so|therefore|leads to|results in|thus/.test(content),
+ [2m347[0m │ [35;1m│[0m         hasCounterargument: /but|however|although|on the contrary|on the other hand/.test(content),
+ [2m348[0m │ [35;1m│[0m       }
+ [2m349[0m │ [35;1m│[0m     }
+ [2m350[0m │ [35;1m│[0m   
+ [2m351[0m │ [35;1m│[0m     const identifyThoughtType = (content: string): Discussion["thoughtType"] => {
+ [2m352[0m │ [35;1m│[0m       if (content.includes("?") || content.includes("why") || content.includes("how")) {
+ [2m353[0m │ [35;1m│[0m         return "question"
+ [2m354[0m │ [35;1m│[0m       }
+ [2m355[0m │ [35;1m│[0m       if (content.includes("for example") || content.includes("such as") || content.includes("case")) {
+ [2m356[0m │ [35;1m│[0m         return "example"
+ [2m357[0m │ [35;1m│[0m       }
+ [2m358[0m │ [35;1m│[0m       if (content.includes("theory") || content.includes("model") || content.includes("framework")) {
+ [2m359[0m │ [35;1m│[0m         return "theory"
+ [2m360[0m │ [35;1m│[0m       }
+ [2m361[0m │ [35;1m│[0m       if (content.includes("but") || content.includes("however") || content.includes("challenge")) {
+ [2m362[0m │ [35;1m│[0m         return "challenge"
+ [2m363[0m │ [35;1m│[0m       }
+ [2m364[0m │ [35;1m│[0m       if (content.includes("summary") || content.includes("synthesis") || content.includes("integration")) {
+ [2m365[0m │ [35;1m│[0m         return "synthesis"
+ [2m366[0m │ [35;1m│[0m       }
+ [2m367[0m │ [35;1m│[0m       return "answer"
+ [2m368[0m │ [35;1m│[0m     }
+ [2m369[0m │ [35;1m│[0m   
+ [2m370[0m │ [35;1m│[0m     const extractConcepts = (content: string): string[] => {
+ [2m371[0m │ [35;1m│[0m       const conceptPatterns = [
+ [2m372[0m │ [35;1m│[0m         /medication|prescription|dosage|administration|compliance/g,
+ [2m373[0m │ [35;1m│[0m         /caregiver|family|training|education|competency/g,
+ [2m374[0m │ [35;1m│[0m         /safety|risk|hazard|prevention|protocol/g,
+ [2m375[0m │ [35;1m│[0m         /emergency|response|communication|alert|monitoring/g,
+ [2m376[0m │ [35;1m│[0m         /infection|hygiene|sanitation|sterile|contamination/g,
+ [2m377[0m │ [35;1m│[0m         /technology|device|equipment|monitoring|telehealth/g,
+ [2m378[0m │ [35;1m│[0m       ]
+ [2m379[0m │ [35;1m│[0m   
+ [2m380[0m │ [35;1m│[0m       const concepts: string[] = []
+ [2m381[0m │ [35;1m│[0m       conceptPatterns.forEach((pattern) => {
+ [2m382[0m │ [35;1m│[0m         const matches = content.match(pattern)
+ [2m383[0m │ [35;1m│[0m         if (matches) {
+ [2m384[0m │ [35;1m│[0m           concepts.push(...matches)
+ [2m385[0m │ [35;1m│[0m         }
+ [2m386[0m │ [35;1m│[0m       })
+ [2m387[0m │ [35;1m│[0m   
+ [2m388[0m │ [35;1m│[0m       return [...new Set(concepts)]
+ [2m389[0m │ [35;1m│[0m     }
+ [2m390[0m │ [35;1m│[0m   
+ [2m391[0m │ [35;1m│[0m     const handleSpeechResult = (transcript: string) => {
+ [2m392[0m │ [35;1m│[0m       const keywords = extractKeywords(transcript)
+ [2m393[0m │ [35;1m│[0m       const concepts = extractConcepts(transcript)
+ [2m394[0m │ [35;1m│[0m       const logicalStructure = analyzeLogicalStructure(transcript)
+ [2m395[0m │ [35;1m│[0m       const thoughtType = identifyThoughtType(transcript)
+ [2m396[0m │ [35;1m│[0m   
+ [2m397[0m │ [35;1m│[0m       // 随机选择说话者（在实际应用中会通过语音识别确定）
+ [2m398[0m │ [35;1m│[0m       const speaker = teamMembers[Math.floor(Math.random() * teamMembers.length)].name
+ [2m399[0m │ [35;1m│[0m   
+ [2m400[0m │ [35;1m│[0m       // 更新发言时长（模拟：每次发言增加10-30秒）
+ [2m401[0m │ [35;1m│[0m       const speakingDuration = Math.floor(Math.random() * 20) + 10
+ [2m402[0m │ [35;1m│[0m       setMemberSpeakingTimes((prev) => ({
+ [2m403[0m │ [35;1m│[0m         ...prev,
+ [2m404[0m │ [35;1m│[0m         [speaker]: prev[speaker] + speakingDuration,
+ [2m405[0m │ [35;1m│[0m       }))
+ [2m406[0m │ [35;1m│[0m   
+ [2m407[0m │ [35;1m│[0m       const newDiscussion: Discussion = {
+ [2m408[0m │ [35;1m│[0m         id: Date.now().toString(),
+ [2m409[0m │ [35;1m│[0m         speaker: speaker,
+ [2m410[0m │ [35;1m│[0m         content: transcript,
+ [2m411[0m │ [35;1m│[0m         timestamp: new Date(),
+ [2m412[0m │ [35;1m│[0m         quality: analyzeDiscussionQuality(transcript, logicalStructure),
+ [2m413[0m │ [35;1m│[0m         keywords,
+ [2m414[0m │ [35;1m│[0m         concepts,
+ [2m415[0m │ [35;1m│[0m         logicalStructure,
+ [2m416[0m │ [35;1m│[0m         thoughtType,
+ [2m417[0m │ [35;1m│[0m         connectsTo: findConnections(transcript, discussions),
+ [2m418[0m │ [35;1m│[0m       }
+ [2m419[0m │ [35;1m│[0m   
+ [2m420[0m │ [35;1m│[0m       setDiscussions((prev) => [...prev, newDiscussion])
+ [2m421[0m │ [35;1m│[0m   
+ [2m422[0m │ [35;1m│[0m       setTimeout(() => {
+ [2m423[0m │ [35;1m│[0m         processNewDiscussion(newDiscussion)
+ [2m424[0m │ [35;1m│[0m       }, 1500)
+ [2m425[0m │ [35;1m│[0m     }
+ [2m426[0m │ [35;1m│[0m   
+ [2m427[0m │ [35;1m│[0m     const findConnections = (content: string, existingDiscussions: Discussion[]): string[] => {
+ [2m428[0m │ [35;1m│[0m       const connections: string[] = []
+ [2m429[0m │ [35;1m│[0m       const contentKeywords = extractKeywords(content)
+ [2m430[0m │ [35;1m│[0m   
+ [2m431[0m │ [35;1m│[0m       existingDiscussions.forEach((discussion) => {
+ [2m432[0m │ [35;1m│[0m         const commonKeywords = discussion.keywords.filter((keyword) =>
+ [2m433[0m │ [35;1m│[0m           contentKeywords.some((ck) => ck.includes(keyword) || keyword.includes(ck)),
+ [2m434[0m │ [35;1m│[0m         )
+ [2m435[0m │ [35;1m│[0m   
+ [2m436[0m │ [35;1m│[0m         if (commonKeywords.length > 0) {
+ [2m437[0m │ [35;1m│[0m           connections.push(discussion.id)
+ [2m438[0m │ [35;1m│[0m         }
+ [2m439[0m │ [35;1m│[0m       })
+ [2m440[0m │ [35;1m│[0m   
+ [2m441[0m │ [35;1m│[0m       return connections.slice(-3)
+ [2m442[0m │ [35;1m│[0m     }
+ [2m443[0m │ [35;1m│[0m   
+ [2m444[0m │ [35;1m│[0m     const processNewDiscussion = (discussion: Discussion) => {
+ [2m445[0m │ [35;1m│[0m       addToThinkingNetwork(discussion)
+ [2m446[0m │ [35;1m│[0m       updateKnowledgeFromDiscussion(discussion)
+ [2m447[0m │ [35;1m│[0m   
+ [2m448[0m │ [35;1m│[0m       const interventionNeeded = analyzeInterventionNeed(discussion)
+ [2m449[0m │ [35;1m│[0m       if (interventionNeeded) {
+ [2m450[0m │ [35;1m│[0m         generateContextualIntervention(interventionNeeded)
+ [2m451[0m │ [35;1m│[0m       }
+ [2m452[0m │ [35;1m│[0m     }
+ [2m453[0m │ [35;1m│[0m   
+ [2m454[0m │ [35;1m│[0m     const addToThinkingNetwork = (discussion: Discussion) => {
+ [2m455[0m │ [35;1m│[0m       const newNode: ThinkingNode = {
+ [2m456[0m │ [35;1m├[0m[35;1m─[0m[35;1m▶[0m       id: `node-${discussion.id}`,
+     · [35;1m╰[0m[35;1m───[0m[33;1m           ────[0m
+     · [35;1m╰[0m[35;1m───[0m[35;1m─[0m [35;1mThis is the expression part of an expression statement[0m
+ [2m457[0m │           type:
+ [2m458[0m │             discussion.thoughtType === "question"
+ [2m459[0m │               ? "question"
+     ╰────
+
+Caused by:
+    Syntax Error
+    at tr (webpack-internal:///(pages-dir-browser)/./node_modules/.pnpm/next@15.4.5_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-devtools/index.js:552:164430)
+    at o6 (webpack-internal:///(pages-dir-browser)/./node_modules/.pnpm/next@15.4.5_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-devtools/index.js:541:62116)
+    at iP (webpack-internal:///(pages-dir-browser)/./node_modules/.pnpm/next@15.4.5_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-devtools/index.js:541:81700)
+    at i$ (webpack-internal:///(pages-dir-browser)/./node_modules/.pnpm/next@15.4.5_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-devtools/index.js:541:92800)
+    at sv (webpack-internal:///(pages-dir-browser)/./node_modules/.pnpm/next@15.4.5_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-devtools/index.js:541:125399)
+    at eval (webpack-internal:///(pages-dir-browser)/./node_modules/.pnpm/next@15.4.5_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-devtools/index.js:541:125244)
+    at sm (webpack-internal:///(pages-dir-browser)/./node_modules/.pnpm/next@15.4.5_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-devtools/index.js:541:125252)
+    at sa (webpack-internal:///(pages-dir-browser)/./node_modules/.pnpm/next@15.4.5_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-devtools/index.js:541:121554)
+    at sZ (webpack-internal:///(pages-dir-browser)/./node_modules/.pnpm/next@15.4.5_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-devtools/index.js:541:143648)
+    at MessagePort._ (webpack-internal:///(pages-dir-browser)/./node_modules/.pnpm/next@15.4.5_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-devtools/index.js:541:196942)
