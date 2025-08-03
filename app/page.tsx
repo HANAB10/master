@@ -920,10 +920,10 @@ export default function EduMindAI() {
     <div className="min-h-screen bg-gray-50 p-4">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="mb-6 bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg shadow-md border border-gray-200 p-6">
+        <div className="mb-6 bg-gradient-to-br from-slate-50 to-blue-50 rounded-lg shadow-md border border-slate-200 p-6">
           <div className="flex items-center justify-between mb-4">
-            <h1 className="text-2xl font-bold text-gray-800 flex items-center gap-3">
-              <Brain className="w-8 h-8 text-gray-700" />
+            <h1 className="text-2xl font-bold text-slate-700 flex items-center gap-3">
+              <Brain className="w-8 h-8 text-indigo-600" />
               EduMind AI - Team-Based Learning Platform
             </h1>
             <div className="flex items-center gap-4">
@@ -932,11 +932,11 @@ export default function EduMindAI() {
                 <Button
                   onClick={startVoiceCalibration}
                   variant="outline"
-                  className={`border-gray-300 hover:bg-gray-100 ${isVoiceCalibrating ? "bg-gray-200 border-gray-400" : ""}`}
+                  className={`border-orange-200 hover:bg-orange-50 ${isVoiceCalibrating ? "bg-orange-100 border-orange-300" : ""}`}
                   disabled={isVoiceCalibrating}
                 >
-                  <Mic className="w-4 h-4 mr-2 text-gray-600" />
-                  <span className={isVoiceCalibrating ? "text-gray-800" : "text-gray-600"}>
+                  <Mic className="w-4 h-4 mr-2 text-orange-600" />
+                  <span className={isVoiceCalibrating ? "text-orange-700" : "text-orange-600"}>
                     {isVoiceCalibrating ? "Calibrating..." : "Voice Setup"}
                   </span>
                 </Button>
@@ -946,7 +946,7 @@ export default function EduMindAI() {
               {!isDiscussionActive ? (
                 <Button
                   onClick={startDiscussion}
-                  className="bg-black hover:bg-gray-800 text-white shadow-md"
+                  className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-md"
                   disabled={!voiceCalibrationComplete}
                 >
                   <Play className="w-4 h-4 mr-2" />
@@ -962,10 +962,10 @@ export default function EduMindAI() {
                     setIsListening(false)
                   }}
                   variant="outline"
-                  className="border-gray-400 hover:bg-gray-100"
+                  className="border-red-200 hover:bg-red-50"
                 >
-                  <Pause className="w-4 h-4 mr-2 text-gray-600" />
-                  <span className="text-gray-600">End Discussion</span>
+                  <Pause className="w-4 h-4 mr-2 text-red-600" />
+                  <span className="text-red-600">End Discussion</span>
                 </Button>
               )}
 
@@ -978,21 +978,21 @@ export default function EduMindAI() {
           </div>
 
           {/* Topic Section */}
-          <div className="bg-white rounded-lg p-4 mb-4 border border-gray-200 shadow-sm">
-            <h3 className="font-medium text-gray-700 mb-2 flex items-center gap-2">
-              <BookOpen className="w-4 h-4 text-gray-600" />
+          <div className="bg-white rounded-lg p-4 mb-4 border border-slate-200 shadow-sm">
+            <h3 className="font-medium text-slate-700 mb-2 flex items-center gap-2">
+              <BookOpen className="w-4 h-4 text-slate-600" />
               Course Topic
             </h3>
-            <p className="text-gray-800">{currentTopic}</p>
+            <p className="text-slate-800">{currentTopic}</p>
           </div>
 
           {/* tRAT Question */}
-          <div className="bg-white rounded-lg p-4 border-l-4 border-gray-600 shadow-sm">
-            <h3 className="font-medium text-gray-800 mb-2 flex items-center gap-2">
-              <HelpCircle className="w-4 h-4 text-gray-600" />
+          <div className="bg-white rounded-lg p-4 border-l-4 border-blue-500 shadow-sm">
+            <h3 className="font-medium text-blue-800 mb-2 flex items-center gap-2">
+              <HelpCircle className="w-4 h-4 text-blue-600" />
               tRAT Discussion Question
             </h3>
-            <p className="text-gray-900 leading-relaxed">{tRATQuestion}</p>
+            <p className="text-blue-900 leading-relaxed">{tRATQuestion}</p>
           </div>
         </div>
 
@@ -1001,32 +1001,32 @@ export default function EduMindAI() {
           {/* Left Sidebar - Summary & Resources */}
           <div className="col-span-3 space-y-6">
             {/* Summary Section - Real-time and Final (Vertical Layout) */}
-            <Card className="bg-gradient-to-br from-gray-50 to-gray-100 border-gray-200 shadow-sm">
+            <Card className="bg-gradient-to-br from-blue-50 to-indigo-50 border-blue-200 shadow-sm">
               <CardHeader className="pb-3">
                 <CardTitle className="text-lg flex items-center gap-2">
-                  <Archive className="w-5 h-5 text-gray-600" />
+                  <Archive className="w-5 h-5 text-blue-600" />
                   Discussion Summary
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-6">
                 {/* Real-time Summary */}
                 <div>
-                  <h4 className="font-medium text-sm mb-3 text-gray-700">
+                  <h4 className="font-medium text-sm mb-3 text-indigo-700">
                     Real-time Progress
                   </h4>
                   <div className="space-y-3">
-                    <div className="bg-white p-3 rounded border border-gray-200 shadow-sm">
-                      <h5 className="text-xs font-medium mb-1 text-gray-800">Current Phase</h5>
-                      <p className="text-xs text-gray-700">{getPhaseLabel(discussionPhase)}</p>
+                    <div className="bg-white p-3 rounded border border-blue-100 shadow-sm">
+                      <h5 className="text-xs font-medium mb-1 text-blue-800">Current Phase</h5>
+                      <p className="text-xs text-blue-700">{getPhaseLabel(discussionPhase)}</p>
                     </div>
-                    <div className="bg-white p-3 rounded border border-gray-200 shadow-sm">
-                      <h5 className="text-xs font-medium mb-1 text-gray-800">Discussion Progress</h5>
-                      <p className="text-xs text-gray-700">{discussions.length} contributions made</p>
-                      <p className="text-xs text-gray-700">Time: {formatTime(discussionTime)}</p>
+                    <div className="bg-white p-3 rounded border border-green-100 shadow-sm">
+                      <h5 className="text-xs font-medium mb-1 text-green-800">Discussion Progress</h5>
+                      <p className="text-xs text-green-700">{discussions.length} contributions made</p>
+                      <p className="text-xs text-green-700">Time: {formatTime(discussionTime)}</p>
                     </div>
-                    <div className="bg-white p-3 rounded border border-gray-200 shadow-sm">
-                      <h5 className="text-xs font-medium mb-1 text-gray-800">Current Focus</h5>
-                      <p className="text-xs text-gray-700">
+                    <div className="bg-white p-3 rounded border border-yellow-100 shadow-sm">
+                      <h5 className="text-xs font-medium mb-1 text-yellow-800">Current Focus</h5>
+                      <p className="text-xs text-yellow-700">
                         {discussionSummary.keyPoints.length > 0
                           ? discussionSummary.keyPoints[discussionSummary.keyPoints.length - 1]
                           : "Building initial arguments for home healthcare safety factor rankings"}
@@ -1037,13 +1037,13 @@ export default function EduMindAI() {
 
                 {/* Final Summary */}
                 <div>
-                  <h4 className="font-medium text-sm mb-3 text-gray-700">
+                  <h4 className="font-medium text-sm mb-3 text-indigo-700">
                     Final Summary
                   </h4>
                   <div className="space-y-3">
                     {!isDiscussionActive && discussions.length > 0 ? (
-                      <div className="bg-white p-3 rounded border border-gray-200 shadow-sm">
-                        <h5 className="text-xs font-medium mb-2 text-gray-800">tRAT Discussion Results</h5>
+                      <div className="bg-white p-3 rounded border border-purple-100 shadow-sm">
+                        <h5 className="text-xs font-medium mb-2 text-purple-800">tRAT Discussion Results</h5>
                         <div className="space-y-2">
                           <div>
                             <span className="text-xs font-medium text-purple-800">Team Consensus:</span>
@@ -1081,10 +1081,10 @@ export default function EduMindAI() {
             </Card>
 
             {/* AI Feedback Module */}
-            <Card className="bg-gradient-to-br from-gray-50 to-gray-100 border-gray-200">
+            <Card className="bg-gradient-to-br from-indigo-50 to-purple-50 border-indigo-200">
               <CardHeader className="pb-3">
                 <CardTitle className="text-lg flex items-center gap-2">
-                  <Brain className="w-5 h-5 text-gray-600" />
+                  <Brain className="w-5 h-5 text-indigo-600" />
                   AI Feedback
                 </CardTitle>
               </CardHeader>
@@ -1746,7 +1746,7 @@ export default function EduMindAI() {
                       />
                       <Button
                         size="sm"
-                        className="w-full bg-black hover:bg-gray-800 text-white"
+                        className="w-full bg-indigo-600 hover:bg-indigo-700"
                         onClick={() => {
                           if (currentQuestionInput.trim()) {
                             const newQuestion = {
