@@ -1580,6 +1580,7 @@ export default function EduMindAI() {
                     <div className="h-[calc(100vh-250px)] bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg border relative overflow-hidden">
                       {thinkingNetwork.length === 0 ? (
                         <div className="absolute inset-0 flex items-center justify-center"><div className="text-center">
+                            ```
                             <Network className="w-12 h-12 text-gray-400 mx-auto mb-4" />
                             <p className="text-gray-600 mb-2">
                               Argument network will be built as the discussion progresses
