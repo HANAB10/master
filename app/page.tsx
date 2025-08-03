@@ -913,6 +913,8 @@ export default function EduMindAI() {
       research: <BookOpen className="w-4 h-4" />,
       video: <Play className="w-4 h-4" />,
     }
+    return icons[type as keyof typeof icons]t className="w-4 h-4" />
+    }
     return icons[type as keyof typeof icons] || <FileText className="w-4 h-4" />
   }
 
