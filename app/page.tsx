@@ -1,6 +1,3 @@
-The user wants to revert to a previous version of the code, primarily focusing on restoring the original color scheme and styles.
-```
-```text
 "use client"
 
 import { useState, useEffect, useRef } from "react"
@@ -916,6 +913,8 @@ export default function EduMindAI() {
       research: <BookOpen className="w-4 h-4" />,
       video: <Play className="w-4 h-4" />,
     }
+    return icons[type as keyof typeof icons]t className="w-4 h-4" />
+    }
     return icons[type as keyof typeof icons] || <FileText className="w-4 h-4" />
   }
 
@@ -1105,8 +1104,8 @@ export default function EduMindAI() {
                           </span>
                         </div>
                         <div className="w-full bg-gray-200 rounded-full h-2">
-                          <div 
-                            className="bg-indigo-600 h-2 rounded-full" 
+                          <div
+                            className="bg-indigo-600 h-2 rounded-full"
                             style={{
                               width: `${discussions.length > 0 ? (discussions.filter(d => d.logicalStructure.hasEvidence).length / discussions.length) * 100 : 0}%`
                             }}
@@ -1122,8 +1121,8 @@ export default function EduMindAI() {
                           </span>
                         </div>
                         <div className="w-full bg-gray-200 rounded-full h-2">
-                          <div 
-                            className="bg-purple-600 h-2 rounded-full" 
+                          <div
+                            className="bg-purple-600 h-2 rounded-full"
                             style={{
                               width: `${discussions.length > 0 ? (discussions.filter(d => d.logicalStructure.hasReasoning || d.logicalStructure.hasCounterargument).length / discussions.length) * 100 : 0}%`
                             }}
@@ -1172,7 +1171,7 @@ export default function EduMindAI() {
 
                             {/* Evidence Quality Feedback */}
                             {(() => {
-                              const evidenceRate = discussions.length > 0 ? 
+                              const evidenceRate = discussions.length > 0 ?
                                 discussions.filter(d => d.logicalStructure.hasEvidence).length / discussions.length : 0;
 
                               return evidenceRate < 0.4 && discussions.length > 3 ? (
@@ -1192,7 +1191,7 @@ export default function EduMindAI() {
 
                             {/* Depth Analysis Feedback */}
                             {(() => {
-                              const avgQuality = discussions.length > 0 ? 
+                              const avgQuality = discussions.length > 0 ?
                                 discussions.reduce((sum, d) => sum + d.quality, 0) / discussions.length : 0;
 
                               return avgQuality < 3 && discussions.length > 2 ? (
@@ -1587,3 +1586,154 @@ export default function EduMindAI() {
                               className="ml-auto"
                             >
                               ✕
+                            </Button>
+                          </div>
+                          <ScrollArea className="h-[calc(100%-80px)]">
+                            <div className="text-sm text-gray-700 leading-relaxed">
+                              {selectedResource.content || selectedResource.summary}
+                            </div>
+                          </ScrollArea>
+                        </div>
+                      ) : (
+                        <div className="space-y-3">
+                          <div>
+                            <h5 className="text-sm font-medium mb-2 text-gray-900">Assigned Readings</h5>
+                            <div className="space-y-2">
+                              <div className="bg-gray-50 rounded-lg shadow-sm border border-gray-200 p-2 rounded border border-indigo-100 text-xs shadow-sm">
+                                <div className="flex items-center gap-2">
+                                  <div className="text-indigo-600">📚</div>
+                                  <span className="text-gray-900">Chapter 12: Home Healthcare Quality Standards</span>
+                                </div>
+                              </div>
+                              <div className="bg-gray-50 rounded-lg shadow-sm border border-gray-200 p-2 rounded border border-indigo-100 text-xs shadow-sm">
+                                <div className="flex items-center gap-2">
+                                  <div className="text-indigo-600">📊</div>
+                                  <span className="text-gray-900">Research Article: Patient Safety in Home Care Settings</span>
+                                </div>
+                              </div>
+                              <div className="bg-gray-50 rounded-lg shadow-sm border border-gray-200 p-2 rounded border border-indigo-100 text-xs shadow-sm">
+                                <div className="flex items-center gap-2">
+                                  <div className="text-indigo-600">📖</div>
+                                  <span className="text-gray-900">Case Study: Technology Integration in Home Healthcare</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div>
+                            <h5 className="text-sm font-medium mb-2 text-gray-900">AI-Suggested Resources</h5>
+                            <ScrollArea className="h-32">
+                              <div className="space-y-2 pr-2">
+                                {knowledgeBase.concepts.length === 0 ? (
+                                  <div className="text-xs text-gray-500 text-center py-2">
+                                    Resources will appear during discussion
+                                  </div>
+                                ) : (
+                                  knowledgeBase.concepts.slice(-5).map((concept, index) => (
+                                    <div key={index} className="bg-gray-50 rounded-lg shadow-sm border border-gray-200 p-2">
+                                      <div className="flex items-start gap-2">
+                                        <div className="text-indigo-600 mt-0.5">🤖</div>
+                                        <div>
+                                          <span className="font-medium text-gray-900">{concept.name}:</span>
+                                          <span className="text-gray-700"> {concept.definition.slice(0, 40)}...</span>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  ))
+                                )}
+                              </div>
+                            </ScrollArea>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  </TabsContent>
+
+                  <TabsContent value="mindmap" className="mt-4 flex-1">
+                    <div className="h-[calc(100vh-250px)] bg-gray-50 rounded-lg p-4 flex items-center justify-center">
+                      <p className="text-gray-500">Mindmap feature coming soon!</p>
+                    </div>
+                  </TabsContent>
+                </Tabs>
+              </CardHeader>
+            </Card>
+          </div>
+
+          {/* Right Sidebar - Team Members & Participation */}
+          <div className="col-span-3 space-y-6">
+            <Card className="border-gray-200 shadow-sm">
+              <CardHeader className="pb-3">
+                <CardTitle className="text-lg flex items-center gap-2">
+                  <Users className="w-5 h-5 text-green-600" />
+                  Team Members
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-3">
+                  {teamMembers.map((member) => (
+                    <div key={member.id} className="flex items-center gap-3">
+                      <Avatar className="w-8 h-8">
+                        <AvatarFallback className="text-xs bg-gray-100">
+                          {member.name[0]}
+                        </AvatarFallback>
+                      </Avatar>
+                      <span className="text-sm text-gray-700">{member.name}</span>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Team Participation Metrics */}
+            <Card className="border-gray-200 shadow-sm">
+              <CardHeader className="pb-3">
+                <CardTitle className="text-lg flex items-center gap-2">
+                  <Network className="w-5 h-5 text-orange-600" />
+                  Participation Metrics
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-3">
+                  {teamMembers.map((member) => (
+                    <div key={member.id} className="space-y-1">
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm font-medium text-gray-900">{member.name}</span>
+                        <span className="text-xs text-gray-500">{memberSpeakingTimes[member.name] || 0} seconds</span>
+                      </div>
+                      <div className="w-full bg-gray-200 rounded-full h-2">
+                        <div
+                          className="bg-orange-600 h-2 rounded-full"
+                          style={{ width: `${(memberSpeakingTimes[member.name] / Math.max(...Object.values(memberSpeakingTimes))) * 100 || 0}%` }}
+                        ></div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </div>
+
+      {/* Voice Calibration Dialog */}
+      <Dialog open={showVoiceCalibrationDialog} onOpenChange={setShowVoiceCalibrationDialog}>
+        <DialogContent className="sm:max-w-[425px]">
+          <DialogHeader>
+            <DialogTitle>Voice Calibration</DialogTitle>
+            <DialogDescription>
+              Calibrate your microphone for optimal speaker recognition.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="grid gap-4 py-4">
+            <p>
+              The AI will analyze your voice for 10 seconds to distinguish you from other team members.
+            </p>
+          </div>
+          <Button onClick={beginVoiceRecording} disabled={isVoiceCalibrating}>
+            {isVoiceCalibrating ? "Calibrating..." : "Begin Calibration"}
+          </Button>
+        </DialogContent>
+      </Dialog>
+    </div>
+  )
+}
