@@ -1090,46 +1090,6 @@ export default function EduMindAI() {
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
-                  {/* Real-time Performance Feedback */}
-                  <div>
-                    <h5 className="text-sm font-medium mb-2 text-indigo-700">Discussion Quality</h5>
-                    <div className="space-y-2">
-                      <div className="bg-white p-3 rounded border border-indigo-100">
-                        <div className="flex items-center justify-between mb-1">
-                          <span className="text-xs font-medium">Evidence Usage</span>
-                          <span className="text-xs text-indigo-600">
-                            {discussions.filter(d => d.logicalStructure.hasEvidence).length}/{discussions.length}
-                          </span>
-                        </div>
-                        <div className="w-full bg-gray-200 rounded-full h-2">
-                          <div 
-                            className="bg-indigo-600 h-2 rounded-full" 
-                            style={{
-                              width: `${discussions.length > 0 ? (discussions.filter(d => d.logicalStructure.hasEvidence).length / discussions.length) * 100 : 0}%`
-                            }}
-                          ></div>
-                        </div>
-                      </div>
-
-                      <div className="bg-white p-3 rounded border border-indigo-100">
-                        <div className="flex items-center justify-between mb-1">
-                          <span className="text-xs font-medium">Critical Thinking</span>
-                          <span className="text-xs text-purple-600">
-                            {discussions.filter(d => d.logicalStructure.hasReasoning || d.logicalStructure.hasCounterargument).length}/{discussions.length}
-                          </span>
-                        </div>
-                        <div className="w-full bg-gray-200 rounded-full h-2">
-                          <div 
-                            className="bg-purple-600 h-2 rounded-full" 
-                            style={{
-                              width: `${discussions.length > 0 ? (discussions.filter(d => d.logicalStructure.hasReasoning || d.logicalStructure.hasCounterargument).length / discussions.length) * 100 : 0}%`
-                            }}
-                          ></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
                   {/* AI Insights */}
                   <div>
                     <h5 className="text-sm font-medium mb-2 text-indigo-700">AI Insights</h5>
