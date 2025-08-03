@@ -911,9 +911,7 @@ export default function EduMindAI() {
       document: <FileText className="w-4 h-4" />,
       webpage: <Globe className="w-4 h-4" />,
       research: <BookOpen className="w-4 h-4" />,
-      video: <Play classNameName the file: EduMindAI.tsx
-This code removes an extraneous tag that was causing a syntax error.
-="w-4 h-4" />,
+      video: <Play className="w-4 h-4" />,
     }
     return icons[type as keyof typeof icons] || <FileText className="w-4 h-4" />
   }
