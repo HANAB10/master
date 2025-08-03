@@ -1323,7 +1323,7 @@ export default function EduMindAI() {
                   </TabsList>
 
                   <TabsContent value="guidance" className="mt-4 flex-1">
-                    <div className="h-[calc(100vh-250px)] bg-gradient-to-br from-slate-50 to-blue-50 rounded-lg border border-slate-200 p-4">
+                    <div className="h-[calc(100vh-200px)] bg-gradient-to-br from-slate-50 to-blue-50 rounded-lg border border-slate-200 p-4"></div>
                       {/* AI Guidance Messages - No Input Box */}
                       <ScrollArea className="h-full">
                         <div className="space-y-4 pr-4">
@@ -1531,7 +1531,7 @@ export default function EduMindAI() {
                   </TabsContent>
 
                   <TabsContent value="resources" className="mt-4 flex-1">
-                    <div className="h-[calc(100vh-250px)] bg-gray-50 rounded-lg p-4">
+                    <div className="h-[calc(100vh-200px)] bg-gray-50 rounded-lg p-4"></div>
                       {selectedResource ? (
                         <div className="h-full">
                           <div className="flex items-center gap-2 mb-4">
@@ -1577,7 +1577,7 @@ export default function EduMindAI() {
                   </TabsContent>
 
                   <TabsContent value="mindmap" className="mt-4 flex-1">
-                    <div className="h-[calc(100vh-250px)] bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg border relative overflow-hidden">
+                    <div className="h-[calc(100vh-200px)] bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg border relative overflow-hidden"></div>
                       {thinkingNetwork.length === 0 ? (
                         <div className="absolute inset-0 flex items-center justify-center"><div className="text-center">
                             ```
