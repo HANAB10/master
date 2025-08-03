@@ -1215,8 +1215,8 @@ export default function EduMindAI() {
                     <h5 className="text-sm font-medium mb-2 text-indigo-700">Suggested Next Steps</h5>
                     <div className="space-y-1">
                       {discussions.length === 0 ? (
-                        <div className="text-xs text-slate-600 bg-gradient-to-r from-indigo-50 to-purple-50 border border-indigo-200 p-3 rounded-lg shadow-sm">
-                          💡 Start the discussion to see personalized suggestions
+                        <div className="text-sm text-gray-500 bg-gray-50 border border-gray-200 p-4 rounded-lg text-center">
+                          Resources will appear during discussion
                         </div>
                       ) : (
                         <>
