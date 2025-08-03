@@ -853,6 +853,9 @@ video {
 .h-\[1px\] {
   height: 1px;
 }
+.h-\[calc\(100\%-80px\)\] {
+  height: calc(100% - 80px);
+}
 .h-\[calc\(100vh-250px\)\] {
   height: calc(100vh - 250px);
 }
@@ -1445,6 +1448,10 @@ video {
 .bg-orange-100 {
   --tw-bg-opacity: 1;
   background-color: rgb(255 237 213 / var(--tw-bg-opacity, 1));
+}
+.bg-orange-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(234 88 12 / var(--tw-bg-opacity, 1));
 }
 .bg-popover {
   background-color: hsl(var(--popover));
@@ -3090,6 +3097,10 @@ video {
 
   .sm\:flex {
     display: flex;
+  }
+
+  .sm\:max-w-\[425px\] {
+    max-width: 425px;
   }
 
   .sm\:max-w-sm {
