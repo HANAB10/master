@@ -1011,7 +1011,7 @@ export default function EduMindAI() {
               <CardContent className="space-y-6">
                 {/* Real-time Summary */}
                 <div>
-                  <h4 className="font-medium text-sm mb-3 text-indigo-700 border-b border-indigo-200 pb-1">
+                  <h4 className="font-medium text-sm mb-3 text-indigo-700">
                     Real-time Progress
                   </h4>
                   <div className="space-y-3">
@@ -1037,7 +1037,7 @@ export default function EduMindAI() {
 
                 {/* Final Summary */}
                 <div>
-                  <h4 className="font-medium text-sm mb-3 text-indigo-700 border-b border-indigo-200 pb-1">
+                  <h4 className="font-medium text-sm mb-3 text-indigo-700">
                     Final Summary
                   </h4>
                   <div className="space-y-3">
