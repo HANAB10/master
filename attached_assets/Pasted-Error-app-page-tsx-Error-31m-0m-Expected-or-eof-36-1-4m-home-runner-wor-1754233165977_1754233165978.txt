@@ -1,0 +1,23 @@
+Error: ./app/page.tsx
+Error:   [31m×[0m Expected ';', '}' or <eof>
+   ╭─[[36;1;4m/home/runner/workspace/app/page.tsx[0m:1:1]
+ [2m1[0m │ The user wants to revert to a previous version of the code, primarily focusing on restoring the original color scheme and styles.
+   · [35;1m─┬─[0m[33;1m ────[0m
+   ·  [35;1m╰── [35;1mThis is the expression part of an expression statement[0m[0m
+ [2m2[0m │ ```
+ [2m3[0m │ ```text
+ [2m4[0m │ "use client"
+   ╰────
+
+Caused by:
+    Syntax Error
+    at tr (webpack-internal:///(pages-dir-browser)/./node_modules/.pnpm/next@15.4.5_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-devtools/index.js:552:164430)
+    at o6 (webpack-internal:///(pages-dir-browser)/./node_modules/.pnpm/next@15.4.5_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-devtools/index.js:541:62116)
+    at iP (webpack-internal:///(pages-dir-browser)/./node_modules/.pnpm/next@15.4.5_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-devtools/index.js:541:81700)
+    at i$ (webpack-internal:///(pages-dir-browser)/./node_modules/.pnpm/next@15.4.5_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-devtools/index.js:541:92800)
+    at sv (webpack-internal:///(pages-dir-browser)/./node_modules/.pnpm/next@15.4.5_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-devtools/index.js:541:125399)
+    at eval (webpack-internal:///(pages-dir-browser)/./node_modules/.pnpm/next@15.4.5_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-devtools/index.js:541:125244)
+    at sm (webpack-internal:///(pages-dir-browser)/./node_modules/.pnpm/next@15.4.5_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-devtools/index.js:541:125252)
+    at sa (webpack-internal:///(pages-dir-browser)/./node_modules/.pnpm/next@15.4.5_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-devtools/index.js:541:121554)
+    at sZ (webpack-internal:///(pages-dir-browser)/./node_modules/.pnpm/next@15.4.5_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-devtools/index.js:541:143648)
+    at MessagePort._ (webpack-internal:///(pages-dir-browser)/./node_modules/.pnpm/next@15.4.5_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-devtools/index.js:541:196942)
