@@ -911,13 +911,13 @@ export default function EduMindAI() {
       document: <FileText className="w-4 h-4" />,
       webpage: <Globe className="w-4 h-4" />,
       research: <BookOpen className="w-4 h-4" />,
-      video: <Play className="w-4 h-4" />,<replit_final_file>
+      video: <Play className="w-4 h-4" />,
     }
     return icons[type as keyof typeof icons] || <FileText className="w-4 h-4" />
   }
 
   return (
-    <div className="min-h-screen p-4 bg-transparent">
+    <div className="min-h-screen bg-gray-50 p-4">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-6 bg-gradient-to-br from-slate-50 to-blue-50 rounded-lg shadow-md border border-slate-200 p-6">
@@ -978,7 +978,7 @@ export default function EduMindAI() {
           </div>
 
           {/* Topic Section */}
-          <div className="bg-white/10 backdrop-blur-md rounded-lg shadow-lg border border-white/20 p-4 mb-4">
+          <div className="bg-white rounded-lg p-4 mb-4 border border-slate-200 shadow-sm">
             <h3 className="font-medium text-slate-700 mb-2 flex items-center gap-2">
               <BookOpen className="w-4 h-4 text-slate-600" />
               Course Topic
@@ -987,7 +987,7 @@ export default function EduMindAI() {
           </div>
 
           {/* tRAT Question */}
-          <div className="bg-white/10 backdrop-blur-md rounded-lg shadow-lg border border-white/20 p-4 border-l-4 border-blue-500 shadow-sm">
+          <div className="bg-white rounded-lg p-4 border-l-4 border-blue-500 shadow-sm">
             <h3 className="font-medium text-blue-800 mb-2 flex items-center gap-2">
               <HelpCircle className="w-4 h-4 text-blue-600" />
               tRAT Discussion Question
@@ -1015,16 +1015,16 @@ export default function EduMindAI() {
                     Real-time Progress
                   </h4>
                   <div className="space-y-3">
-                    <div className="bg-white/10 backdrop-blur-md rounded-lg shadow-lg border border-white/20 p-3 rounded border border-blue-100 shadow-sm">
+                    <div className="bg-white p-3 rounded border border-blue-100 shadow-sm">
                       <h5 className="text-xs font-medium mb-1 text-blue-800">Current Phase</h5>
                       <p className="text-xs text-blue-700">{getPhaseLabel(discussionPhase)}</p>
                     </div>
-                    <div className="bg-white/10 backdrop-blur-md rounded-lg shadow-lg border border-white/20 p-3 rounded border border-green-100 shadow-sm">
+                    <div className="bg-white p-3 rounded border border-green-100 shadow-sm">
                       <h5 className="text-xs font-medium mb-1 text-green-800">Discussion Progress</h5>
                       <p className="text-xs text-green-700">{discussions.length} contributions made</p>
                       <p className="text-xs text-green-700">Time: {formatTime(discussionTime)}</p>
                     </div>
-                    <div className="bg-white/10 backdrop-blur-md rounded-lg shadow-lg border border-white/20 p-3 rounded border border-yellow-100 shadow-sm">
+                    <div className="bg-white p-3 rounded border border-yellow-100 shadow-sm">
                       <h5 className="text-xs font-medium mb-1 text-yellow-800">Current Focus</h5>
                       <p className="text-xs text-yellow-700">
                         {discussionSummary.keyPoints.length > 0
@@ -1042,7 +1042,7 @@ export default function EduMindAI() {
                   </h4>
                   <div className="space-y-3">
                     {!isDiscussionActive && discussions.length > 0 ? (
-                      <div className="bg-white/10 backdrop-blur-md rounded-lg shadow-lg border border-white/20 p-3 rounded border border-purple-100 shadow-sm">
+                      <div className="bg-white p-3 rounded border border-purple-100 shadow-sm">
                         <h5 className="text-xs font-medium mb-2 text-purple-800">tRAT Discussion Results</h5>
                         <div className="space-y-2">
                           <div>
@@ -1069,7 +1069,7 @@ export default function EduMindAI() {
                         </div>
                       </div>
                     ) : (
-                      <div className="bg-white/10 backdrop-blur-md rounded-lg shadow-lg border border-white/20 p-3 rounded border border-gray-100 shadow-sm text-center">
+                      <div className="bg-white p-3 rounded border border-gray-100 shadow-sm text-center">
                         <p className="text-xs text-gray-500">
                           Final summary will be generated when tRAT discussion ends
                         </p>
@@ -1094,7 +1094,7 @@ export default function EduMindAI() {
                   <div>
                     <h5 className="text-sm font-medium mb-2 text-indigo-700">Discussion Quality</h5>
                     <div className="space-y-2">
-                      <div className="bg-white/10 backdrop-blur-md rounded-lg shadow-lg border border-white/20 p-3 rounded border border-indigo-100">
+                      <div className="bg-white p-3 rounded border border-indigo-100">
                         <div className="flex items-center justify-between mb-1">
                           <span className="text-xs font-medium">Evidence Usage</span>
                           <span className="text-xs text-indigo-600">
@@ -1111,7 +1111,7 @@ export default function EduMindAI() {
                         </div>
                       </div>
 
-                      <div className="bg-white/10 backdrop-blur-md rounded-lg shadow-lg border border-white/20 p-3 rounded border border-indigo-100">
+                      <div className="bg-white p-3 rounded border border-indigo-100">
                         <div className="flex items-center justify-between mb-1">
                           <span className="text-xs font-medium">Critical Thinking</span>
                           <span className="text-xs text-purple-600">
@@ -1301,19 +1301,19 @@ export default function EduMindAI() {
                   <div>
                     <h5 className="text-sm font-medium mb-2 text-indigo-700">Assigned Readings</h5>
                     <div className="space-y-2">
-                      <div className="bg-white/10 backdrop-blur-md rounded-lg shadow-lg border border-white/20 p-2 rounded border border-indigo-100 text-xs shadow-sm">
+                      <div className="bg-white p-2 rounded border border-indigo-100 text-xs shadow-sm">
                         <div className="flex items-center gap-2">
                           <div className="text-indigo-600">📚</div>
                           <span className="text-indigo-800">Chapter 12: Home Healthcare Quality Standards</span>
                         </div>
                       </div>
-                      <div className="bg-white/10 backdrop-blur-md rounded-lg shadow-lg border border-white/20 p-2 rounded border border-indigo-100 text-xs shadow-sm">
+                      <div className="bg-white p-2 rounded border border-indigo-100 text-xs shadow-sm">
                         <div className="flex items-center gap-2">
                           <div className="text-indigo-600">📊</div>
                           <span className="text-indigo-800">Research Article: Patient Safety in Home Care Settings</span>
                         </div>
                       </div>
-                      <div className="bg-white/10 backdrop-blur-md rounded-lg shadow-lg border border-white/20 p-2 rounded border border-indigo-100 text-xs shadow-sm">
+                      <div className="bg-white p-2 rounded border border-indigo-100 text-xs shadow-sm">
                         <div className="flex items-center gap-2">
                           <div className="text-indigo-600">📖</div>
                           <span className="text-indigo-800">Case Study: Technology Integration in Home Healthcare</span>
@@ -1327,12 +1327,12 @@ export default function EduMindAI() {
                     <ScrollArea className="h-24">
                       <div className="space-y-2 pr-2">
                         {knowledgeBase.concepts.length === 0 ? (
-                          <div className="text-xs text-gray-500 text-center py-2 bg-white/10 backdrop-blur-md rounded-lg shadow-lg border border-white/20 rounded border border-indigo-100 shadow-sm">
+                          <div className="text-xs text-gray-500 text-center py-2 bg-white rounded border border-indigo-100 shadow-sm">
                             Resources will appear during discussion
                           </div>
                         ) : (
                           knowledgeBase.concepts.slice(-5).map((concept, index) => (
-                            <div key={index} className="bg-white/10 backdrop-blur-md rounded-lg shadow-lg border border-white/20 p-2 rounded border border-indigo-100 text-xs shadow-sm">
+                            <div key={index} className="bg-white p-2 rounded border border-indigo-100 text-xs shadow-sm">
                               <div className="flex items-start gap-2">
                                 <div className="text-indigo-600 mt-0.5">🤖</div>
                                 <div>
@@ -1695,7 +1695,7 @@ export default function EduMindAI() {
                         const speakingTime = memberSpeakingTimes[member.name] || 0
 
                         return (
-                          <div key={member.id} className="bg-white/10 backdrop-blur-md rounded-lg shadow-lg border border-white/20 p-3 rounded border border-indigo-100 shadow-sm">
+                          <div key={member.id} className="bg-white p-3 rounded border border-indigo-100 shadow-sm">
                             <div className="flex items-center gap-2 mb-2">
                               <Avatar className="w-6 h-6">
                                 <AvatarFallback className="text-xs bg-indigo-100 text-indigo-600">{member.name[0]}</AvatarFallback>
@@ -1748,12 +1748,12 @@ export default function EduMindAI() {
                     <h5 className="text-sm font-medium mb-2 text-indigo-700">Your Questions</h5>
                     <div className="space-y-2 max-h-32 overflow-y-auto">
                       {userQuestions.length === 0 ? (
-                        <div className="text-xs text-gray-500 text-center py-2 bg-white/10 backdrop-blur-md rounded-lg shadow-lg border border-white/20 rounded border border-indigo-100 shadow-sm">
+                        <div className="text-xs text-gray-500 text-center py-2 bg-white rounded border border-indigo-100 shadow-sm">
                           No questions added yet
                         </div>
                       ) : (
                         userQuestions.map((question) => (
-                          <div key={question.id} className="bg-white/10 backdrop-blur-md rounded-lg shadow-lg border border-white/20 p-2 rounded border border-indigo-100 text-xs shadow-sm">
+                          <div key={question.id} className="bg-white p-2 rounded border border-indigo-100 text-xs shadow-sm">
                             <div className="text-indigo-800">{question.content}</div>
                             <div className="text-indigo-600 text-xs mt-1">{question.timestamp.toLocaleTimeString()}</div>
                           </div>
