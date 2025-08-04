@@ -1316,10 +1316,10 @@ export default function EduMindAI() {
             <Card className="h-full flex flex-col bg-gradient-to-br from-slate-50 to-blue-50 border-slate-200">
               <CardHeader className="pb-3 flex-shrink-0">
                 <Tabs defaultValue="guidance" className="w-full h-full flex flex-col">
-                  <TabsList className="grid w-full grid-cols-3">
-                    <TabsTrigger value="guidance">AI Guidance</TabsTrigger>
-                    <TabsTrigger value="resources">Resources</TabsTrigger>
-                    <TabsTrigger value="mindmap">Mindmap</TabsTrigger>
+                  <TabsList className="grid w-full grid-cols-3 border border-gray-300 bg-gray-50 rounded-md p-1">
+                    <TabsTrigger value="guidance" className="border border-gray-300 rounded-sm bg-white">AI Guidance</TabsTrigger>
+                    <TabsTrigger value="resources" className="border border-gray-300 rounded-sm bg-white">Resources</TabsTrigger>
+                    <TabsTrigger value="mindmap" className="border border-gray-300 rounded-sm bg-white">Mindmap</TabsTrigger>
                   </TabsList>
 
                   <TabsContent value="guidance" className="mt-4 flex-1">
