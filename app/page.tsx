@@ -1197,7 +1197,7 @@ export default function EduMindAI() {
                     <div className="space-y-1">
                       {discussions.length === 0 ? (
                         <div className="bg-white rounded-lg border border-slate-200 p-6">
-                          <div className="flex items-start gap-3 text-gray-500">
+                          <div className="flex items-start gap-3 text-gray-500 text-xs">
                             <span className="text-yellow-500 mt-1">💡</span>
                             Start the discussion to see personalized suggestions
                           </div>
