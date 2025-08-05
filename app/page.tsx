@@ -1531,7 +1531,7 @@ export default function EduMindAI() {
                   </TabsContent>
 
                   <TabsContent value="resources" className="mt-4 flex-1">
-                    <div className="h-[calc(100vh-200px)] bg-gray-50 rounded-lg border border-gray-300 p-4">
+                    <div className="h-[calc(100vh-200px)] bg-gray-50 rounded-lg border border-slate-200 p-4">
                       {selectedResource ? (
                         <div className="h-full">
                           <div className="flex items-center gap-2 mb-4">
@@ -1546,7 +1546,7 @@ export default function EduMindAI() {
                               ✕
                             </Button>
                           </div>
-                          <div className="bg-white rounded border border-gray-300 p-4 h-full overflow-auto">
+                          <div className="bg-white rounded border border-slate-200 p-4 h-full overflow-auto">
                             {selectedResource.url ? (
                               <div className="space-y-3">
                                 <p className="text-sm text-gray-600">{selectedResource.summary}</p>
