@@ -1577,7 +1577,7 @@ export default function EduMindAI() {
                   </TabsContent>
 
                   <TabsContent value="mindmap" className="mt-4 flex-1">
-                    <div className="h-[calc(100vh-200px)] bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg border relative overflow-hidden">
+                    <div className="h-[calc(100vh-200px)] rounded-lg border relative overflow-hidden" style={{backgroundColor: '#F9FAFB'}}>
                       {thinkingNetwork.length === 0 ? (
                         <div className="absolute inset-0 flex items-center justify-center"><div className="text-center">
                             ```
