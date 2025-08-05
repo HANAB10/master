@@ -1323,7 +1323,7 @@ export default function EduMindAI() {
                   </TabsList>
 
                   <TabsContent value="guidance" className="mt-4 flex-1">
-                    <div className="h-[calc(100vh-200px)] bg-gradient-to-br from-slate-50 to-blue-50 rounded-lg border border-slate-200 p-4">
+                    <div className="h-[calc(100vh-200px)] rounded-lg border border-slate-200 p-4">
                       {/* AI Guidance Messages - No Input Box */}
                       <ScrollArea className="h-full">
                         <div className="space-y-4 pr-4">
@@ -1342,7 +1342,7 @@ export default function EduMindAI() {
                                     <span className="text-xs text-gray-500">Example</span>
                                     <Compass className="w-4 h-4 text-indigo-600" />
                                   </div>
-                                  <div className="bg-gradient-to-br from-slate-50 to-blue-50 rounded-lg p-3 border border-slate-200 shadow-sm">
+                                  <div className="rounded-lg p-3 border border-slate-200 shadow-sm" style={{backgroundColor: '#F9FAFB'}}>
                                     <div className="text-sm text-gray-800 leading-relaxed mb-3">
                                       🎯 <strong>Discussion Starter</strong>: Welcome to your tRAT discussion on home
                                       healthcare management! I'll help guide your conversation by asking probing
@@ -1381,7 +1381,7 @@ export default function EduMindAI() {
                                     <span className="text-xs text-gray-500">Example</span>
                                     <HelpCircle className="w-4 h-4 text-blue-600" />
                                   </div>
-                                  <div className="bg-gradient-to-br from-slate-50 to-blue-50 rounded-lg p-3 border border-slate-200 shadow-sm">
+                                  <div className="rounded-lg p-3 border border-slate-200 shadow-sm" style={{backgroundColor: '#F9FAFB'}}>
                                     <div className="text-sm text-gray-800 leading-relaxed mb-3">
                                       🤔 <strong>Socratic Question</strong>: I notice you mentioned that "medication
                                       management is the top priority." Can you think of situations where this might not
@@ -1404,7 +1404,7 @@ export default function EduMindAI() {
                                     <span className="text-xs text-gray-500">Example</span>
                                     <Puzzle className="w-4 h-4 text-purple-600" />
                                   </div>
-                                  <div className="bg-gradient-to-br from-slate-50 to-blue-50 rounded-lg p-3 border border-slate-200 shadow-sm">
+                                  <div className="rounded-lg p-3 border border-slate-200 shadow-sm" style={{backgroundColor: '#F9FAFB'}}>
                                     <div className="text-sm text-gray-800 leading-relaxed mb-3">
                                       🔄 <strong>Knowledge Synthesis</strong>: Great discussion so far! I'm seeing
                                       connections between three key themes: medication safety, caregiver competency, and
@@ -1441,7 +1441,7 @@ export default function EduMindAI() {
                                     <span className="text-xs text-gray-500">Example</span>
                                     <BookOpen className="w-4 h-4 text-green-600" />
                                   </div>
-                                  <div className="bg-gradient-to-br from-slate-50 to-blue-50 rounded-lg p-3 border border-slate-200 shadow-sm">
+                                  <div className="rounded-lg p-3 border border-slate-200 shadow-sm" style={{backgroundColor: '#F9FAFB'}}>
                                     <div className="text-sm text-gray-800 leading-relaxed mb-3">
                                       📚 <strong>Resource Provision</strong>: Based on your discussion about infection
                                       control in home settings, I found some relevant research that might strengthen
@@ -1486,7 +1486,7 @@ export default function EduMindAI() {
                                       </span>
                                       {getInterventionIcon(intervention.type)}
                                     </div>
-                                    <div className="bg-gradient-to-br from-slate-50 to-blue-50 rounded-lg p-3 border border-slate-200 shadow-sm">
+                                    <div className="rounded-lg p-3 border border-slate-200 shadow-sm" style={{backgroundColor: '#F9FAFB'}}>
                                       <div className="text-sm text-gray-800 leading-relaxed mb-3">
                                         {intervention.content.split("**").map((part, idx) =>
                                           idx % 2 === 1 ? (
