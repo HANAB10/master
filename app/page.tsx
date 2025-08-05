@@ -211,6 +211,7 @@ export default function EduMindAI() {
     }>
   >([])
   const [currentQuestionInput, setCurrentQuestionInput] = useState("")
+  const [newMessage, setNewMessage] = useState(""); // Assuming this state variable is used for the message input
 
   const teamMembers: TeamMember[] = [
     {
@@ -915,6 +916,29 @@ export default function EduMindAI() {
     }
     return icons[type as keyof typeof icons] || <FileText className="w-4 h-4" />
   }
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.key === "Enter" && !e.shiftKey && isDiscussionActive) {
+      e.preventDefault(); // Prevent default Enter behavior (new line)
+      if (newMessage.trim()) {
+        const newDiscussion: Discussion = {
+          id: Date.now().toString(),
+          speaker: "You", // Assuming the user is 'You'
+          content: newMessage,
+          timestamp: new Date(),
+          quality: analyzeDiscussionQuality(newMessage, analyzeLogicalStructure(newMessage)),
+          keywords: extractKeywords(newMessage),
+          concepts: extractConcepts(newMessage),
+          logicalStructure: analyzeLogicalStructure(newMessage),
+          thoughtType: identifyThoughtType(newMessage),
+          connectsTo: findConnections(newMessage, discussions),
+        };
+        setDiscussions((prev) => [...prev, newDiscussion]);
+        setNewMessage(""); // Clear the input
+        processNewDiscussion(newDiscussion);
+      }
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gray-50 p-4">
