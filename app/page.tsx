@@ -920,7 +920,7 @@ export default function EduMindAI() {
     <div className="min-h-screen bg-gray-50 p-4">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="mb-6 bg-gradient-to-br from-slate-50 to-blue-50 rounded-lg shadow-md border border-slate-200 p-6">
+        <div className="mb-6 bg-gradient-to-br from-slate-50 to-blue-50 rounded-lg border border-slate-200 p-6">
           <div className="flex items-center justify-between mb-4">
             <h1 className="text-2xl font-bold text-slate-700 flex items-center gap-3">
               <Brain className="w-8 h-8 text-indigo-600" />
