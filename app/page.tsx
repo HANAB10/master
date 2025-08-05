@@ -1042,37 +1042,18 @@ export default function EduMindAI() {
                   </h4>
                   <div className="space-y-3">
                     {!isDiscussionActive && discussions.length > 0 ? (
-                      <div className="bg-white p-3 rounded border border-purple-100 shadow-sm">
-                        <h5 className="text-xs font-medium mb-2 text-purple-800">tRAT Discussion Results</h5>
-                        <div className="space-y-2">
-                          <div>
-                            <span className="text-xs font-medium text-purple-800">Team Consensus:</span>
-                            <ul className="text-xs text-purple-700 mt-1 space-y-1">
-                              {discussionSummary.keyPoints.slice(0, 3).map((point, index) => (
-                                <li key={index}>• {point}</li>
-                              ))}
-                            </ul>
-                          </div>
-                          <div>
-                            <span className="text-xs font-medium text-purple-800">Evidence Quality:</span>
-                            <p className="text-xs text-purple-700">
-                              {discussions.filter((d) => d.logicalStructure.hasEvidence).length} evidence-based
-                              arguments
-                            </p>
-                          </div>
-                          <div>
-                            <span className="text-xs font-medium text-purple-800">Team Participation:</span>
-                            <p className="text-xs text-purple-700">
-                              {new Set(discussions.map((d) => d.speaker)).size}/4 members contributed
-                            </p>
-                          </div>
+                      <div className="bg-white rounded-lg border border-slate-200 p-6">
+                        <div className="text-center text-gray-500">
+                          Final summary will be generated when<br />
+                          tRAT discussion ends
                         </div>
                       </div>
                     ) : (
-                      <div className="bg-white p-3 rounded border border-gray-100 shadow-sm text-center">
-                        <p className="text-xs text-gray-500">
-                          Final summary will be generated when tRAT discussion ends
-                        </p>
+                      <div className="bg-white rounded-lg border border-slate-200 p-6">
+                        <div className="text-center text-gray-500">
+                          Final summary will be generated when<br />
+                          tRAT discussion ends
+                        </div>
                       </div>
                     )}
                   </div>
@@ -1215,8 +1196,11 @@ export default function EduMindAI() {
                     <h5 className="text-sm font-medium mb-2 text-indigo-700">Suggested Next Steps</h5>
                     <div className="space-y-1">
                       {discussions.length === 0 ? (
-                        <div className="text-xs text-slate-600 bg-white border border-gray-200 p-3 rounded-lg shadow-sm">
-                          💡 Start the discussion to see personalized suggestions
+                        <div className="bg-white rounded-lg border border-slate-200 p-6">
+                          <div className="flex items-start gap-3 text-gray-500">
+                            <span className="text-yellow-500 mt-1">💡</span>
+                            Start the discussion to see personalized suggestions
+                          </div>
                         </div>
                       ) : (
                         <>
