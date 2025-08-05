@@ -1002,7 +1002,7 @@ export default function EduMindAI() {
           </div>
 
           {/* Topic Section */}
-          <div className="bg-white rounded-lg p-4 mb-4 border border-slate-200 shadow-sm">
+          <div className="bg-white rounded-lg p-4 mb-4 border border-slate-200">
             <h3 className="font-medium text-slate-700 mb-2 flex items-center gap-2">
               <BookOpen className="w-4 h-4 text-slate-600" />
               Course Topic
