@@ -1043,14 +1043,14 @@ export default function EduMindAI() {
                   <div className="space-y-3">
                     {!isDiscussionActive && discussions.length > 0 ? (
                       <div className="bg-white rounded-lg border border-slate-200 p-6">
-                        <div className="text-center text-gray-500">
+                        <div className="text-center text-gray-500 text-xs">
                           Final summary will be generated when<br />
                           tRAT discussion ends
                         </div>
                       </div>
                     ) : (
                       <div className="bg-white rounded-lg border border-slate-200 p-6">
-                        <div className="text-center text-gray-500">
+                        <div className="text-center text-gray-500 text-xs">
                           Final summary will be generated when<br />
                           tRAT discussion ends
                         </div>
