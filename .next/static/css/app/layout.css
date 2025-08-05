@@ -918,6 +918,9 @@ video {
 .w-px {
   width: 1px;
 }
+.w-4\/5 {
+  width: 80%;
+}
 .min-w-0 {
   min-width: 0px;
 }
@@ -1576,6 +1579,9 @@ video {
 }
 .p-\[1px\] {
   padding: 1px;
+}
+.p-0\.5 {
+  padding: 0.125rem;
 }
 .px-1 {
   padding-left: 0.25rem;
