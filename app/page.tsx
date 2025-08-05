@@ -1011,7 +1011,7 @@ export default function EduMindAI() {
           </div>
 
           {/* tRAT Question */}
-          <div className="bg-white rounded-lg p-4 border-l-4 border-blue-500 shadow-sm">
+          <div className="bg-white rounded-lg p-4 border border-slate-200">
             <h3 className="font-medium text-blue-800 mb-2 flex items-center gap-2">
               <HelpCircle className="w-4 h-4 text-blue-600" />
               tRAT Discussion Question
