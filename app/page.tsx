@@ -793,8 +793,8 @@ export default function EduMindAI() {
   const analyzeDiscussionQuality = (content: string, logicalStructure: any): number => {
     let score = 2
 
-    if (logicalStructure.hasClaim) score += 1
     if (logicalStructure.hasEvidence) score += 1
+    if (logicalStructure.hasClaim) score += 1
     if (logicalStructure.hasReasoning) score += 1
     if (logicalStructure.hasCounterargument) score += 1
 
@@ -1261,19 +1261,19 @@ export default function EduMindAI() {
                   <div>
                     <h5 className="text-sm font-medium mb-2 text-indigo-700">Assigned Readings</h5>
                     <div className="space-y-2">
-                      <div className="bg-white p-2 rounded border border-indigo-100 text-xs shadow-sm">
+                      <div className="bg-white p-2 rounded border border-indigo-100 text-xs ">
                         <div className="flex items-center gap-2">
                           <div className="text-indigo-600">📚</div>
                           <span className="text-indigo-800">Chapter 12: Home Healthcare Quality Standards</span>
                         </div>
                       </div>
-                      <div className="bg-white p-2 rounded border border-indigo-100 text-xs shadow-sm">
+                      <div className="bg-white p-2 rounded border border-indigo-100 text-xs ">
                         <div className="flex items-center gap-2">
                           <div className="text-indigo-600">📊</div>
                           <span className="text-indigo-800">Research Article: Patient Safety in Home Care Settings</span>
                         </div>
                       </div>
-                      <div className="bg-white p-2 rounded border border-indigo-100 text-xs shadow-sm">
+                      <div className="bg-white p-2 rounded border border-indigo-100 text-xs ">
                         <div className="flex items-center gap-2">
                           <div className="text-indigo-600">📖</div>
                           <span className="text-indigo-800">Case Study: Technology Integration in Home Healthcare</span>
@@ -1292,7 +1292,7 @@ export default function EduMindAI() {
                           </div>
                         ) : (
                           knowledgeBase.concepts.slice(-5).map((concept, index) => (
-                            <div key={index} className="bg-white p-2 rounded border border-indigo-100 text-xs shadow-sm">
+                            <div key={index} className="bg-white p-2 rounded border border-indigo-100 text-xs ">
                               <div className="flex items-start gap-2">
                                 <div className="text-indigo-600 mt-0.5">🤖</div>
                                 <div>
@@ -1342,7 +1342,7 @@ export default function EduMindAI() {
                                     <span className="text-xs text-gray-500">Example</span>
                                     <Compass className="w-4 h-4 text-indigo-600" />
                                   </div>
-                                  <div className="rounded-lg p-3 border border-slate-200 shadow-sm" style={{backgroundColor: '#F9FAFB'}}>
+                                  <div className="rounded-lg p-3 border border-slate-200" style={{backgroundColor: '#F9FAFB'}}>
                                     <div className="text-sm text-gray-800 leading-relaxed mb-3">
                                       🎯 <strong>Discussion Starter</strong>: Welcome to your tRAT discussion on home
                                       healthcare management! I'll help guide your conversation by asking probing
@@ -1381,7 +1381,7 @@ export default function EduMindAI() {
                                     <span className="text-xs text-gray-500">Example</span>
                                     <HelpCircle className="w-4 h-4 text-blue-600" />
                                   </div>
-                                  <div className="rounded-lg p-3 border border-slate-200 shadow-sm" style={{backgroundColor: '#F9FAFB'}}>
+                                  <div className="rounded-lg p-3 border border-slate-200" style={{backgroundColor: '#F9FAFB'}}>
                                     <div className="text-sm text-gray-800 leading-relaxed mb-3">
                                       🤔 <strong>Socratic Question</strong>: I notice you mentioned that "medication
                                       management is the top priority." Can you think of situations where this might not
@@ -1404,7 +1404,7 @@ export default function EduMindAI() {
                                     <span className="text-xs text-gray-500">Example</span>
                                     <Puzzle className="w-4 h-4 text-purple-600" />
                                   </div>
-                                  <div className="rounded-lg p-3 border border-slate-200 shadow-sm" style={{backgroundColor: '#F9FAFB'}}>
+                                  <div className="rounded-lg p-3 border border-slate-200" style={{backgroundColor: '#F9FAFB'}}>
                                     <div className="text-sm text-gray-800 leading-relaxed mb-3">
                                       🔄 <strong>Knowledge Synthesis</strong>: Great discussion so far! I'm seeing
                                       connections between three key themes: medication safety, caregiver competency, and
@@ -1441,7 +1441,7 @@ export default function EduMindAI() {
                                     <span className="text-xs text-gray-500">Example</span>
                                     <BookOpen className="w-4 h-4 text-green-600" />
                                   </div>
-                                  <div className="rounded-lg p-3 border border-slate-200 shadow-sm" style={{backgroundColor: '#F9FAFB'}}>
+                                  <div className="rounded-lg p-3 border border-slate-200" style={{backgroundColor: '#F9FAFB'}}>
                                     <div className="text-sm text-gray-800 leading-relaxed mb-3">
                                       📚 <strong>Resource Provision</strong>: Based on your discussion about infection
                                       control in home settings, I found some relevant research that might strengthen
@@ -1486,7 +1486,7 @@ export default function EduMindAI() {
                                       </span>
                                       {getInterventionIcon(intervention.type)}
                                     </div>
-                                    <div className="rounded-lg p-3 border border-slate-200 shadow-sm" style={{backgroundColor: '#F9FAFB'}}>
+                                    <div className="rounded-lg p-3 border border-slate-200" style={{backgroundColor: '#F9FAFB'}}>
                                       <div className="text-sm text-gray-800 leading-relaxed mb-3">
                                         {intervention.content.split("**").map((part, idx) =>
                                           idx % 2 === 1 ? (
@@ -1637,7 +1637,7 @@ export default function EduMindAI() {
           {/* Right Sidebar - Dashboard */}
           <div className="col-span-3 space-y-6">
             {/* Dashboard */}
-            <Card className="bg-gradient-to-br from-indigo-50 to-purple-50 border-indigo-200 shadow-sm">
+            <Card className="bg-gradient-to-br from-indigo-50 to-purple-50 border-indigo-200">
               <CardHeader className="pb-3">
                 <CardTitle className="text-lg flex items-center gap-2">
                   <Users className="w-5 h-5 text-indigo-600" />
@@ -1655,7 +1655,7 @@ export default function EduMindAI() {
                         const speakingTime = memberSpeakingTimes[member.name] || 0
 
                         return (
-                          <div key={member.id} className="bg-white p-3 rounded border border-indigo-100 shadow-sm">
+                          <div key={member.id} className="bg-white p-3 rounded border border-indigo-100 ">
                             <div className="flex items-center gap-2 mb-2">
                               <Avatar className="w-6 h-6">
                                 <AvatarFallback className="text-xs bg-indigo-100 text-indigo-600">{member.name[0]}</AvatarFallback>
@@ -1694,7 +1694,7 @@ export default function EduMindAI() {
             </Card>
 
             {/* Add Questions Section */}
-            <Card className="bg-gradient-to-br from-indigo-50 to-purple-50 border-indigo-200 shadow-sm">
+            <Card className="bg-gradient-to-br from-indigo-50 to-purple-50 border-indigo-200">
               <CardHeader className="pb-3">
                 <CardTitle className="text-lg flex items-center gap-2">
                   <HelpCircle className="w-5 h-5 text-indigo-600" />
@@ -1708,12 +1708,12 @@ export default function EduMindAI() {
                     <h5 className="text-sm font-medium mb-2 text-indigo-700">Your Questions</h5>
                     <div className="space-y-2 max-h-32 overflow-y-auto">
                       {userQuestions.length === 0 ? (
-                        <div className="text-xs text-gray-500 text-center py-2 bg-white rounded border border-indigo-100 shadow-sm">
+                        <div className="text-xs text-gray-500 text-center py-2 bg-white rounded border border-indigo-100 ">
                           No questions added yet
                         </div>
                       ) : (
                         userQuestions.map((question) => (
-                          <div key={question.id} className="bg-white p-2 rounded border border-indigo-100 text-xs shadow-sm">
+                          <div key={question.id} className="bg-white p-2 rounded border border-indigo-100 text-xs ">
                             <div className="text-indigo-800">{question.content}</div>
                             <div className="text-indigo-600 text-xs mt-1">{question.timestamp.toLocaleTimeString()}</div>
                           </div>
