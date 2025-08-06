@@ -212,6 +212,7 @@ export default function EduMindAI() {
   >([])
   const [currentQuestionInput, setCurrentQuestionInput] = useState("")
   const [newMessage, setNewMessage] = useState(""); // Assuming this state variable is used for the message input
+  const [showAIFeedback, setShowAIFeedback] = useState(false)
 
   const teamMembers: TeamMember[] = [
     {
@@ -689,6 +690,104 @@ export default function EduMindAI() {
     }
   }
 
+  const generateAIFeedbackContent = () => {
+    const feedbackItems = []
+
+    // Participation Balance Feedback
+    if (discussions.length > 0) {
+      const speakers = new Set(discussions.map(d => d.speaker))
+      const participation = Array.from(speakers).map(speaker => ({
+        speaker,
+        count: discussions.filter(d => d.speaker === speaker).length
+      }))
+      const maxContributions = Math.max(...participation.map(p => p.count))
+      const minContributions = Math.min(...participation.map(p => p.count))
+      const isUnbalanced = maxContributions - minContributions > 2
+
+      if (isUnbalanced) {
+        feedbackItems.push({
+          id: 'participation-balance',
+          type: 'analysis',
+          title: 'Participation Balance',
+          content: 'The discussion showed some participation imbalances. Consider encouraging quieter members to share their perspectives in future discussions.',
+          icon: '⚖️'
+        })
+      }
+    }
+
+    // Evidence Quality Feedback
+    if (discussions.length > 0) {
+      const evidenceRate = discussions.filter(d => d.logicalStructure.hasEvidence).length / discussions.length
+      if (evidenceRate < 0.4 && discussions.length > 3) {
+        feedbackItems.push({
+          id: 'evidence-quality',
+          type: 'suggestion',
+          title: 'Evidence Integration',
+          content: 'Your team could strengthen arguments by connecting more points to the assigned readings and case studies. Consider referencing specific research findings and data.',
+          icon: '📚'
+        })
+      }
+    }
+
+    // Discussion Depth Analysis
+    if (discussions.length > 0) {
+      const avgQuality = discussions.reduce((sum, d) => sum + d.quality, 0) / discussions.length
+      if (avgQuality < 3 && discussions.length > 2) {
+        feedbackItems.push({
+          id: 'discussion-depth',
+          type: 'improvement',
+          title: 'Discussion Depth',
+          content: 'The discussion could benefit from exploring the "why" and "how" behind your safety factor rankings. Consider asking probing questions and providing detailed justifications.',
+          icon: '🔍'
+        })
+      }
+    }
+
+    // Synthesis Encouragement
+    if (discussions.length > 0) {
+      const synthesisCount = discussions.filter(d => d.thoughtType === "synthesis").length
+      if (discussions.length > 5 && synthesisCount === 0) {
+        feedbackItems.push({
+          id: 'synthesis-opportunity',
+          type: 'suggestion',
+          title: 'Synthesis Opportunity',
+          content: 'Great discussions! Your team had rich conversations but could work on synthesizing different viewpoints into cohesive conclusions and action plans.',
+          icon: '🔄'
+        })
+      }
+    }
+
+    // Positive Reinforcement
+    if (discussions.length > 0) {
+      const highQualityDiscussions = discussions.filter(d => d.quality >= 4).length
+      if (highQualityDiscussions > 0) {
+        feedbackItems.push({
+          id: 'excellent-progress',
+          type: 'praise',
+          title: 'Excellent Progress',
+          content: `Outstanding work! I identified ${highQualityDiscussions} high-quality argument${highQualityDiscussions > 1 ? 's' : ''} with strong evidence and reasoning. Keep building on these insights!`,
+          icon: '⭐'
+        })
+      }
+    }
+
+    // Overall Performance Summary
+    if (discussions.length > 0) {
+      const totalSpeakingTime = Object.values(memberSpeakingTimes).reduce((sum, time) => sum + time, 0)
+      const avgSpeakingTime = totalSpeakingTime / teamMembers.length
+      
+      feedbackItems.push({
+        id: 'overall-summary',
+        type: 'summary',
+        title: 'Discussion Summary',
+        content: `Your team completed a ${Math.floor(discussionTime / 60)}-minute discussion with ${discussions.length} contributions across ${discussionPhase} phases. Key concepts discussed included: ${[...new Set(discussions.flatMap(d => d.concepts))].slice(0, 5).join(', ')}.`,
+        icon: '📊'
+      })
+    }
+
+    return feedbackItems
+  }
+
   const updateKnowledgeBase = () => {
     if (discussions.length === 0) return
 
@@ -993,6 +1092,17 @@ export default function EduMindAI() {
                 </Button>
               )}
 
+              {/* AI Feedback Button - Only clickable when discussion is not active */}
+              <Button
+                onClick={() => setShowAIFeedback(!showAIFeedback)}
+                variant="outline"
+                className="border-purple-200 hover:bg-purple-50"
+                disabled={isDiscussionActive}
+              >
+                <Brain className="w-4 h-4 mr-2 text-purple-600" />
+                <span className="text-purple-600">AI Feedback</span>
+              </Button>
+
               <Avatar className="w-10 h-10 border-2 border-indigo-200">
                 <AvatarFallback className="bg-indigo-100">
                   <Users className="w-5 h-5 text-indigo-600" />
@@ -1147,176 +1257,7 @@ export default function EduMindAI() {
               </CardContent>
             </Card>
 
-            {/* AI Feedback Module */}
-            <Card className="bg-gradient-to-br from-indigo-50 to-purple-50 border-indigo-200">
-              <CardHeader className="pb-3">
-                <CardTitle className="text-lg flex items-center gap-2">
-                  <Brain className="w-5 h-5 text-indigo-600" />
-                  AI Feedback
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  {/* AI Insights */}
-                  <div>
-                    <h5 className="text-sm font-medium mb-2 text-indigo-700">AI Insights</h5>
-                    <ScrollArea className="h-32">
-                      <div className="space-y-2 pr-2">
-                        {discussions.length === 0 ? (
-                          <div className="text-xs text-gray-500 text-center py-4">
-                            AI feedback will appear during discussion
-                          </div>
-                        ) : (
-                          <>
-                            {/* Participation Balance Feedback */}
-                            {(() => {
-                              const speakers = new Set(discussions.map(d => d.speaker));
-                              const participation = Array.from(speakers).map(speaker => ({
-                                speaker,
-                                count: discussions.filter(d => d.speaker === speaker).length
-                              }));
-                              const maxContributions = Math.max(...participation.map(p => p.count));
-                              const minContributions = Math.min(...participation.map(p => p.count));
-                              const isUnbalanced = maxContributions - minContributions > 2;
-
-                              return isUnbalanced ? (
-                                <div className="bg-gradient-to-br from-slate-50 to-gray-100 p-2 rounded border border-slate-200">
-                                  <div className="flex items-start gap-2">
-                                    <div className="text-slate-600 mt-0.5">⚖️</div>
-                                    <div>
-                                      <p className="text-xs font-medium text-slate-800">Participation Balance</p>
-                                      <p className="text-xs text-slate-700">
-                                        Consider encouraging quieter members to share their perspectives.
-                                      </p>
-                                    </div>
-                                  </div>
-                                </div>
-                              ) : null;
-                            })()}
-
-                            {/* Evidence Quality Feedback */}
-                            {(() => {
-                              const evidenceRate = discussions.length > 0 ? 
-                                discussions.filter(d => d.logicalStructure.hasEvidence).length / discussions.length : 0;
-
-                              return evidenceRate < 0.4 && discussions.length > 3 ? (
-                                <div className="bg-blue-50 p-2 rounded border border-blue-200">
-                                  <div className="flex items-start gap-2">
-                                    <div className="text-blue-600 mt-0.5">📚</div>
-                                    <div>
-                                      <p className="text-xs font-medium text-blue-800">Evidence Integration</p>
-                                      <p className="text-xs text-blue-700">
-                                        Try to connect more arguments to the assigned readings and case studies.
-                                      </p>
-                                    </div>
-                                  </div>
-                                </div>
-                              ) : null;
-                            })()}
-
-                            {/* Depth Analysis Feedback */}
-                            {(() => {
-                              const avgQuality = discussions.length > 0 ? 
-                                discussions.reduce((sum, d) => sum + d.quality, 0) / discussions.length : 0;
-
-                              return avgQuality < 3 && discussions.length > 2 ? (
-                                <div className="bg-gradient-to-br from-rose-50 to-pink-100 p-2 rounded border border-rose-200">
-                                  <div className="flex items-start gap-2">
-                                    <div className="text-rose-600 mt-0.5">🔍</div>
-                                    <div>
-                                      <p className="text-xs font-medium text-rose-800">Discussion Depth</p>
-                                      <p className="text-xs text-rose-700">
-                                        Consider exploring the "why" and "how" behind your safety factor rankings.
-                                      </p>
-                                    </div>
-                                  </div>
-                                </div>
-                              ) : null;
-                            })()}
-
-                            {/* Synthesis Encouragement */}
-                            {(() => {
-                              const synthesisCount = discussions.filter(d => d.thoughtType === "synthesis").length;
-
-                              return discussions.length > 5 && synthesisCount === 0 ? (
-                                <div className="bg-green-50 p-2 rounded border border-green-200">
-                                  <div className="flex items-start gap-2">
-                                    <div className="text-green-600 mt-0.5">🔄</div>
-                                    <div>
-                                      <p className="text-xs font-medium text-green-800">Synthesis Opportunity</p>
-                                      <p className="text-xs text-green-700">
-                                        Great discussions! Consider synthesizing different viewpoints into a cohesive ranking.
-                                      </p>
-                                    </div>
-                                  </div>
-                                </div>
-                              ) : null;
-                            })()}
-
-                            {/* Positive Reinforcement */}
-                            {(() => {
-                              const highQualityDiscussions = discussions.filter(d => d.quality >= 4).length;
-
-                              return highQualityDiscussions > 0 ? (
-                                <div className="bg-purple-50 p-2 rounded border border-purple-200">
-                                  <div className="flex items-start gap-2">
-                                    <div className="text-purple-600 mt-0.5">⭐</div>
-                                    <div>
-                                      <p className="text-xs font-medium text-purple-800">Excellent Progress</p>
-                                      <p className="text-xs text-purple-700">
-                                        {highQualityDiscussions} high-quality argument{highQualityDiscussions > 1 ? 's' : ''} identified. Keep building on these insights!
-                                      </p>
-                                    </div>
-                                  </div>
-                                </div>
-                              ) : null;
-                            })()}
-                          </>
-                        )}
-                      </div>
-                    </ScrollArea>
-                  </div>
-
-                  {/* Quick Action Suggestions */}
-                  <div>
-                    <h5 className="text-sm font-medium mb-2 text-indigo-700">Suggested Next Steps</h5>
-                    <div className="space-y-1">
-                      {discussions.length === 0 ? (
-                        <div className="bg-white rounded-lg border border-slate-200 p-6">
-                          <div className="flex items-start gap-3 text-gray-500 text-xs">
-                            <span className="text-yellow-500 mt-1">💡</span>
-                            Start the discussion to see personalized suggestions
-                          </div>
-                        </div>
-                      ) : (
-                        <>
-                          {discussionPhase === "opening" && (
-                            <div className="text-xs bg-gradient-to-r from-blue-50 to-indigo-50 text-blue-700 p-2 rounded border border-blue-100">
-                              🎯 Focus on ranking your top 3 safety factors with initial reasoning
-                            </div>
-                          )}
-                          {discussionPhase === "exploration" && (
-                            <div className="text-xs bg-gradient-to-r from-emerald-50 to-teal-50 text-emerald-700 p-2 rounded border border-emerald-100">
-                              📖 Connect arguments to specific evidence from readings
-                            </div>
-                          )}
-                          {discussionPhase === "deepening" && (
-                            <div className="text-xs bg-gradient-to-r from-rose-50 to-pink-50 text-rose-700 p-2 rounded border border-rose-100">
-                              🤔 Challenge each other's rankings with counterarguments
-                            </div>
-                          )}
-                          {discussionPhase === "synthesis" && (
-                            <div className="text-xs bg-gradient-to-r from-purple-50 to-violet-50 text-purple-700 p-2 rounded border border-purple-100">
-                              🔄 Work toward team consensus on final safety factor ranking
-                            </div>
-                          )}
-                        </>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+            
           </div>
 
           {/* Center - AI Guidance & Resources */}
@@ -1335,7 +1276,61 @@ export default function EduMindAI() {
                       {/* AI Guidance Messages - No Input Box */}
                       <ScrollArea className="h-full">
                         <div className="space-y-4 pr-4">
-                          {aiInterventions.length === 0 ? (
+                          {showAIFeedback ? (
+                            <>
+                              {/* AI Feedback Content */}
+                              <div className="flex gap-3">
+                                <Avatar className="w-8 h-8 mt-1">
+                                  <AvatarFallback className="text-xs bg-purple-100 text-purple-600">
+                                    <Brain className="w-4 h-4" />
+                                  </AvatarFallback>
+                                </Avatar>
+                                <div className="flex-1">
+                                  <div className="flex items-center gap-2 mb-1">
+                                    <span className="font-medium text-sm text-purple-600">EduMind AI Feedback</span>
+                                    <span className="text-xs text-gray-500">Analysis Complete</span>
+                                    <Brain className="w-4 h-4 text-purple-600" />
+                                  </div>
+                                  <div className="rounded-lg p-3 border border-slate-200" style={{backgroundColor: '#F9FAFB'}}>
+                                    <div className="text-sm text-gray-800 leading-relaxed mb-3">
+                                      🧠 <strong>Comprehensive Discussion Analysis</strong>: I've analyzed your team's discussion performance across multiple dimensions. Here's your detailed feedback:
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
+                              {generateAIFeedbackContent().map((feedback, index) => (
+                                <div key={feedback.id} className="flex gap-3">
+                                  <Avatar className="w-8 h-8 mt-1">
+                                    <AvatarFallback className="text-xs bg-purple-100 text-purple-600">
+                                      <span>{feedback.icon}</span>
+                                    </AvatarFallback>
+                                  </Avatar>
+                                  <div className="flex-1">
+                                    <div className="flex items-center gap-2 mb-1">
+                                      <span className="font-medium text-sm text-purple-600">{feedback.title}</span>
+                                      <span className="text-xs text-gray-500 capitalize">{feedback.type}</span>
+                                    </div>
+                                    <div className="rounded-lg p-3 border border-slate-200" style={{backgroundColor: '#F9FAFB'}}>
+                                      <div className="text-sm text-gray-800 leading-relaxed">
+                                        {feedback.content}
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              ))}
+
+                              {discussions.length === 0 && (
+                                <div className="text-center py-8">
+                                  <Brain className="w-12 h-12 text-gray-400 mx-auto mb-4" />
+                                  <p className="text-gray-600">No discussion data available for feedback analysis.</p>
+                                  <p className="text-gray-500 text-sm mt-2">Complete a discussion to receive AI feedback.</p>
+                                </div>
+                              )}
+                            </>
+                          ) : (
+                            <>
+                              {aiInterventions.length === 0 ? (
                             <div className="space-y-4 pr-4">
                               {/* 示例AI干预 */}
                               <div className="flex gap-3">
@@ -1533,7 +1528,6 @@ export default function EduMindAI() {
                               ))}
                             </>
                           )}
-                        </div>
                       </ScrollArea>
                     </div>
                   </TabsContent>
