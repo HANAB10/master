@@ -1102,11 +1102,11 @@ export default function EduMindAI() {
               <Button
                 onClick={() => setShowAIFeedback(!showAIFeedback)}
                 variant="outline"
-                className="border-purple-200 hover:bg-purple-50"
+                className="bg-indigo-50 border-indigo-200 text-[#4338CA]"
                 disabled={isDiscussionActive}
               >
-                <Brain className="w-4 h-4 mr-2 text-purple-600" />
-                <span className="text-purple-600">AI Feedback</span>
+                <Brain className="w-4 h-4 mr-2 text-[#4338CA]" />
+                <span className="text-[#4338CA]">AI Feedback</span>
               </Button>
 
               <Avatar className="w-10 h-10 border-2 border-indigo-200">
@@ -1293,9 +1293,9 @@ export default function EduMindAI() {
                                 </Avatar>
                                 <div className="flex-1">
                                   <div className="flex items-center gap-2 mb-1">
-                                    <span className="font-medium text-sm text-purple-600">EduMind AI Feedback</span>
+                                    <span className="font-medium text-sm text-[#4338CA]">EduMind AI Feedback</span>
                                     <span className="text-xs text-gray-500">Analysis Complete</span>
-                                    <Brain className="w-4 h-4 text-purple-600" />
+                                    <Brain className="w-4 h-4 text-[#4338CA]" />
                                   </div>
                                   <div className="rounded-lg p-3 border border-slate-200" style={{backgroundColor: '#F9FAFB'}}>
                                     <div className="text-sm text-gray-800 leading-relaxed mb-3">
@@ -1314,7 +1314,7 @@ export default function EduMindAI() {
                                   </Avatar>
                                   <div className="flex-1">
                                     <div className="flex items-center gap-2 mb-1">
-                                      <span className="font-medium text-sm text-purple-600">{feedback.title}</span>
+                                      <span className="font-medium text-sm text-[#4338CA]">{feedback.title}</span>
                                       <span className="text-xs text-gray-500 capitalize">{feedback.type}</span>
                                     </div>
                                     <div className="rounded-lg p-3 border border-slate-200" style={{backgroundColor: '#F9FAFB'}}>
