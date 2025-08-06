@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect, useRef } from "react"
+import React, { useState, useEffect, useRef } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
@@ -111,7 +111,7 @@ interface AIIntervention {
     summary: string
   }>
   context: {
-    triggerType: "silence" | "confusion" | "depth_needed" | "synthesis_time" | "knowledge_gap" | "user_message"
+    triggerType: "silence" | "confusion" | "depth_needed" | "synthesis_time" | "knowledge_gap" | "user_message" | "logic_clarification" | "general" | "discussion_start"
     relatedNodes: string[]
   }
 }
@@ -191,7 +191,7 @@ export default function EduMindAI() {
     "opening",
   )
   const [aiActiveMode, setAiActiveMode] = useState(true)
-  const recognitionRef = useRef<SpeechRecognition | null>(null)
+  const recognitionRef = useRef<any>(null)
   const [isVoiceCalibrating, setIsVoiceCalibrating] = useState(false)
   const [voiceCalibrationComplete, setVoiceCalibrationComplete] = useState(false)
   const [showVoiceCalibrationDialog, setShowVoiceCalibrationDialog] = useState(false)
@@ -303,7 +303,7 @@ export default function EduMindAI() {
 
   // Discussion timer and phase management
   useEffect(() => {
-    let interval: NodeJS.Timeout
+    let interval: any
     if (isDiscussionActive) {
       interval = setInterval(() => {
         setDiscussionTime((prev) => {
@@ -320,7 +320,7 @@ export default function EduMindAI() {
 
   // Intelligent silence detection
   useEffect(() => {
-    let silenceInterval: NodeJS.Timeout
+    let silenceInterval: any
     if (isDiscussionActive && !isListening) {
       silenceInterval = setInterval(() => {
         setSilenceTime((prev) => {
@@ -691,7 +691,13 @@ export default function EduMindAI() {
   }
 
   const generateAIFeedbackContent = () => {
-    const feedbackItems = []
+    const feedbackItems: Array<{
+      id: string
+      type: string
+      title: string
+      content: string
+      icon: string
+    }> = []
 
     // Participation Balance Feedback
     if (discussions.length > 0) {
@@ -773,7 +779,7 @@ export default function EduMindAI() {
 
     // Overall Performance Summary
     if (discussions.length > 0) {
-      const totalSpeakingTime = Object.values(memberSpeakingTimes).reduce((sum, time) => sum + time, 0)
+      const totalSpeakingTime = (Object.values(memberSpeakingTimes) as number[]).reduce((sum: number, time: number) => sum + time, 0)
       const avgSpeakingTime = totalSpeakingTime / teamMembers.length
 
       feedbackItems.push({
@@ -1010,7 +1016,7 @@ export default function EduMindAI() {
     const icons = {
       document: <FileText className="w-4 h-4" />,
       webpage: <Globe className="w-4 h-4" />,
-      research: <BookOpen classNameName="w-4 h-4" />,
+      research: <BookOpen className="w-4 h-4" />,
       video: <Play className="w-4 h-4" />,
     }
     return icons[type as keyof typeof icons] || <FileText className="w-4 h-4" />
@@ -1581,8 +1587,8 @@ export default function EduMindAI() {
                   <TabsContent value="mindmap" className="mt-4 flex-1">
                     <div className="h-[calc(100vh-200px)] rounded-lg border relative overflow-hidden" style={{backgroundColor: '#F9FAFB'}}>
                       {thinkingNetwork.length === 0 ? (
-                        <div className="absolute inset-0 flex items-center justify-center"><div className="text-center">
-                            ```
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <div className="text-center">
                             <Network className="w-12 h-12 text-gray-400 mx-auto mb-4" />
                             <p className="text-gray-600 mb-2">
                               Argument network will be built as the discussion progresses
