@@ -1193,8 +1193,8 @@ export default function EduMindAI() {
                         <div className="text-center text-gray-500 text-xs">
                           Final summary will be generated when<br />
                           tRAT discussion ends
-                        </div>
                       </div>
+                  </div>
                     )}
                   </div>
                 </div>
@@ -1534,6 +1534,9 @@ export default function EduMindAI() {
                               ))}
                             </>
                           )}
+                            </>
+                          )}
+                        </div>
                       </ScrollArea>
                     </div>
                   </TabsContent>
