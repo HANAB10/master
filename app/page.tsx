@@ -1053,7 +1053,7 @@ export default function EduMindAI() {
           <div className="flex items-center justify-between mb-4">
             <h1 className="text-2xl font-bold text-slate-700 flex items-center gap-3">
               <Brain className="w-8 h-8 text-indigo-600" />
-              EduMind AI - Team-Based Learning Platform
+              Edu AI - Team-Based Learning Platform
             </h1>
             <div className="flex items-center gap-4">
               {/* Voice Calibration Button */}
@@ -1293,7 +1293,7 @@ export default function EduMindAI() {
                                 </Avatar>
                                 <div className="flex-1">
                                   <div className="flex items-center gap-2 mb-1">
-                                    <span className="font-medium text-sm text-gray-700">EduMind AI Feedback</span>
+                                    <span className="font-medium text-sm text-gray-700">Edu AI Feedback</span>
                                     <span className="text-xs text-gray-500">Analysis Complete</span>
                                     <Brain className="w-4 h-4 text-[#4338CA]" />
                                   </div>
@@ -1347,7 +1347,7 @@ export default function EduMindAI() {
                                 </Avatar>
                                 <div className="flex-1">
                                   <div className="flex items-center gap-2 mb-1">
-                                    <span className="font-medium text-sm text-indigo-600">EduMind AI</span>
+                                    <span className="font-medium text-sm text-indigo-600">Edu AI</span>
                                     <span className="text-xs text-gray-500">Example</span>
                                     <Compass className="w-4 h-4 text-indigo-600" />
                                   </div>
@@ -1386,7 +1386,7 @@ export default function EduMindAI() {
                                 </Avatar>
                                 <div className="flex-1">
                                   <div className="flex items-center gap-2 mb-1">
-                                    <span className="font-medium text-sm text-indigo-600">EduMind AI</span>
+                                    <span className="font-medium text-sm text-indigo-600">Edu AI</span>
                                     <span className="text-xs text-gray-500">Example</span>
                                     <HelpCircle className="w-4 h-4 text-blue-600" />
                                   </div>
@@ -1409,7 +1409,7 @@ export default function EduMindAI() {
                                 </Avatar>
                                 <div className="flex-1">
                                   <div className="flex items-center gap-2 mb-1">
-                                    <span className="font-medium text-sm text-indigo-600">EduMind AI</span>
+                                    <span className="font-medium text-sm text-indigo-600">Edu AI</span>
                                     <span className="text-xs text-gray-500">Example</span>
                                     <Puzzle className="w-4 h-4 text-purple-600" />
                                   </div>
@@ -1446,7 +1446,7 @@ export default function EduMindAI() {
                                 </Avatar>
                                 <div className="flex-1">
                                   <div className="flex items-center gap-2 mb-1">
-                                    <span className="font-medium text-sm text-indigo-600">EduMind AI</span>
+                                    <span className="font-medium text-sm text-indigo-600">Edu AI</span>
                                     <span className="text-xs text-gray-500">Example</span>
                                     <BookOpen className="w-4 h-4 text-green-600" />
                                   </div>
@@ -1489,7 +1489,7 @@ export default function EduMindAI() {
                                   </Avatar>
                                   <div className="flex-1">
                                     <div className="flex items-center gap-2 mb-1">
-                                      <span className="font-medium text-sm text-indigo-600">EduMind AI</span>
+                                      <span className="font-medium text-sm text-indigo-600">Edu AI</span>
                                       <span className="text-xs text-gray-500">
                                         {intervention.timestamp.toLocaleTimeString()}
                                       </span>

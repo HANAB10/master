@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import "./globals.css"
 
 export const metadata: Metadata = {
-  title: "EduMind AI - Team-Based Learning Platform",
+  title: "Edu AI - Team-Based Learning Platform",
   description: "AI-powered collaborative learning platform for team discussions",
 }
 
