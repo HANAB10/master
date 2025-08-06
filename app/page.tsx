@@ -1085,6 +1085,68 @@ export default function EduMindAI() {
               </CardContent>
             </Card>
 
+            {/* Course Resources */}
+            <Card className="bg-gradient-to-br from-indigo-50 to-purple-50 border-indigo-200 shadow-sm">
+              <CardHeader className="pb-3">
+                <CardTitle className="text-lg flex items-center gap-2">
+                  <BookOpen className="w-5 h-5 text-indigo-600" />
+                  Course Resources
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  <div>
+                    <h5 className="text-sm font-medium mb-2 text-indigo-700">Assigned Readings</h5>
+                    <div className="space-y-2">
+                      <div className="bg-white p-2 rounded border border-indigo-100 text-xs ">
+                        <div className="flex items-center gap-2">
+                          <div className="text-indigo-600">📚</div>
+                          <span className="text-indigo-800">Chapter 12: Home Healthcare Quality Standards</span>
+                        </div>
+                      </div>
+                      <div className="bg-white p-2 rounded border border-indigo-100 text-xs ">
+                        <div className="flex items-center gap-2">
+                          <div className="text-indigo-600">📊</div>
+                          <span className="text-indigo-800">Research Article: Patient Safety in Home Care Settings</span>
+                        </div>
+                      </div>
+                      <div className="bg-white p-2 rounded border border-indigo-100 text-xs ">
+                        <div className="flex items-center gap-2">
+                          <div className="text-indigo-600">📖</div>
+                          <span className="text-indigo-800">Case Study: Technology Integration in Home Healthcare</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <h5 className="text-sm font-medium mb-2 text-indigo-700">AI-Suggested Resources</h5>
+                    <ScrollArea className="h-24">
+                      <div className="space-y-2 pr-2">
+                        {knowledgeBase.concepts.length === 0 ? (
+                          <div className="text-sm text-gray-500 bg-white border border-gray-200 p-4 rounded-lg text-center">
+                            Resources will appear during discussion
+                          </div>
+                        ) : (
+                          knowledgeBase.concepts.slice(-5).map((concept, index) => (
+                            <div key={index} className="bg-white p-2 rounded border border-indigo-100 text-xs ">
+                              <div className="flex items-start gap-2">
+                                <div className="text-indigo-600 mt-0.5">🤖</div>
+                                <div>
+                                  <span className="font-medium text-indigo-800">{concept.name}:</span>
+                                  <span className="text-indigo-700"> {concept.definition.slice(0, 40)}...</span>
+                                </div>
+                              </div>
+                            </div>
+                          ))
+                        )}
+                      </div>
+                    </ScrollArea>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
             {/* AI Feedback Module */}
             <Card className="bg-gradient-to-br from-indigo-50 to-purple-50 border-indigo-200">
               <CardHeader className="pb-3">
@@ -1251,68 +1313,6 @@ export default function EduMindAI() {
                         </>
                       )}
                     </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Resources */}
-            <Card className="bg-gradient-to-br from-indigo-50 to-purple-50 border-indigo-200 shadow-sm">
-              <CardHeader className="pb-3">
-                <CardTitle className="text-lg flex items-center gap-2">
-                  <BookOpen className="w-5 h-5 text-indigo-600" />
-                  Course Resources
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  <div>
-                    <h5 className="text-sm font-medium mb-2 text-indigo-700">Assigned Readings</h5>
-                    <div className="space-y-2">
-                      <div className="bg-white p-2 rounded border border-indigo-100 text-xs ">
-                        <div className="flex items-center gap-2">
-                          <div className="text-indigo-600">📚</div>
-                          <span className="text-indigo-800">Chapter 12: Home Healthcare Quality Standards</span>
-                        </div>
-                      </div>
-                      <div className="bg-white p-2 rounded border border-indigo-100 text-xs ">
-                        <div className="flex items-center gap-2">
-                          <div className="text-indigo-600">📊</div>
-                          <span className="text-indigo-800">Research Article: Patient Safety in Home Care Settings</span>
-                        </div>
-                      </div>
-                      <div className="bg-white p-2 rounded border border-indigo-100 text-xs ">
-                        <div className="flex items-center gap-2">
-                          <div className="text-indigo-600">📖</div>
-                          <span className="text-indigo-800">Case Study: Technology Integration in Home Healthcare</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div>
-                    <h5 className="text-sm font-medium mb-2 text-indigo-700">AI-Suggested Resources</h5>
-                    <ScrollArea className="h-24">
-                      <div className="space-y-2 pr-2">
-                        {knowledgeBase.concepts.length === 0 ? (
-                          <div className="text-sm text-gray-500 bg-white border border-gray-200 p-4 rounded-lg text-center">
-                            Resources will appear during discussion
-                          </div>
-                        ) : (
-                          knowledgeBase.concepts.slice(-5).map((concept, index) => (
-                            <div key={index} className="bg-white p-2 rounded border border-indigo-100 text-xs ">
-                              <div className="flex items-start gap-2">
-                                <div className="text-indigo-600 mt-0.5">🤖</div>
-                                <div>
-                                  <span className="font-medium text-indigo-800">{concept.name}:</span>
-                                  <span className="text-indigo-700"> {concept.definition.slice(0, 40)}...</span>
-                                </div>
-                              </div>
-                            </div>
-                          ))
-                        )}
-                      </div>
-                    </ScrollArea>
                   </div>
                 </div>
               </CardContent>
@@ -1739,7 +1739,7 @@ export default function EduMindAI() {
                         value={currentQuestionInput}
                         onChange={(e) => setCurrentQuestionInput(e.target.value)}
                         onKeyPress={(e) => {
-                          if (e.key === "Enter" && currentQuestionInput.trim()) {
+                          if (e.key === "Enter" && !e.shiftKey && isDiscussionActive) {
                             const newQuestion = {
                               id: Date.now().toString(),
                               content: currentQuestionInput,
