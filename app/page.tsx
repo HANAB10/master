@@ -775,7 +775,7 @@ export default function EduMindAI() {
     if (discussions.length > 0) {
       const totalSpeakingTime = Object.values(memberSpeakingTimes).reduce((sum, time) => sum + time, 0)
       const avgSpeakingTime = totalSpeakingTime / teamMembers.length
-      
+
       feedbackItems.push({
         id: 'overall-summary',
         type: 'summary',
@@ -1257,7 +1257,7 @@ export default function EduMindAI() {
               </CardContent>
             </Card>
 
-            
+
           </div>
 
           {/* Center - AI Guidance & Resources */}
