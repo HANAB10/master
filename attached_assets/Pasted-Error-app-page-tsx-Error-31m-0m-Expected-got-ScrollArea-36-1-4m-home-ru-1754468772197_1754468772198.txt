@@ -1,0 +1,27 @@
+Error: ./app/page.tsx
+Error:   [31m×[0m Expected '</', got 'ScrollArea'
+      ╭─[[36;1;4m/home/runner/workspace/app/page.tsx[0m:1531:1]
+ [2m1528[0m │                               ))}
+ [2m1529[0m │                             </>
+ [2m1530[0m │                           )}
+ [2m1531[0m │                       </ScrollArea>
+      · [35;1m                        ──────────[0m
+ [2m1532[0m │                     </div>
+ [2m1533[0m │                   </TabsContent>
+      ╰────
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./app/page.tsx
+    at tr (webpack-internal:///(pages-dir-browser)/./node_modules/.pnpm/next@15.4.5_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-devtools/index.js:552:164430)
+    at o6 (webpack-internal:///(pages-dir-browser)/./node_modules/.pnpm/next@15.4.5_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-devtools/index.js:541:62116)
+    at iP (webpack-internal:///(pages-dir-browser)/./node_modules/.pnpm/next@15.4.5_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-devtools/index.js:541:81700)
+    at i$ (webpack-internal:///(pages-dir-browser)/./node_modules/.pnpm/next@15.4.5_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-devtools/index.js:541:92800)
+    at sv (webpack-internal:///(pages-dir-browser)/./node_modules/.pnpm/next@15.4.5_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-devtools/index.js:541:125399)
+    at eval (webpack-internal:///(pages-dir-browser)/./node_modules/.pnpm/next@15.4.5_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-devtools/index.js:541:125244)
+    at sm (webpack-internal:///(pages-dir-browser)/./node_modules/.pnpm/next@15.4.5_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-devtools/index.js:541:125252)
+    at sa (webpack-internal:///(pages-dir-browser)/./node_modules/.pnpm/next@15.4.5_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-devtools/index.js:541:121554)
+    at sZ (webpack-internal:///(pages-dir-browser)/./node_modules/.pnpm/next@15.4.5_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-devtools/index.js:541:143648)
+    at MessagePort._ (webpack-internal:///(pages-dir-browser)/./node_modules/.pnpm/next@15.4.5_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-devtools/index.js:541:196942)
