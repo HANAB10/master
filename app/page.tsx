@@ -1102,11 +1102,11 @@ export default function EduMindAI() {
               <Button
                 onClick={() => setShowAIFeedback(!showAIFeedback)}
                 variant="outline"
-                className="bg-indigo-50 border-indigo-200 text-[#4338CA]"
+                className="bg-gray-50 border-gray-200 text-gray-700"
                 disabled={isDiscussionActive}
               >
-                <Brain className="w-4 h-4 mr-2 text-[#4338CA]" />
-                <span className="text-[#4338CA]">AI Feedback</span>
+                <Brain className="w-4 h-4 mr-2 text-gray-600" />
+                <span className="text-gray-700">AI Feedback</span>
               </Button>
 
               <Avatar className="w-10 h-10 border-2 border-indigo-200">
@@ -1287,13 +1287,13 @@ export default function EduMindAI() {
                               {/* AI Feedback Content */}
                               <div className="flex gap-3">
                                 <Avatar className="w-8 h-8 mt-1">
-                                  <AvatarFallback className="text-xs bg-purple-100 text-purple-600">
+                                  <AvatarFallback className="text-xs bg-gray-100 text-gray-600">
                                     <Brain className="w-4 h-4" />
                                   </AvatarFallback>
                                 </Avatar>
                                 <div className="flex-1">
                                   <div className="flex items-center gap-2 mb-1">
-                                    <span className="font-medium text-sm text-[#4338CA]">EduMind AI Feedback</span>
+                                    <span className="font-medium text-sm text-gray-700">EduMind AI Feedback</span>
                                     <span className="text-xs text-gray-500">Analysis Complete</span>
                                     <Brain className="w-4 h-4 text-[#4338CA]" />
                                   </div>
@@ -1308,13 +1308,13 @@ export default function EduMindAI() {
                               {generateAIFeedbackContent().map((feedback, index) => (
                                 <div key={feedback.id} className="flex gap-3">
                                   <Avatar className="w-8 h-8 mt-1">
-                                    <AvatarFallback className="text-xs bg-purple-100 text-purple-600">
+                                    <AvatarFallback className="text-xs bg-gray-100 text-gray-600">
                                       <span>{feedback.icon}</span>
                                     </AvatarFallback>
                                   </Avatar>
                                   <div className="flex-1">
                                     <div className="flex items-center gap-2 mb-1">
-                                      <span className="font-medium text-sm text-[#4338CA]">{feedback.title}</span>
+                                      <span className="font-medium text-sm text-gray-700">{feedback.title}</span>
                                       <span className="text-xs text-gray-500 capitalize">{feedback.type}</span>
                                     </div>
                                     <div className="rounded-lg p-3 border border-slate-200" style={{backgroundColor: '#F9FAFB'}}>
