@@ -8,6 +8,7 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Input } from "@/components/ui/input"
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog"
+import Link from "next/link"
 import {
   Users,
   Lightbulb,
@@ -26,6 +27,8 @@ import {
   FileText,
   Globe,
   Plus,
+  Settings,
+  User,
 } from "lucide-react"
 
 interface Discussion {
@@ -1109,20 +1112,52 @@ export default function EduMindAI() {
                 <span className="text-gray-700">AI Feedback</span>
               </Button>
 
-              <Avatar className="w-10 h-10 border-2 border-indigo-200">
-                <AvatarFallback className="bg-indigo-100">
-                  <Users className="w-5 h-5 text-indigo-600" />
-                </AvatarFallback>
-              </Avatar>
+              {/* 用户菜单 */}
+              <div className="relative group">
+                <Avatar className="w-10 h-10 border-2 border-indigo-200 cursor-pointer hover:border-indigo-300 transition-colors">
+                  <AvatarFallback className="bg-indigo-100">
+                    <User className="w-5 h-5 text-indigo-600" />
+                  </AvatarFallback>
+                </Avatar>
+                
+                {/* 下拉菜单 */}
+                <div className="absolute right-0 top-12 w-48 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                  <div className="p-2">
+                    <Link href="/profile">
+                      <div className="flex items-center gap-2 px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md cursor-pointer">
+                        <User className="w-4 h-4" />
+                        个人主页
+                      </div>
+                    </Link>
+                    <Link href="/settings">
+                      <div className="flex items-center gap-2 px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md cursor-pointer">
+                        <Settings className="w-4 h-4" />
+                        设置
+                      </div>
+                    </Link>
+                    <div className="border-t border-gray-200 my-2"></div>
+                    <div className="flex items-center gap-2 px-3 py-2 text-sm text-red-600 hover:bg-red-50 rounded-md cursor-pointer">
+                      退出登录
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
           {/* Topic Section */}
           <div className="bg-white rounded-lg p-4 mb-4 border border-slate-200">
-            <h3 className="font-medium text-slate-700 mb-2 flex items-center gap-2">
-              <BookOpen className="w-4 h-4 text-slate-600" />
-              Course Topic
-            </h3>
+            <div className="flex items-center justify-between mb-2">
+              <h3 className="font-medium text-slate-700 flex items-center gap-2">
+                <BookOpen className="w-4 h-4 text-slate-600" />
+                Course Topic
+              </h3>
+              <Link href="/courses">
+                <Button variant="outline" size="sm" className="text-xs">
+                  查看所有课程
+                </Button>
+              </Link>
+            </div>
             <p className="text-slate-800">{currentTopic}</p>
           </div>
 
