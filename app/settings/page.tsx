@@ -14,91 +14,91 @@ export default function SettingsPage() {
   return (
     <div className="min-h-screen bg-gray-50 p-4">
       <div className="max-w-4xl mx-auto">
-        {/* 头部导航 */}
+        {/* Header Navigation */}
         <div className="mb-6 flex items-center gap-4">
           <Link href="/">
             <Button variant="outline" size="sm">
               <ArrowLeft className="w-4 h-4 mr-2" />
-              返回主页
+              Back to Home
             </Button>
           </Link>
           <h1 className="text-2xl font-bold text-gray-800 flex items-center gap-2">
             <SettingsIcon className="w-6 h-6" />
-            设置
+            Settings
           </h1>
         </div>
 
         <div className="space-y-6">
-          {/* 个人信息设置 */}
+          {/* Personal Information Settings */}
           <Card>
             <CardHeader>
-              <CardTitle>个人信息</CardTitle>
+              <CardTitle>Personal Information</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="firstName">姓名</Label>
-                  <Input id="firstName" defaultValue="张三" />
+                  <Label htmlFor="firstName">Name</Label>
+                  <Input id="firstName" defaultValue="John Doe" />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="email">邮箱</Label>
-                  <Input id="email" type="email" defaultValue="zhangsan@university.edu" />
+                  <Label htmlFor="email">Email</Label>
+                  <Input id="email" type="email" defaultValue="john.doe@university.edu" />
                 </div>
               </div>
               <div className="space-y-2">
-                <Label htmlFor="bio">个人简介</Label>
-                <Input id="bio" defaultValue="医学院学生，专注于家庭医疗管理研究" />
+                <Label htmlFor="bio">Bio</Label>
+                <Input id="bio" defaultValue="Medical student focusing on home healthcare management research" />
               </div>
             </CardContent>
           </Card>
 
-          {/* AI 助手设置 */}
+          {/* AI Assistant Settings */}
           <Card>
             <CardHeader>
-              <CardTitle>AI 助手设置</CardTitle>
+              <CardTitle>AI Assistant Settings</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="flex items-center justify-between">
                 <div className="space-y-0.5">
-                  <Label>启用 AI 引导</Label>
-                  <p className="text-sm text-gray-600">允许 AI 在讨论中提供引导和建议</p>
+                  <Label>Enable AI Guidance</Label>
+                  <p className="text-sm text-gray-600">Allow AI to provide guidance and suggestions during discussions</p>
                 </div>
                 <Switch defaultChecked />
               </div>
               <div className="flex items-center justify-between">
                 <div className="space-y-0.5">
-                  <Label>智能资源推荐</Label>
-                  <p className="text-sm text-gray-600">根据讨论内容自动推荐相关资源</p>
+                  <Label>Smart Resource Recommendations</Label>
+                  <p className="text-sm text-gray-600">Automatically recommend relevant resources based on discussion content</p>
                 </div>
                 <Switch defaultChecked />
               </div>
               <div className="flex items-center justify-between">
                 <div className="space-y-0.5">
-                  <Label>语音识别</Label>
-                  <p className="text-sm text-gray-600">启用语音识别功能</p>
+                  <Label>Voice Recognition</Label>
+                  <p className="text-sm text-gray-600">Enable voice recognition functionality</p>
                 </div>
                 <Switch defaultChecked />
               </div>
             </CardContent>
           </Card>
 
-          {/* 通知设置 */}
+          {/* Notification Settings */}
           <Card>
             <CardHeader>
-              <CardTitle>通知设置</CardTitle>
+              <CardTitle>Notification Settings</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="flex items-center justify-between">
                 <div className="space-y-0.5">
-                  <Label>讨论邀请</Label>
-                  <p className="text-sm text-gray-600">收到新的讨论邀请时通知我</p>
+                  <Label>Discussion Invitations</Label>
+                  <p className="text-sm text-gray-600">Notify me when I receive new discussion invitations</p>
                 </div>
                 <Switch defaultChecked />
               </div>
               <div className="flex items-center justify-between">
                 <div className="space-y-0.5">
-                  <Label>AI 反馈</Label>
-                  <p className="text-sm text-gray-600">AI 生成讨论反馈时通知我</p>
+                  <Label>AI Feedback</Label>
+                  <p className="text-sm text-gray-600">Notify me when AI generates discussion feedback</p>
                 </div>
                 <Switch defaultChecked />
               </div>
@@ -107,7 +107,7 @@ export default function SettingsPage() {
 
           <Button className="w-full bg-indigo-600 hover:bg-indigo-700">
             <Save className="w-4 h-4 mr-2" />
-            保存设置
+            Save Settings
           </Button>
         </div>
       </div>

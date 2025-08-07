@@ -1126,18 +1126,18 @@ export default function EduMindAI() {
                     <Link href="/profile">
                       <div className="flex items-center gap-2 px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md cursor-pointer">
                         <User className="w-4 h-4" />
-                        个人主页
+                        Profile
                       </div>
                     </Link>
                     <Link href="/settings">
                       <div className="flex items-center gap-2 px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md cursor-pointer">
                         <Settings className="w-4 h-4" />
-                        设置
+                        Settings
                       </div>
                     </Link>
                     <div className="border-t border-gray-200 my-2"></div>
                     <div className="flex items-center gap-2 px-3 py-2 text-sm text-red-600 hover:bg-red-50 rounded-md cursor-pointer">
-                      退出登录
+                      Sign Out
                     </div>
                   </div>
                 </div>
@@ -1152,11 +1152,7 @@ export default function EduMindAI() {
                 <BookOpen className="w-4 h-4 text-slate-600" />
                 Course Topic
               </h3>
-              <Link href="/courses">
-                <Button variant="outline" size="sm" className="text-xs">
-                  查看所有课程
-                </Button>
-              </Link>
+              
             </div>
             <p className="text-slate-800">{currentTopic}</p>
           </div>
