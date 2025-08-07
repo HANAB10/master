@@ -1119,7 +1119,7 @@ export default function EduMindAI() {
                     <User className="w-5 h-5 text-indigo-600" />
                   </AvatarFallback>
                 </Avatar>
-                
+
                 {/* 下拉菜单 */}
                 <div className="absolute right-0 top-12 w-48 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                   <div className="p-2">
@@ -1152,7 +1152,7 @@ export default function EduMindAI() {
                 <BookOpen className="w-4 h-4 text-slate-600" />
                 Course Topic
               </h3>
-              
+
             </div>
             <p className="text-slate-800">{currentTopic}</p>
           </div>
