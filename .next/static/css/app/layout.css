@@ -1300,10 +1300,6 @@ video {
 .border-primary {
   border-color: hsl(var(--primary));
 }
-.border-purple-200 {
-  --tw-border-opacity: 1;
-  border-color: rgb(233 213 255 / var(--tw-border-opacity, 1));
-}
 .border-purple-300 {
   --tw-border-opacity: 1;
   border-color: rgb(216 180 254 / var(--tw-border-opacity, 1));
@@ -1447,10 +1443,6 @@ video {
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
-}
-.bg-indigo-50 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(238 242 255 / var(--tw-bg-opacity, 1));
 }
 .bg-gradient-to-br {
   background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
@@ -1686,6 +1678,10 @@ video {
 .tracking-widest {
   letter-spacing: 0.1em;
 }
+.text-\[\#4338CA\] {
+  --tw-text-opacity: 1;
+  color: rgb(67 56 202 / var(--tw-text-opacity, 1));
+}
 .text-accent-foreground {
   color: hsl(var(--accent-foreground));
 }
@@ -1843,10 +1839,6 @@ video {
 .text-yellow-800 {
   --tw-text-opacity: 1;
   color: rgb(133 77 14 / var(--tw-text-opacity, 1));
-}
-.text-\[\#4338CA\] {
-  --tw-text-opacity: 1;
-  color: rgb(67 56 202 / var(--tw-text-opacity, 1));
 }
 .underline-offset-4 {
   text-underline-offset: 4px;
@@ -2278,10 +2270,6 @@ body {
 }
 .hover\:bg-primary\/90:hover {
   background-color: hsl(var(--primary) / 0.9);
-}
-.hover\:bg-purple-50:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(250 245 255 / var(--tw-bg-opacity, 1));
 }
 .hover\:bg-red-50:hover {
   --tw-bg-opacity: 1;
