@@ -10,8 +10,9 @@ import { Label } from "@/components/ui/label"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { GraduationCap, Users } from 'lucide-react'
 import Link from "next/link"
-import { auth } from "@/lib/firebase"
+import { auth, db } from "@/lib/firebase"
 import { signInWithEmailAndPassword } from "firebase/auth"
+import { doc, getDoc } from "firebase/firestore"
 
 export default function LoginPage() {
   const [activeTab, setActiveTab] = useState("student")
@@ -31,11 +32,18 @@ export default function LoginPage() {
       const user = userCredential.user
       
       if (user) {
-        // 登录成功后根据用户类型跳转
-        if (userType === "student") {
-          router.push("/") // 跳转到学生主页
+        // 获取用户数据来确定角色
+        const userDoc = await getDoc(doc(db, 'users', user.uid))
+        if (userDoc.exists()) {
+          const userData = userDoc.data()
+          // 根据实际用户角色跳转
+          if (userData.role === "teacher") {
+            router.push("/staff-dashboard") // 跳转到教师主页
+          } else {
+            router.push("/") // 跳转到学生主页
+          }
         } else {
-          router.push("/staff-dashboard") // 跳转到教师主页
+          router.push("/") // 默认跳转到主页
         }
       }
       
