@@ -5,7 +5,9 @@ import { useState } from "react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { supabase } from "@/lib/supabase"
+import { auth, db } from "@/lib/firebase"
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth"
+import { doc, setDoc } from "firebase/firestore"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -45,47 +47,41 @@ export default function RegisterPage() {
     }
     
     try {
-      // 使用 Supabase 注册用户
-      const { data, error: signUpError } = await supabase.auth.signUp({
-        email,
-        password,
-        options: {
-          data: {
-            first_name: firstName,
-            last_name: lastName,
-            user_type: userType,
-            // 根据用户类型添加额外信息
-            ...(userType === "student" ? {
-              student_id: formData.get("studentId"),
-              course: formData.get("course"),
-              year_of_study: formData.get("yearOfStudy")
-            } : {
-              staff_id: formData.get("staffId"),
-              department: formData.get("department"),
-              position: formData.get("position")
-            })
-          }
-        }
+      // 使用 Firebase 注册用户
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password)
+      const user = userCredential.user
+      
+      // 更新用户 profile
+      await updateProfile(user, {
+        displayName: `${firstName} ${lastName}`
       })
       
-      if (signUpError) {
-        setError(signUpError.message)
-        return
+      // 在 Firestore 中保存用户详细信息
+      const userData = {
+        email,
+        firstName,
+        lastName,
+        userType,
+        createdAt: new Date(),
+        // 根据用户类型添加额外信息
+        ...(userType === "student" ? {
+          studentId: formData.get("studentId"),
+          course: formData.get("course"),
+          yearOfStudy: formData.get("yearOfStudy")
+        } : {
+          staffId: formData.get("staffId"),
+          department: formData.get("department"),
+          position: formData.get("position")
+        })
       }
       
-      if (data.user && !data.user.email_confirmed_at) {
-        setSuccess("Registration successful! Please check your email to confirm your account.")
-        // 3秒后跳转到登录页
-        setTimeout(() => {
-          router.push("/login")
-        }, 3000)
-      } else {
-        setSuccess("Registration successful!")
-        router.push("/login")
-      }
+      await setDoc(doc(db, "users", user.uid), userData)
       
-    } catch (err) {
-      setError("An error occurred during registration")
+      setSuccess("Registration successful!")
+      router.push("/login")
+      
+    } catch (err: any) {
+      setError(err.message || "An error occurred during registration")
       console.error("Registration error:", err)
     } finally {
       setLoading(false)

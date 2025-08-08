@@ -10,7 +10,8 @@ import { Label } from "@/components/ui/label"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { GraduationCap, Users } from 'lucide-react'
 import Link from "next/link"
-import { supabase } from "@/lib/supabase"
+import { auth } from "@/lib/firebase"
+import { signInWithEmailAndPassword } from "firebase/auth"
 
 export default function LoginPage() {
   const [activeTab, setActiveTab] = useState("student")
@@ -26,25 +27,20 @@ export default function LoginPage() {
     setError("")
     
     try {
-      const { data, error } = await supabase.auth.signInWithPassword({
-        email,
-        password,
-      })
+      const userCredential = await signInWithEmailAndPassword(auth, email, password)
+      const user = userCredential.user
       
-      if (error) {
-        setError(error.message)
-        return
+      if (user) {
+        // 登录成功后根据用户类型跳转
+        if (userType === "student") {
+          router.push("/") // 跳转到学生主页
+        } else {
+          router.push("/staff-dashboard") // 跳转到教师主页
+        }
       }
       
-      // 登录成功后根据用户类型跳转
-      if (userType === "student") {
-        router.push("/") // 跳转到学生主页
-      } else {
-        router.push("/staff-dashboard") // 跳转到教师主页
-      }
-      
-    } catch (err) {
-      setError("登录时发生错误")
+    } catch (err: any) {
+      setError(err.message || "登录时发生错误")
     } finally {
       setLoading(false)
     }
