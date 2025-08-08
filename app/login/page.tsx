@@ -10,24 +10,43 @@ import { Label } from "@/components/ui/label"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { GraduationCap, Users } from 'lucide-react'
 import Link from "next/link"
+import { supabase } from "@/lib/supabase"
 
 export default function LoginPage() {
   const [activeTab, setActiveTab] = useState("student")
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState("")
   const router = useRouter()
 
   const handleLogin = async (userType: string, formData: FormData) => {
-    const email = formData.get("email")
-    const password = formData.get("password")
+    const email = formData.get("email") as string
+    const password = formData.get("password") as string
     
-    // 这里可以添加实际的登录逻辑
-    console.log(`${userType} login:`, { email, password })
+    setLoading(true)
+    setError("")
     
-    // 模拟登录成功后的路由跳转
-    // 根据用户类型跳转到不同页面
-    if (userType === "student") {
-      router.push("/") // 跳转到学生主页
-    } else {
-      router.push("/staff-dashboard") // 跳转到教师主页
+    try {
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      })
+      
+      if (error) {
+        setError(error.message)
+        return
+      }
+      
+      // 登录成功后根据用户类型跳转
+      if (userType === "student") {
+        router.push("/") // 跳转到学生主页
+      } else {
+        router.push("/staff-dashboard") // 跳转到教师主页
+      }
+      
+    } catch (err) {
+      setError("登录时发生错误")
+    } finally {
+      setLoading(false)
     }
   }
 
@@ -68,6 +87,11 @@ export default function LoginPage() {
             </TabsList>
             
             <TabsContent value="student" className="space-y-4 mt-6">
+              {error && (
+                <div className="p-3 text-sm text-red-600 bg-red-50 border border-red-200 rounded-md">
+                  {error}
+                </div>
+              )}
               <form action={(formData) => handleLogin("student", formData)} className="space-y-4">
                 <div className="space-y-2">
                   <Label htmlFor="student-email" className="text-gray-700 font-medium">Student ID / Email</Label>
@@ -84,6 +108,7 @@ export default function LoginPage() {
                     onFocus={(e) => e.target.style.setProperty('--focus-border', '#EFF4FF')}
                     onBlur={(e) => e.target.style.setProperty('--focus-border', '#e5e7eb')}
                     required 
+                    disabled={loading}
                   />
                 </div>
                 <div className="space-y-2">
@@ -101,6 +126,7 @@ export default function LoginPage() {
                     onFocus={(e) => e.target.style.setProperty('--focus-border', '#EFF4FF')}
                     onBlur={(e) => e.target.style.setProperty('--focus-border', '#e5e7eb')}
                     required 
+                    disabled={loading}
                   />
                 </div>
                 <Button 
@@ -110,8 +136,9 @@ export default function LoginPage() {
                     backgroundColor: '#EFF4FF',
                     borderColor: '#E5E7EB'
                   }}
+                  disabled={loading}
                 >
-                  Student Login
+                  {loading ? "Logging in..." : "Student Login"}
                 </Button>
               </form>
               <div className="text-center space-y-2">
@@ -128,6 +155,11 @@ export default function LoginPage() {
             </TabsContent>
             
             <TabsContent value="staff" className="space-y-4 mt-6">
+              {error && (
+                <div className="p-3 text-sm text-red-600 bg-red-50 border border-red-200 rounded-md">
+                  {error}
+                </div>
+              )}
               <form action={(formData) => handleLogin("staff", formData)} className="space-y-4">
                 <div className="space-y-2">
                   <Label htmlFor="staff-email" className="text-gray-700 font-medium">Staff ID / Email</Label>
@@ -144,6 +176,7 @@ export default function LoginPage() {
                     onFocus={(e) => e.target.style.setProperty('--focus-border', '#EFF4FF')}
                     onBlur={(e) => e.target.style.setProperty('--focus-border', '#e5e7eb')}
                     required 
+                    disabled={loading}
                   />
                 </div>
                 <div className="space-y-2">
@@ -161,6 +194,7 @@ export default function LoginPage() {
                     onFocus={(e) => e.target.style.setProperty('--focus-border', '#EFF4FF')}
                     onBlur={(e) => e.target.style.setProperty('--focus-border', '#e5e7eb')}
                     required 
+                    disabled={loading}
                   />
                 </div>
                 <Button 
@@ -170,8 +204,9 @@ export default function LoginPage() {
                     backgroundColor: '#EFF4FF',
                     borderColor: '#E5E7EB'
                   }}
+                  disabled={loading}
                 >
-                  Staff Login
+                  {loading ? "Logging in..." : "Staff Login"}
                 </Button>
               </form>
               <div className="text-center space-y-2">
