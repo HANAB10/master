@@ -5,6 +5,7 @@ import { useState } from "react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { supabase } from "@/lib/supabase"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -14,33 +15,81 @@ import { GraduationCap, Users } from 'lucide-react'
 
 export default function RegisterPage() {
   const [activeTab, setActiveTab] = useState("student")
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState("")
+  const [success, setSuccess] = useState("")
   const router = useRouter()
 
   const handleRegister = async (userType: string, formData: FormData) => {
-    const data = {
-      userType,
-      firstName: formData.get("firstName"),
-      lastName: formData.get("lastName"),
-      email: formData.get("email"),
-      password: formData.get("password"),
-      confirmPassword: formData.get("confirmPassword"),
-      // Additional fields based on user type
-      ...(userType === "student" ? {
-        studentId: formData.get("studentId"),
-        course: formData.get("course"),
-        yearOfStudy: formData.get("yearOfStudy")
-      } : {
-        staffId: formData.get("staffId"),
-        department: formData.get("department"),
-        position: formData.get("position")
-      })
+    const email = formData.get("email") as string
+    const password = formData.get("password") as string
+    const confirmPassword = formData.get("confirmPassword") as string
+    const firstName = formData.get("firstName") as string
+    const lastName = formData.get("lastName") as string
+    
+    setLoading(true)
+    setError("")
+    setSuccess("")
+    
+    // 基本验证
+    if (password !== confirmPassword) {
+      setError("Passwords do not match")
+      setLoading(false)
+      return
     }
     
-    // 这里可以添加实际的注册逻辑
-    console.log(`${userType} registration:`, data)
+    if (password.length < 6) {
+      setError("Password must be at least 6 characters long")
+      setLoading(false)
+      return
+    }
     
-    // 注册成功后跳转到登录页
-    router.push("/login")
+    try {
+      // 使用 Supabase 注册用户
+      const { data, error: signUpError } = await supabase.auth.signUp({
+        email,
+        password,
+        options: {
+          data: {
+            first_name: firstName,
+            last_name: lastName,
+            user_type: userType,
+            // 根据用户类型添加额外信息
+            ...(userType === "student" ? {
+              student_id: formData.get("studentId"),
+              course: formData.get("course"),
+              year_of_study: formData.get("yearOfStudy")
+            } : {
+              staff_id: formData.get("staffId"),
+              department: formData.get("department"),
+              position: formData.get("position")
+            })
+          }
+        }
+      })
+      
+      if (signUpError) {
+        setError(signUpError.message)
+        return
+      }
+      
+      if (data.user && !data.user.email_confirmed_at) {
+        setSuccess("Registration successful! Please check your email to confirm your account.")
+        // 3秒后跳转到登录页
+        setTimeout(() => {
+          router.push("/login")
+        }, 3000)
+      } else {
+        setSuccess("Registration successful!")
+        router.push("/login")
+      }
+      
+    } catch (err) {
+      setError("An error occurred during registration")
+      console.error("Registration error:", err)
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -80,6 +129,16 @@ export default function RegisterPage() {
             </TabsList>
             
             <TabsContent value="student" className="space-y-4 mt-6">
+              {error && (
+                <div className="p-3 text-sm text-red-600 bg-red-50 border border-red-200 rounded-md">
+                  {error}
+                </div>
+              )}
+              {success && (
+                <div className="p-3 text-sm text-green-600 bg-green-50 border border-green-200 rounded-md">
+                  {success}
+                </div>
+              )}
               <form action={(formData) => handleRegister("student", formData)} className="space-y-4">
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
@@ -249,8 +308,9 @@ export default function RegisterPage() {
                     backgroundColor: '#EFF4FF',
                     borderColor: '#E5E7EB'
                   }}
+                  disabled={loading}
                 >
-                  Create Student Account
+                  {loading ? "Creating Account..." : "Create Student Account"}
                 </Button>
               </form>
               
@@ -265,6 +325,16 @@ export default function RegisterPage() {
             </TabsContent>
             
             <TabsContent value="staff" className="space-y-4 mt-6">
+              {error && (
+                <div className="p-3 text-sm text-red-600 bg-red-50 border border-red-200 rounded-md">
+                  {error}
+                </div>
+              )}
+              {success && (
+                <div className="p-3 text-sm text-green-600 bg-green-50 border border-green-200 rounded-md">
+                  {success}
+                </div>
+              )}
               <form action={(formData) => handleRegister("staff", formData)} className="space-y-4">
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
@@ -439,8 +509,9 @@ export default function RegisterPage() {
                     backgroundColor: '#EFF4FF',
                     borderColor: '#E5E7EB'
                   }}
+                  disabled={loading}
                 >
-                  Create Staff Account
+                  {loading ? "Creating Account..." : "Create Staff Account"}
                 </Button>
               </form>
               
