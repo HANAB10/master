@@ -4,13 +4,13 @@ import { getAuth } from 'firebase/auth'
 import { getFirestore } from 'firebase/firestore'
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAU7uSv-BdO5enlChb1lUZx7_cGSNJpsGw",
-  authDomain: "eduai-7efea.firebaseapp.com",
-  projectId: "eduai-7efea",
-  storageBucket: "eduai-7efea.firebasestorage.app",
-  messagingSenderId: "39166156482",
-  appId: "1:39166156423:web:5eb6c44b3842209df74ad2",
-  measurementId: "G-0TQ3BN0GS3"
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY || "AIzaSyAU7uSv-BdO5enlChb1lUZx7_cGSNJpsGw",
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN || "eduai-7efea.firebaseapp.com",
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID || "eduai-7efea",
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET || "eduai-7efea.firebasestorage.app",
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID || "39166156482",
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID || "1:39166156423:web:5eb6c44b3842209df74ad2",
+  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID || "G-0TQ3BN0GS3"
 }
 
 // 环境变量验证
