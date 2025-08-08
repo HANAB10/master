@@ -3,9 +3,9 @@ import { initializeApp } from 'firebase/app'
 import { getAuth } from 'firebase/auth'
 import { getFirestore } from 'firebase/firestore'
 
-// 请从 Firebase 控制台获取正确的配置
+// Firebase 配置
 const firebaseConfig = {
-  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY || "YOUR_CORRECT_API_KEY_HERE",
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY || "AIzaSyAU7uSv-BdO5enlChbilUZx7_cGSNJpsGw",
   authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN || "eduai-7efea.firebaseapp.com",
   projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID || "eduai-7efea",
   storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET || "eduai-7efea.firebasestorage.app",
